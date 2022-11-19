@@ -1,7 +1,8 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { useState } from 'react';
 import { theme } from './assets/theme';
 import { Routing } from './features/Routing/Routing';
+
+//This application is responsive only till tablet sizes.
 
 function App() {
   return (

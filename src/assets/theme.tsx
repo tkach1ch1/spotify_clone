@@ -4,13 +4,16 @@ export const theme = createTheme({
   palette: {
     // Text colors
     primary: {
-      main: '#FFFFF',
+      main: '#FFFFFF',
       dark: '#A7A7A7',
     },
     // Background colors
     secondary: {
       main: '#121212',
     },
+    success: {
+     main: '#1db954'
+    }
   },
   typography: {
     allVariants: {
@@ -18,13 +21,12 @@ export const theme = createTheme({
     },
   },
   breakpoints: {
-    keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     values: {
-      xs: 0, // min-width for mobile devices
-      sm: 480, // min-width for tablets
-      md: 768, // min-width for small screens, laptops
-      lg: 1024, // 1024x768
-      xl: 1280, // 1280x720
+      xs: 769,
+      sm: 890,
+      md: 1024,
+      lg: 1280,
+      xl: 1500,
     },
   },
 });
