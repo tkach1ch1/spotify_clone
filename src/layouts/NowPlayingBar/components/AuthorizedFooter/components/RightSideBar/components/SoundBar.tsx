@@ -1,6 +1,10 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import { StyledIcon, StyledSlider, StyledTooltip } from '../style';
+import {
+  StyledIcon,
+  StyledSlider,
+  StyledTooltip,
+} from 'src/layouts/NowPlayingBar/style';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 

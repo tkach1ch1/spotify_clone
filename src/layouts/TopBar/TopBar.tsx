@@ -1,15 +1,14 @@
-import { Box } from '@mui/material';
+import { useUserContext } from '../../context/UserContext';
+import { AuthorizedTopBar } from './components/AuthorizedTopBar';
+import { NonAuthorizedTopBar } from './components/NonAuthorizedTopBar';
 import { Header, TopBarBox } from './style';
 
 export const TopBar = () => {
+  const { user } = useUserContext();
+
   return (
     <TopBarBox className='top-bar'>
-      <Header>
-        <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-          <Box>Arrows</Box>
-          <Box>Menu</Box>
-        </Box>
-      </Header>
+      <Header>{user ? <AuthorizedTopBar /> : <NonAuthorizedTopBar />}</Header>
     </TopBarBox>
   );
 };

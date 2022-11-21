@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { Box } from '@mui/system';
-import { GreenDot, StyledIcon, StyledTooltip } from '../style';
-import { theme } from '../../../assets/theme';
+import {
+  GreenDot,
+  StyledIcon,
+  StyledTooltip,
+} from 'src/layouts/NowPlayingBar/style';
 import LyricsIcon from '@mui/icons-material/Lyrics';
+import { theme } from 'src/assets/theme';
 
 export const LyricsButton = () => {
   const [lyrics, setLyrics] = useState(false);
 
   return (
-    <Box >
+    <Box>
       {lyrics ? (
         <Box sx={{ position: 'relative' }}>
           <StyledIcon

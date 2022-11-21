@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
-import { StyledTooltip, StyledIcon } from '../style';
+import { StyledTooltip, StyledIcon } from 'src/layouts/NowPlayingBar/style';
 
 export const PictureInPictureButton = () => {
   return (

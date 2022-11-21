@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
-import { theme } from '../assets/theme';
+import { theme } from 'src/assets/theme';
 
 export const StyledWhiteButton = styled(Button)({
   display: 'flex',

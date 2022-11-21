@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Box, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { theme } from '../../assets/theme';
 import { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import { theme } from 'src/assets/theme';
 
 export const NowPlayingBarBox = styled(Box)({
   gridArea: 'now-playing-bar',

@@ -1,5 +1,5 @@
-import { StyledIcon, StyledTooltip } from '../style';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style';
 
 export const NextButton = () => {
   return (

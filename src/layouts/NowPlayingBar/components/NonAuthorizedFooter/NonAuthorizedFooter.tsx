@@ -1,16 +1,16 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
-import { theme } from '../../../assets/theme';
-import { WhiteButton } from '../../../components/WhiteButton';
-import { NonAuthorizedFooterBox } from '../style';
+import { NonAuthorizedFooterBox } from 'src/layouts/NowPlayingBar/style';
+import { WhiteButton } from 'src/components/WhiteButton';
+import { theme } from 'src/assets/theme';
 
 export const NonAuthorizedFooter = () => {
   let navigate = useNavigate();
 
   return (
     <NonAuthorizedFooterBox onClick={() => navigate('/signup')}>
-      <Box sx={{padding: '3px'}}>
+      <Box sx={{ padding: '3px' }}>
         <Typography
           sx={{
             fontSize: '12px',

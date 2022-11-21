@@ -1,9 +1,14 @@
-import { GreenDot, StyledIcon, StyledTooltip } from '../style';
+// import { GreenDot, StyledIcon, StyledTooltip } from '@layouts/NowPlayingBar/style';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import RepeatOneIcon from '@mui/icons-material/RepeatOne';
 import { useState } from 'react';
 import { Box } from '@mui/system';
-import { theme } from '../../../assets/theme';
+import { theme } from 'src/assets/theme';
+import {
+  GreenDot,
+  StyledIcon,
+  StyledTooltip,
+} from 'src/layouts/NowPlayingBar/style';
 
 export const RepeatButton = () => {
   const [repeat, setRepeat] = useState(false);

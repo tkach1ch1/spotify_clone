@@ -1,6 +1,6 @@
-import { StyledIcon, StyledTooltip } from '../style';
 
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style';
 
 export const PreviousButton = () => {
   return (

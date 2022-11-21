@@ -1,12 +1,11 @@
 import { Box } from '@mui/system';
-import { PlayBarBox } from '../style';
-
-import { ShuffleButton } from './ShuffleButton';
-import { PreviousButton } from './PreviousButton';
-import { PlayButton } from './PlayButton';
-import { NextButton } from './NextButton';
-import { RepeatButton } from './RepeatButton';
-import { PlaySlider } from './PlaySlider';
+import { PlayBarBox } from 'src/layouts/NowPlayingBar/style';
+import { ShuffleButton } from './components/ShuffleButton';
+import { PreviousButton } from './components/PreviousButton';
+import { PlayButton } from './components/PlayButton';
+import { NextButton } from './components/NextButton';
+import { RepeatButton } from './components/RepeatButton';
+import { PlaySlider } from './components/PlaySlider';
 
 export const PlayBar = () => {
   return (

@@ -1,8 +1,12 @@
 import { Box } from '@mui/system';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import { useState } from 'react';
-import { GreenDot, StyledIcon, StyledTooltip } from '../style';
-import { theme } from '../../../assets/theme';
+import {
+  GreenDot,
+  StyledIcon,
+  StyledTooltip,
+} from 'src/layouts/NowPlayingBar/style';
+import { theme } from 'src/assets/theme';
 
 export const ShuffleButton = () => {
   const [shuffle, setShuffle] = useState(false);

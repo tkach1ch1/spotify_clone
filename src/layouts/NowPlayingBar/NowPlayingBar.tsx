@@ -1,10 +1,13 @@
-import { AuthorizedFooter } from './components/AuthorizedFooter';
-import { NonAuthorizedFooter } from './components/NonAuthorizedFooter';
-import { Footer, NowPlayingBarBox } from './style';
+import { AuthorizedFooter } from './components/AuthorizedFooter/AuthorizedFooter';
+import { NonAuthorizedFooter } from './components/NonAuthorizedFooter/NonAuthorizedFooter';
+import { Footer, NowPlayingBarBox } from 'src/layouts/NowPlayingBar/style';
+import { useUserContext } from 'src/context/UserContext';
+
 
 export const NowPlayingBar = () => {
-  //NOTE: User will come from database
-  let user = true;
+  
+  const {user} = useUserContext()
+
   return (
     <NowPlayingBarBox className='now-playing-bar'>
       <Footer>{user ? <AuthorizedFooter /> : <NonAuthorizedFooter />}</Footer>

@@ -1,16 +1,18 @@
 import { Box } from '@mui/system';
 import { useState } from 'react';
-import { GreenDot, StyledIcon, StyledTooltip } from '../style';
-import { theme } from '../../../assets/theme';
+import {
+  GreenDot,
+  StyledIcon,
+  StyledTooltip,
+} from 'src/layouts/NowPlayingBar/style';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
-
+import { theme } from 'src/assets/theme';
 
 export const QueueButton = () => {
-
-    const [queue, setQueue] = useState(false)
+  const [queue, setQueue] = useState(false);
 
   return (
-    <Box sx={{mt: '3px'}}>
+    <Box sx={{ mt: '3px' }}>
       {queue ? (
         <Box sx={{ position: 'relative' }}>
           <StyledIcon
@@ -31,5 +33,5 @@ export const QueueButton = () => {
         </StyledIcon>
       )}
     </Box>
-  )
-}
+  );
+};

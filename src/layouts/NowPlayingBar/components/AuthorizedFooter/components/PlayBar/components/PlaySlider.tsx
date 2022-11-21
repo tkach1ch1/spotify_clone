@@ -1,7 +1,6 @@
-import { StyledSlider, TimerNumbers } from '../style';
 import { useState } from 'react';
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { StyledSlider, TimerNumbers } from 'src/layouts/NowPlayingBar/style';
 
 export const PlaySlider = () => {
   const [position, setPosition] = useState(0);

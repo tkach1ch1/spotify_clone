@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StyledWhiteButton } from './ReusableComponentsStyle';
+import { StyledWhiteButton } from './style';
 
 interface WhiteButtonProps {
   children: ReactNode;

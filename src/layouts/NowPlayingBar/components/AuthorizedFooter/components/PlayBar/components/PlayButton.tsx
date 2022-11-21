@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Box } from '@mui/system';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
-import { StyledPlayIcon, StyledTooltip } from '../style';
+import { StyledPlayIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style';
 
 export const PlayButton = () => {
   const [play, setPlay] = useState(false);

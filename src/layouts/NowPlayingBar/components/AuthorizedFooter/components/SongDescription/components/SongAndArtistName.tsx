@@ -3,7 +3,7 @@ import {
   SongAndArtistNameBox,
   StyledArtistName,
   StyledSongName,
-} from '../style';
+} from 'src/layouts/NowPlayingBar/style';
 
 export const SongAndArtistName = () => {
   return (
