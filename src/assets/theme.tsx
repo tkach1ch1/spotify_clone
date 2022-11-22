@@ -9,11 +9,12 @@ export const theme = createTheme({
     },
     // Background colors
     secondary: {
-      main: '#121212',
+      main: '#1c1c1c',
+      light: '#282828',
     },
     success: {
-     main: '#1db954'
-    }
+      main: '#1db954',
+    },
   },
   typography: {
     allVariants: {

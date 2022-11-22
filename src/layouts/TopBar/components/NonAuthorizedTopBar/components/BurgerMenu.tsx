@@ -1,0 +1,32 @@
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import {
+  ShowBurger,
+  StyledBurgerBox,
+  StyledBurgerBoxClose,
+} from 'src/layouts/TopBar/style';
+import { useState } from 'react';
+import { Select } from 'src/components/Select';
+import { topNavBarCategoriesArray } from '../assets/assets';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+
+export const BurgerMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <ClickAwayListener onClickAway={() => setIsOpen(false)}>
+      <ShowBurger>
+        {isOpen ? (
+          <StyledBurgerBoxClose onClick={() => setIsOpen(!isOpen)}>
+            <CloseIcon />
+          </StyledBurgerBoxClose>
+        ) : (
+          <StyledBurgerBox onClick={() => setIsOpen(!isOpen)}>
+            <MenuIcon />
+          </StyledBurgerBox>
+        )}
+        {isOpen ? <Select array={topNavBarCategoriesArray} /> : null}
+      </ShowBurger>
+    </ClickAwayListener>
+  );
+};

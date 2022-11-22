@@ -1,0 +1,8 @@
+html {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
