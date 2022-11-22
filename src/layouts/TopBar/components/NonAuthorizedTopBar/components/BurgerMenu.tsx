@@ -7,8 +7,8 @@ import {
 } from 'src/layouts/TopBar/style';
 import { useState } from 'react';
 import { Select } from 'src/components/Select';
-import { topNavBarCategoriesArray } from '../assets/assets';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { topNavBarCategoriesArray } from 'src/layouts/TopBar/assets/assets';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

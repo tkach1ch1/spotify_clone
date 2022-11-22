@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { theme } from 'src/assets/theme';
+import { Box } from '@mui/system';
 
 export const StyledWhiteButton = styled(Button)({
   display: 'flex',
@@ -25,8 +26,8 @@ export const StyledWhiteButton = styled(Button)({
 
 export const SelectStyledUl = styled('ul')({
   position: 'absolute',
-  top: '43px',
-  right: '15px',
+  right: '0',
+  top: '28px',
   display: 'flex',
   flexDirection: 'column',
   padding: '4px',
@@ -47,7 +48,7 @@ export const SelectStyledLi = styled('li')({
 export const StyledSelectLink = styled(Link)({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center', 
+  alignItems: 'center',
   textDecoration: 'none',
   color: theme.palette.primary.main,
   padding: '10px',
@@ -58,3 +59,5 @@ export const StyledSelectLink = styled(Link)({
 export const StyledTyphographie = styled(Typography)({
   fontSize: '14px',
 });
+
+

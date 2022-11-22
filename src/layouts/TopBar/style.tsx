@@ -16,7 +16,7 @@ export const ArrowBox = styled(Box)({
   width: '32px',
   height: '32px',
   borderRadius: '50%',
-  backgroundColor: 'black',
+  backgroundColor: theme.palette.secondary.dark,
   color: 'white',
 });
 
@@ -26,7 +26,7 @@ export const ArrowBoxRight = styled(ArrowBox)({
   },
 });
 
-// NonAuthorizedTopBar
+//NOTE: NonAuthorizedTopBar
 
 export const NonAuthorizedTopBarBox = styled(Box)({
   display: 'flex',
@@ -93,6 +93,7 @@ export const AuthorizationBox = styled(Box)({
 });
 
 export const ShowBurger = styled(Box)({
+  position: 'relative',
   display: 'none',
   [theme.breakpoints.down('sm')]: {
     display: 'block ',
@@ -116,16 +117,75 @@ export const StyledBurgerBoxClose = styled(StyledBurgerBox)({
   backgroundColor: theme.palette.secondary.light,
 });
 
-//AuthorizedTopBar
+//NOTE: AuthorizedTopBar
 
 export const AuthorizedTopBarBox = styled(NonAuthorizedTopBarBox)({
   backgroundColor: theme.palette.secondary.main,
 });
 
 export const UpgradeAndProfileBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '30px',
+});
 
-})
+export const UpgradeButtonBox = styled(Box)({
+  padding: '3px 14px',
+  border: '1px solid #A7A7A7',
+  borderRadius: '500px',
+  '&:hover': {
+    border: '1px solid white',
+    backgroundColor: 'black',
+    transform: 'scale(1.05)',
+  },
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+});
 
-export const UpgradeButton = styled(Link)({
-  
-})
+export const StyledUpgradeLink = styled(Link)({
+  textDecoration: 'none',
+  fontSize: '14px',
+  color: theme.palette.primary.main,
+  fontWeight: '500',
+  cursor: 'default',
+});
+
+export const ProfileButtonBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+  padding: '2px',
+  backgroundColor: theme.palette.secondary.dark,
+  borderRadius: '23px',
+  '&:hover': {
+    cursor: 'pointer',
+    backgroundColor: theme.palette.secondary.light,
+  },
+});
+
+export const ProfileButtonIcon = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '28px',
+  height: '28px',
+  backgroundColor: '#535353',
+  color: theme.palette.primary.main,
+  borderRadius: '50%',
+});
+
+export const ProfileButtonNameAndArrowBox = styled(Box)({
+  display: 'flex',
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+});
+
+export const ProfileButtonName = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  color: theme.palette.primary.main,
+  fontWeight: '500',
+  fontSize: '14px',
+});

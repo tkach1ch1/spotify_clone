@@ -1,5 +1,5 @@
+import { topNavBarCategoriesArray } from 'src/layouts/TopBar/assets/assets';
 import { StyledLink, TopNavBarLi, TopNavBarUl } from 'src/layouts/TopBar/style';
-import { topNavBarCategoriesArray } from '../assets/assets';
 
 export const TopNavBar = () => {
   return (

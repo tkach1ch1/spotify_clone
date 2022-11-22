@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Account } from 'src/pages/Account';
+import { Profile } from 'src/pages/Profile';
 import { AlbumsPage } from '../../pages/AlbumsPage';
 import { ArtistsPage } from '../../pages/ArtistsPage';
 import { CreatePlaylistPage } from '../../pages/CreatePlaylistPage';
@@ -30,6 +32,9 @@ export function Routing() {
         {/* TOP NAVBAR */}
         <Route path='/premium' element={<PremiumSubscriptionPage />} />
         <Route path='/support' element={<SupportPage />} />
+        <Route path='/download/windows' element={<DownloadPage />} />
+        <Route path='/account' element={<Account />} />
+        <Route path='/user' element={<Profile />} />
         <Route path='/download/windows' element={<DownloadPage />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />

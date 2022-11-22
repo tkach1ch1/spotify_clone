@@ -1,10 +1,7 @@
-import {
-  AuthorizedTopBarBox,
-  UpgradeAndProfileBox,
-  UpgradeButton,
-} from '../../style';
+import { AuthorizedTopBarBox, UpgradeAndProfileBox } from '../../style';
 import { BackAndForwardButtons } from '../BackAndForwardButtons';
-import { Box } from '@mui/material';
+import { UpgradeButton } from './components/UpgradeButton';
+import { ProfileButton } from './components/ProfileButton';
 
 export const AuthorizedTopBar = () => {
   return (
@@ -12,9 +9,8 @@ export const AuthorizedTopBar = () => {
       <BackAndForwardButtons />
 
       <UpgradeAndProfileBox>
-        <UpgradeButton to='/premium' target='_blank'>
-          Upgrade
-        </UpgradeButton>
+        <UpgradeButton />
+        <ProfileButton />
       </UpgradeAndProfileBox>
     </AuthorizedTopBarBox>
   );
