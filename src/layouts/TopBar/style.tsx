@@ -5,8 +5,8 @@ import { theme } from 'src/assets/theme';
 
 export const TopBarBox = styled('header')({
   gridArea: 'top-bar',
-  zIndex: '2',
   height: '64px',
+  zIndex: 2,
 });
 
 export const ArrowBox = styled(Box)({
@@ -32,7 +32,7 @@ export const NonAuthorizedTopBarBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: 'rgba(0,0,0,0.5)',
+  backgroundColor: '#121212',
   height: '100%',
   padding: '4px 32px',
   [theme.breakpoints.down('md')]: {
@@ -120,7 +120,7 @@ export const StyledBurgerBoxClose = styled(StyledBurgerBox)({
 //NOTE: AuthorizedTopBar
 
 export const AuthorizedTopBarBox = styled(NonAuthorizedTopBarBox)({
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: '#121212',
 });
 
 export const UpgradeAndProfileBox = styled(Box)({

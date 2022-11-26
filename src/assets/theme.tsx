@@ -9,9 +9,9 @@ export const theme = createTheme({
     },
     // Background colors
     secondary: {
-      main: '#1c1c1c',
+      main: '#1a1a1a',
       light: '#282828',
-      dark: '#000000'
+      dark: '#000000',
     },
     success: {
       main: '#1db954',

@@ -13,7 +13,6 @@ export const NowPlayingBarBox = styled(Box)({
 });
 
 export const Footer = styled('footer')({
-  height: 'auto',
   borderTop: '1px solid #282828',
 });
 
@@ -22,6 +21,7 @@ export const NonAuthorizedFooterBox = styled(Box)({
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: '24px',
+  height: 'auto',
   padding: '11px 24px 7px 40px',
   backgroundImage: 'linear-gradient(90deg,#af2896,#509bf5)',
   '&:hover': {
@@ -73,8 +73,7 @@ export const StyledSlider = styled(Slider)({
 
   '&:hover .MuiSlider-thumb': {
     display: 'block',
-    boxShadow: 'none'
-
+    boxShadow: 'none',
   },
 
   '& .MuiSlider-thumb': {

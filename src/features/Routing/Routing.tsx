@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { Account } from 'src/pages/Account';
 import { Profile } from 'src/pages/Profile';
 import { AlbumsPage } from '../../pages/AlbumsPage';
@@ -14,7 +19,6 @@ import { PremiumSubscriptionPage } from '../../pages/PremiumSubscriptionPage';
 import { SearchPage } from '../../pages/SearchPage';
 import { SignUp } from '../../pages/SignUp';
 import { SupportPage } from '../../pages/SupportPage';
-import { YourLibraryPage } from '../../pages/YourLibraryPage';
 
 export function Routing() {
   return (
@@ -23,7 +27,10 @@ export function Routing() {
         {/* ASSIDE NAVBAR */}
         <Route path='/' element={<HomePage />} />
         <Route path='/search' element={<SearchPage />} />
-        <Route path='/collection' element={<YourLibraryPage />} />
+        <Route
+          path='/collection'
+          element={<Navigate to='/collection/playlists' replace={true} />}
+        />
         <Route path='/collection/playlists' element={<PlaylistPage />} />
         <Route path='/collection/artists' element={<ArtistsPage />} />
         <Route path='/collection/albums' element={<AlbumsPage />} />

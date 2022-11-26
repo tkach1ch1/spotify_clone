@@ -1,11 +1,22 @@
 import { Box } from '@mui/system';
-import { theme } from 'src/assets/theme';
-import { Nav } from './style';
+import { Nav, StyledDividingLine } from './style';
+import { Logo } from './components/Logo';
+import { NavBarCategories } from './components/NavBarCategories';
+import { CreatePlaylistButton } from './components/CreatePlaylistButton';
+import { LikedSongsButton } from './components/LikedSongsButton';
+import { AllPlaylistsList } from './components/AllPlaylistsList';
 
 export const NavBar = () => {
   return (
     <Nav className='nav-bar'>
-      <Box sx={{ color: theme.palette.primary.main }}>NavBar</Box>
+      <Logo />
+      <NavBarCategories />
+      <Box>
+        <CreatePlaylistButton />
+        <LikedSongsButton />
+      </Box>
+      <StyledDividingLine></StyledDividingLine>
+      <AllPlaylistsList />
     </Nav>
   );
 };

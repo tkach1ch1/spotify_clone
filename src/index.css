@@ -1,8 +1,8 @@
 html {
-  overflow-y: auto;
-  scrollbar-gutter: stable;
+  overflow: scroll;
+  overflow-x: hidden;
 }
-
-body::-webkit-scrollbar {
-  width: 0;
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }

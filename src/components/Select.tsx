@@ -5,7 +5,7 @@ import {
   StyledTyphographie,
 } from './style';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { Box } from '@mui/material';
+import { nanoid } from 'nanoid'
 
 type ArrayProps = {
   name: string;
@@ -22,7 +22,7 @@ export const Select = ({ array }: SelectProps) => {
   return (
     <SelectStyledUl>
       {array.map((elem) => (
-        <SelectStyledLi key={Math.floor(Math.random() * 10000)}>
+        <SelectStyledLi key={nanoid()}>
           <StyledSelectLink
             to={elem.link}
             target={elem.targetBlank ? '_blank' : '_self'}
