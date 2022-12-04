@@ -1,24 +1,33 @@
-import { useState } from 'react';
-
-interface AllPlaylistsProps {
-  playlistName: string;
-}
+import { nanoid } from 'nanoid';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from 'src/hooks/hooks';
+import { addPlaylist } from 'src/redux/allPlaylistsReducer';
 
 export const usePlaylist = () => {
-  const [allPlaylistsArray, setAllPlaylistsArray] = useState<
-    AllPlaylistsProps[]
-  >([]);
+  const allPlaylistsArray = useAppSelector(
+    (state) => state.allPlaylists.allPlaylistsArray
+  );
 
-  //Create playlist onClick on CreatePlaylistButton in NavBar 
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  //Create playlist onClick on CreatePlaylistButton in NavBar
 
   const createPlaylist = () => {
-    let newPlaylist = allPlaylistsArray.concat([
+    let newPlaylist = [
       {
         playlistName: 'My Playlist #' + (allPlaylistsArray.length + 1),
+        playlistId: nanoid(),
+        playlistDescription: '',
       },
-    ]);
-    setAllPlaylistsArray(newPlaylist);
+    ].concat(allPlaylistsArray);
+
+    dispatch(addPlaylist(newPlaylist));
+
+    navigate('/playlist/' + newPlaylist[0].playlistId);
   };
 
-  return {allPlaylistsArray, createPlaylist}
+  return { allPlaylistsArray, createPlaylist };
 };
+
+// { array }: createPlaylistProps

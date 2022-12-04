@@ -1,15 +1,14 @@
-import { Box } from '@mui/system';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import { NavBarButtonBox } from '../style';
+import { HideTextBox, NavBarButtonBox } from '../style';
 import { usePlaylist } from 'src/features/Playlists/usePlaylist';
 
 export const CreatePlaylistButton = () => {
   const { createPlaylist } = usePlaylist();
 
   return (
-    <NavBarButtonBox onClick={createPlaylist}>
+    <NavBarButtonBox onClick={createPlaylist} tabIndex={0}>
       <AddBoxIcon sx={{ width: '32px', height: '32px' }} />
-      <Box>Create Playlist</Box>
+      <HideTextBox>Create Playlist</HideTextBox>
     </NavBarButtonBox>
   );
 };

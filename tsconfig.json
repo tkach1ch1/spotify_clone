@@ -22,7 +22,11 @@
     "@context/*": ["src/context/*"],
     "@theme/*": ["src/assets/*"],
     "@components/*": ["src/components/*"],
+<<<<<<< HEAD
     "@pages/*": ["src/pages/*"]
+=======
+    "@assets/*": ["src/assets/*"]
+>>>>>>> 453e594e4b47d65c527df0c9ec90df0f19591954
   },
 
   "include": ["src", "**/*.ts", "**/*.tsx"]

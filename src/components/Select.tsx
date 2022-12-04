@@ -3,9 +3,16 @@ import {
   SelectStyledUl,
   StyledSelectLink,
   StyledTyphographie,
+<<<<<<< HEAD
 } from "./style";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { nanoid } from "nanoid";
+=======
+} from './style';
+import { Box } from '@mui/system';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { nanoid } from 'nanoid';
+>>>>>>> 453e594e4b47d65c527df0c9ec90df0f19591954
 
 type ArrayProps = {
   name: string;

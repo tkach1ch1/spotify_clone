@@ -1,5 +1,10 @@
 import { navBarCategoriesArray } from '../assets/assets';
-import { StyledNavBarLi, StyledNavBarLink, StyledNavBarUl } from '../style';
+import {
+  HideTextBox,
+  StyledNavBarLi,
+  StyledNavBarLink,
+  StyledNavBarUl,
+} from '../style';
 import { Box } from '@mui/system';
 import { theme } from 'src/assets/theme';
 import { useEffect, useState } from 'react';
@@ -33,7 +38,7 @@ export const NavBarCategories = () => {
             ) : (
               <elem.image sx={{ width: '28px', height: '28px' }} />
             )}
-            {elem.name}{' '}
+            <HideTextBox>{elem.name} </HideTextBox>
           </StyledNavBarLink>
         </StyledNavBarLi>
       ))}
