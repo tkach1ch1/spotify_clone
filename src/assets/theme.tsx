@@ -1,25 +1,25 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
     // Text colors
     primary: {
-      main: '#FFFFFF',
-      dark: '#A7A7A7',
+      main: "#FFFFFF",
+      dark: "#A7A7A7",
     },
     // Background colors
     secondary: {
-      main: '#1a1a1a',
-      light: '#282828',
-      dark: '#000000',
+      main: "#1a1a1a",
+      light: "#282828",
+      dark: "#000000",
     },
     success: {
-      main: '#1db954',
+      main: "#1db954",
     },
   },
   typography: {
     allVariants: {
-      fontFamily: ['Rubik', 'sans-serif'].join(),
+      fontFamily: ["Rubik", "sans-serif"].join(),
     },
   },
   breakpoints: {

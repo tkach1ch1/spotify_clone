@@ -16,7 +16,6 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 export const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <ClickAwayListener onClickAway={() => setIsOpen(false)}>
       <Box sx={{ position: 'relative' }}>

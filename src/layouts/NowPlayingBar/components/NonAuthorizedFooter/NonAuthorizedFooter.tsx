@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { NonAuthorizedFooterBox } from 'src/layouts/NowPlayingBar/style';
 import { WhiteButton } from 'src/components/WhiteButton';
 import { theme } from 'src/assets/theme';
+import { memo } from 'react';
 
-export const NonAuthorizedFooter = () => {
+export const NonAuthorizedFooter = memo(() => {
   let navigate = useNavigate();
 
   return (
@@ -31,4 +32,4 @@ export const NonAuthorizedFooter = () => {
       </Box>
     </NonAuthorizedFooterBox>
   );
-};
+});

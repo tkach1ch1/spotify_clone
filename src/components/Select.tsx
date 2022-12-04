@@ -3,9 +3,9 @@ import {
   SelectStyledUl,
   StyledSelectLink,
   StyledTyphographie,
-} from './style';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { nanoid } from 'nanoid'
+} from "./style";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { nanoid } from "nanoid";
 
 type ArrayProps = {
   name: string;
@@ -25,11 +25,11 @@ export const Select = ({ array }: SelectProps) => {
         <SelectStyledLi key={nanoid()}>
           <StyledSelectLink
             to={elem.link}
-            target={elem.targetBlank ? '_blank' : '_self'}
+            target={elem.targetBlank ? "_blank" : "_self"}
           >
             <StyledTyphographie>{elem.name}</StyledTyphographie>
             {elem.image ? (
-              <OpenInNewIcon sx={{ width: '20px', height: '20px' }} />
+              <OpenInNewIcon sx={{ width: "20px", height: "20px" }} />
             ) : null}
           </StyledSelectLink>
         </SelectStyledLi>
@@ -37,3 +37,6 @@ export const Select = ({ array }: SelectProps) => {
     </SelectStyledUl>
   );
 };
+
+
+
