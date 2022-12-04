@@ -1,11 +1,12 @@
-import { Box } from '@mui/system';
-import { usePlaylist } from 'src/features/Playlists/usePlaylist';
 import {
   AllPlaylistsListBox,
   AllPlaylistsListLi,
   AllPlaylistsListUl,
+  HideTextBox,
+  StyledPlaylistLink,
 } from '../style';
 import { nanoid } from 'nanoid';
+import { usePlaylist } from 'src/features/Playlists/usePlaylist';
 
 export const AllPlaylistsList = () => {
   const { allPlaylistsArray } = usePlaylist();
@@ -15,7 +16,9 @@ export const AllPlaylistsList = () => {
       <AllPlaylistsListUl>
         {allPlaylistsArray.map((elem) => (
           <AllPlaylistsListLi key={nanoid()}>
-            {elem.playlistName}
+            <StyledPlaylistLink to={'/playlist/' + elem.playlistId}>
+              <HideTextBox>{elem.playlistName}</HideTextBox>
+            </StyledPlaylistLink>
           </AllPlaylistsListLi>
         ))}
       </AllPlaylistsListUl>

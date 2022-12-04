@@ -13,20 +13,24 @@ export const MainView = ({ children }: MainViewProps) => {
   const { width } = useWindowSize();
 
   return (
-    <MainViewContainer
-      className='main-view'
-      //   Changing main view height
-      height={
-        user
-          ? 'calc((100vh - 65px) - 90px)'
-          : !user && width < 927
-          ? 'calc((100vh - 65px) - 90px)'
-          : !user
-          ? 'calc((100vh - 65px) - 66px)'
-          : '0'
-      }
-    >
-      <MainViewBox>{children}</MainViewBox>
-    </MainViewContainer>
+    <main>
+      <section>
+        <MainViewContainer
+          className='main-view'
+          //   Changing main view height
+          height={
+            user
+              ? 'calc((100vh - 65px) - 90px)'
+              : !user && width < 927
+              ? 'calc((100vh - 65px) - 90px)'
+              : !user
+              ? 'calc((100vh - 65px) - 66px)'
+              : '0'
+          }
+        >
+          <MainViewBox>{children}</MainViewBox>
+        </MainViewContainer>
+      </section>
+    </main>
   );
 };

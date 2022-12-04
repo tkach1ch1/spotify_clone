@@ -8,7 +8,7 @@ import { Account } from 'src/pages/Account';
 import { Profile } from 'src/pages/Profile';
 import { AlbumsPage } from '../../pages/AlbumsPage';
 import { ArtistsPage } from '../../pages/ArtistsPage';
-import { CreatePlaylistPage } from '../../pages/CreatePlaylistPage';
+import { CreatePlaylistPage } from '../../pages/CreatePlaylistPage/CreatePlaylistPage';
 import { DownloadPage } from '../../pages/DownloadPage';
 import { Error404Page } from '../../pages/Error404Page';
 import { HomePage } from '../../pages/HomePage';
@@ -34,7 +34,7 @@ export function Routing() {
         <Route path='/collection/playlists' element={<PlaylistPage />} />
         <Route path='/collection/artists' element={<ArtistsPage />} />
         <Route path='/collection/albums' element={<AlbumsPage />} />
-        <Route path='/playlist' element={<CreatePlaylistPage />} />
+        <Route path='/playlist/*' element={<CreatePlaylistPage />} />
         <Route path='/collection/tracks' element={<LikedSongsPage />} />
         {/* TOP NAVBAR */}
         <Route path='/premium' element={<PremiumSubscriptionPage />} />

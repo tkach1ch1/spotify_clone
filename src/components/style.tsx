@@ -59,5 +59,3 @@ export const StyledSelectLink = styled(Link)({
 export const StyledTyphographie = styled(Typography)({
   fontSize: '14px',
 });
-
-

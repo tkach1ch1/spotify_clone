@@ -7,17 +7,23 @@ export const Nav = styled('nav')({
   gridArea: 'nav-bar',
   backgroundColor: 'black',
   zIndex: 3,
-  overflow: 'auto',
-  resize: 'horizontal',
   width: '200px',
-  minWidth: '120px',
+  minWidth: '135px',
   maxWidth: '384px',
   paddingTop: '24px',
+  resize: 'horizontal',
+  overflow: 'hidden',
 });
 
 export const LogoBox = styled(Box)({
   display: 'flex',
   width: '100%',
+});
+
+export const HideTextBox = styled(Box)({
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
 });
 
 export const StyledLogoLink = styled(Link)({
@@ -53,6 +59,7 @@ export const StyledNavBarLink = styled(NavLink)({
   fontWeight: '500',
   width: '100%',
   padding: '0 13px',
+
   '&:hover': {
     color: theme.palette.primary.main,
     transition: 'all 0.3s',
@@ -64,10 +71,11 @@ export const StyledNavBarLink = styled(NavLink)({
 
 export const NavBarButtonBox = styled(Box)({
   display: 'flex',
+  gap: '10px',
   alignItems: 'center',
+  margin: '0 10px 10px 10px',
+  padding: '0 8px',
   color: theme.palette.primary.dark,
-  padding: '4px 20px',
-  gap: '12px',
   cursor: 'pointer',
   fontSize: '14px',
   fontWeight: '500',
@@ -86,6 +94,8 @@ export const LikedSongsButtonLink = styled(StyledNavBarLink)({
 export const StyledIconBox = styled(Box)({
   width: '24px',
   height: '24px',
+  minHeight: '24px',
+  minWidth: '24px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -103,15 +113,28 @@ export const StyledDividingLine = styled('hr')({
 
 export const AllPlaylistsListBox = styled(Box)({
   width: '100%',
-  maxHeight: '510px',
-  color: theme.palette.primary.dark,
+  height: '25vh',
   overflow: 'auto',
 });
 
 export const AllPlaylistsListUl = styled('ul')({
-
-})
+  listStyle: 'none',
+  padding: '0',
+  margin: '0',
+});
 
 export const AllPlaylistsListLi = styled('li')({
-  
-})
+  display: 'flex',
+});
+
+export const StyledPlaylistLink = styled(Link)({
+  textDecoration: 'none',
+  padding: '4px 24px',
+  color: theme.palette.primary.dark,
+  fontSize: '14px',
+  cursor: 'default',
+  width: '100%',
+  '&:hover': {
+    color: theme.palette.primary.main,
+  },
+});

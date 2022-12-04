@@ -21,7 +21,8 @@
     "@layouts/*": ["src/layouts/*"],
     "@context/*": ["src/context/*"],
     "@theme/*": ["src/assets/*"],
-    "@components/*": ["src/components/*"]
+    "@components/*": ["src/components/*"],
+    "@assets/*": ["src/assets/*"]
   },
 
   "include": ["src", "**/*.ts", "**/*.tsx"]

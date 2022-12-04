@@ -4,8 +4,9 @@ import {
   StyledSelectLink,
   StyledTyphographie,
 } from './style';
+import { Box } from '@mui/system';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 type ArrayProps = {
   name: string;
