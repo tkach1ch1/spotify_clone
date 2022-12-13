@@ -1,14 +1,14 @@
-import { ShowAllText, Title, TitleBox } from "../style";
+import { ShowAllText, Title, TitleBox } from '../style'
 
 interface SectionTitleProps {
-  title: string;
+    title: string
 }
 
 export const SectionTitle = ({ title }: SectionTitleProps) => {
-  return (
-    <TitleBox>
-      <Title to="">{title}</Title>
-      <ShowAllText to="">Show all</ShowAllText>
-    </TitleBox>
-  );
-};
+    return (
+        <TitleBox>
+            <Title to=''>{title}</Title>
+            <ShowAllText to=''>Show all</ShowAllText>
+        </TitleBox>
+    )
+}

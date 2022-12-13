@@ -1,18 +1,11 @@
-import { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { StyledWhiteButton } from './style';
+import { ReactNode } from 'react'
+import { StyledWhiteButton } from './style'
 
 interface WhiteButtonProps {
-  children: ReactNode;
-  navigation: string;
+    children: ReactNode
+    onButtonAction: () => void
 }
 
-export const WhiteButton = ({ children, navigation }: WhiteButtonProps) => {
-  let navigate = useNavigate();
-
-  return (
-    <StyledWhiteButton onClick={() => navigate('/' + navigation)}>
-      {children}{' '}
-    </StyledWhiteButton>
-  );
-};
+export const WhiteButton = ({ children, onButtonAction }: WhiteButtonProps) => {
+    return <StyledWhiteButton onClick={onButtonAction}>{children} </StyledWhiteButton>
+}

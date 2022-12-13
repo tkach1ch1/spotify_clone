@@ -1,11 +1,11 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react'
 
 interface UserContextProps {
-  user: boolean;
+    user: boolean
 }
 
 const UserContext = createContext<UserContextProps>({
-  user: true,
-});
+    user: false,
+})
 
-export const useUserContext = () => useContext(UserContext);
+export const useUserContext = () => useContext(UserContext)
