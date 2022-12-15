@@ -1,4 +1,4 @@
-import { StyledTextArea, TextFieldName } from '../style'
+import { StyledTextArea, TextFieldName } from 'src/pages/CreatePlaylistPage/style'
 import React, { useState } from 'react'
 import { Box, ClickAwayListener } from '@mui/material'
 
@@ -20,6 +20,7 @@ export const ModalDescriptionArea = ({ onDescriptionChange, value }: ModalDescri
                     placeholder='Add an optional description'
                     onChange={onDescriptionChange}
                     value={value}
+                    maxLength={100}
                 />
                 {descriptionInput ? <TextFieldName>Description</TextFieldName> : null}
             </Box>

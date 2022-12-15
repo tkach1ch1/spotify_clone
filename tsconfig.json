@@ -23,7 +23,8 @@
     "@theme/*": ["src/assets/*"],
     "@components/*": ["src/components/*"],
     "@assets/*": ["src/assets/*"], 
-    "@pages/*": ["src/pages/*"]
+    "@pages/*": ["src/pages/*"],
+    "@CreatePlaylistPage": ["src/pages/CreatePlaylistPage/*"]
   },
 
   "include": ["src", "**/*.ts", "**/*.tsx"]

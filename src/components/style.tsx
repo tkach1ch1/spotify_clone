@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { theme } from 'src/assets/theme'
 
@@ -22,7 +22,7 @@ export const StyledWhiteButton = styled(Button)({
         transition: 'all 0.1s',
     },
     '&:active': {
-        backgroundColor: '#b3b3b3',
+        backgroundColor: theme.palette.primary.light,
     },
 })
 
@@ -60,4 +60,26 @@ export const StyledSelectLink = styled(Link)({
 
 export const StyledTyphographie = styled(Typography)({
     fontSize: '14px',
+})
+
+export const GreenPlayButtonBox = styled(Box)({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '50%',
+    backgroundColor: theme.palette.success.main,
+    '&:hover': {
+        transform: 'scale(1.05)',
+    },
+    '&:active': {
+        transform: 'scale(0.97)',
+        backgroundColor: '#169c46',
+    },
+})
+
+export const HoveredGreenPlayButtonBox = styled(Box)({
+    transform: 'translateY(8px)',
+    opacity: '0',
+    transition: 'all .5s ease',
+    borderRadius: '50%',
 })

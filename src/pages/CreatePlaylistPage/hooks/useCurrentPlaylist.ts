@@ -10,6 +10,7 @@ export const useCurrentPlaylist = () => {
     const currentPlaylist = allPlaylistsArray.find(
         (elem) => '/playlist/' + elem.playlistId === location.pathname
     )
+
     //--//
     return { currentPlaylist }
 }

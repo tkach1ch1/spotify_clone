@@ -9,7 +9,7 @@ export const usePlaylist = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    //Create playlist onClick on CreatePlaylistButton in NavBar
+    //Create playlist onClick on CreatePlaylistButton in NavBar and add him to allPlaylistsArray
 
     const createPlaylist = () => {
         let newPlaylist = [

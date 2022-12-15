@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { StyledTextField, TextFieldName } from '../style'
+import { StyledTextField, TextFieldName } from 'src/pages/CreatePlaylistPage/style'
 import { ClickAwayListener } from '@mui/material'
 import { useState } from 'react'
 
@@ -24,6 +24,7 @@ export const ModalNameInput = ({ onNameChange, value }: NameInputProps) => {
                     value={value}
                     onChange={onNameChange}
                     placeholder='Add a name'
+                    maxLength={50}
                 />
                 {nameInput ? <TextFieldName>Name</TextFieldName> : null}
             </Box>

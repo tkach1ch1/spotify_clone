@@ -7,15 +7,16 @@ import { MainView } from '../MainView/MainView'
 
 interface MainContainerProps {
     children: ReactNode
+    padding?: string
 }
 
-export const MainContainer = ({ children }: MainContainerProps) => {
+export const MainContainer = ({ children, padding }: MainContainerProps) => {
     return (
         <TopContainer>
             <TopBar />
             <NavBar />
             <NowPlayingBar />
-            <MainView>{children}</MainView>
+            <MainView padding={padding}>{children}</MainView>
         </TopContainer>
     )
 }

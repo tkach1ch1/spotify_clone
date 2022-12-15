@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { Box } from '@mui/material'
-import { theme } from 'src/assets/theme'
 
 export const TopContainer = styled(Box)({
     display: 'grid',
@@ -19,13 +18,14 @@ export const TopContainer = styled(Box)({
 
 export const MainViewContainer = styled(Box)({
     gridArea: 'main-view',
-    overflow: 'auto',
-    background: theme.palette.secondary.main,
+    background: '#121212',
     position: 'relative',
-    minWidth: '613px',
+    minWidth: '455px',
     minHeight: '450px',
+    width: '100%',
+    overflowY: 'auto',
+    paddingBottom: '32px',
+    scrollbarWidth: 'none',
 })
 
-export const MainViewBox = styled(Box)({
-    padding: '24px 16px',
-})
+export const MainViewBox = styled(Box)({})

@@ -1,4 +1,4 @@
-import { HoveredDefaultImage, PlaylistImageBox, StyledImageLabel } from '../style'
+import { HoveredDefaultImage, PlaylistImageBox, StyledImageLabel } from '../../../style'
 import { FiMusic } from 'react-icons/fi'
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
 import { Box } from '@mui/system'

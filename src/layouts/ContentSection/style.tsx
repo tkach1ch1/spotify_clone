@@ -32,7 +32,7 @@ export const Title = styled(Link)({
 
 export const ShowAllText = styled(Link)({
     textDecoration: 'none',
-    color: '#b3b3b3',
+    color: theme.palette.primary.light,
     fontSize: '0.75rem  ',
     textTransform: 'uppercase',
     fontWeight: '500',
@@ -103,17 +103,14 @@ export const ElementDescription = styled(Box)({
     color: theme.palette.primary.dark,
 })
 
-export const GreenPlayButton = styled(Box)({
+export const HoveredGreenPlayButtonBox = styled(Box)({
     width: '50px',
     height: '50px',
-    position: 'absolute',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '50%',
     backgroundColor: theme.palette.success.main,
-    bottom: '10px',
-    right: '5px',
     transform: 'translateY(8px)',
     opacity: '0',
     transition: 'all .5s ease',

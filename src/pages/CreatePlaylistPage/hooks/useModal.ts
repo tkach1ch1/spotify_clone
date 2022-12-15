@@ -7,9 +7,15 @@ export const useModal = () => {
         setOpen(true)
     }
 
+    const onEnterOpen = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            setOpen(true)
+        }
+    }
+
     const handleClose = () => {
         setOpen(false)
     }
 
-    return { open, handleClose, handleOpen }
+    return { open, handleClose, handleOpen, onEnterOpen }
 }

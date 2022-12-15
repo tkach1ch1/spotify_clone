@@ -1,4 +1,4 @@
-import { AlertText, StyledAlertBox } from '../style'
+import { AlertText, StyledAlertBox } from 'src/pages/CreatePlaylistPage/style'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import { theme } from 'src/assets/theme'
 

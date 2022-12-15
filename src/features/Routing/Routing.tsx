@@ -15,7 +15,7 @@ import { Error404Page } from '../../pages/Error404Page'
 import { HomePage } from '../../pages/HomePage'
 import { LikedSongsPage } from '../../pages/LikedSongsPage'
 import { LogIn } from '../../pages/LogIn'
-import { PlaylistPage } from '../../pages/PlaylistPage'
+import { PlaylistsPage } from '../../pages/PlaylistsPage'
 import { PremiumSubscriptionPage } from '../../pages/PremiumSubscriptionPage'
 import { SearchPage } from '../../pages/SearchPage'
 import { SignUp } from '../../pages/SignUp'
@@ -44,7 +44,7 @@ const router = createBrowserRouter(
             />
             <Route
                 path='/collection/playlists'
-                element={<PlaylistPage />}
+                element={<PlaylistsPage />}
             />
             <Route
                 path='/collection/artists'

@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
 import { theme } from 'src/assets/theme'
-import { CloseButton } from '../style'
+import { CloseButton } from 'src/pages/CreatePlaylistPage/style'
 import CloseIcon from '@mui/icons-material/Close'
 
 interface ModalHeaderProp {

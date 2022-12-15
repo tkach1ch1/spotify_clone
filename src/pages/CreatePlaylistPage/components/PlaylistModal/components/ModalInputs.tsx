@@ -1,4 +1,4 @@
-import { ModalNameAndDescriptionSection } from '../style'
+import { ModalNameAndDescriptionSection } from 'src/pages/CreatePlaylistPage/style'
 import { useEffect, useState } from 'react'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
@@ -7,8 +7,8 @@ import { ModalNameInput } from './ModalNameInput'
 import { ModalDescriptionArea } from './ModalDescriptionArea'
 import { WhiteButton } from 'src/components/WhiteButton'
 import { Box } from '@mui/system'
-import { useModalInputsInfo } from '../hooks/useModalnputsInfo'
-import { useCurrentPlaylist } from '../hooks/useCurrentPlaylist'
+import { useModalInputsInfo } from '../../../hooks/useModalnputsInfo'
+import { useCurrentPlaylist } from '../../../hooks/useCurrentPlaylist'
 
 export const ModalInputs = ({ handleClose, nameInputHandler }: MainSectionModalProps) => {
     const { currentPlaylist } = useCurrentPlaylist()

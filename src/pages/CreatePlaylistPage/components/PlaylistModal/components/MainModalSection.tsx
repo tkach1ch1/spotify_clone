@@ -1,5 +1,5 @@
-import { ModalSection } from '../style'
-import { PlaylistImage } from './PlaylistImage'
+import { ModalSection } from 'src/pages/CreatePlaylistPage/style'
+import { PlaylistImage } from '../../PlaylistPageHeader/components/PlaylistImage'
 import { Box } from '@mui/system'
 import { ModalInputs } from './ModalInputs'
 

@@ -5,6 +5,7 @@ export const theme = createTheme({
         // Text colors
         primary: {
             main: '#FFFFFF',
+            light: '#B3B3B3',
             dark: '#A7A7A7',
         },
         // Background colors

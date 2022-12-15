@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { StyledAgreeText } from '../style'
+import { StyledAgreeText } from 'src/pages/CreatePlaylistPage/style'
 
 export const ImageUploadAgreeText = () => {
     return (

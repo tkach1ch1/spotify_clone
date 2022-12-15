@@ -121,12 +121,15 @@ export const StyledBurgerBoxClose = styled(StyledBurgerBox)({
 
 export const AuthorizedTopBarBox = styled(NonAuthorizedTopBarBox)({
     backgroundColor: '#121212',
+    gap: '15px',
 })
 
 export const UpgradeAndProfileBox = styled(Box)({
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'flex-end',
     gap: '30px',
+    width: '100%',
 })
 
 export const UpgradeButtonBox = styled(Box)({

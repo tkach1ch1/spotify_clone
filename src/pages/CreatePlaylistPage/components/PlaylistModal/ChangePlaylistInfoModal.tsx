@@ -1,9 +1,9 @@
-import { ModalHeader } from './ModalHeader'
-import { MainModalBox, StyledModal } from '../style'
-import { MainModalSection } from './MainModalSection'
-import { InputAlert } from './InputAlert'
+import { ModalHeader } from './components/ModalHeader'
+import { MainModalBox, StyledModal } from 'src/pages/CreatePlaylistPage/style'
+import { MainModalSection } from './components/MainModalSection'
+import { InputAlert } from './components/InputAlert'
 import { useState } from 'react'
-import { ImageUploadAgreeText } from './ImageUploadAgreeText'
+import { ImageUploadAgreeText } from './components/ImageUploadAgreeText'
 
 interface ModalProps {
     open: boolean

@@ -1,6 +1,12 @@
 import { Box } from '@mui/material'
-import { ElementBox, ElementDescription, ElementName, GreenPlayButton, StyledImg } from '../style'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import { GreenPlayButton } from 'src/components/GreenPlayButton'
+import {
+    ElementBox,
+    ElementDescription,
+    ElementName,
+    HoveredGreenPlayButtonBox,
+    StyledImg,
+} from '../style'
 
 export const ContentElement = () => {
     return (
@@ -10,9 +16,15 @@ export const ContentElement = () => {
                     src='https://i.scdn.co/image/ab67706f000000025551996f500ba876bda73fa5'
                     alt='Sea'
                 />
-                <GreenPlayButton id='hoveredGreenButton'>
-                    <PlayArrowIcon fontSize='large' />
-                </GreenPlayButton>
+                <HoveredGreenPlayButtonBox
+                    id='hoveredGreenButton'
+                    sx={{ position: 'absolute', bottom: '10px', right: '5px' }}
+                >
+                    <GreenPlayButton
+                        width='50px'
+                        height='50px'
+                    />
+                </HoveredGreenPlayButtonBox>
             </Box>
             <ElementName>Deep Focus</ElementName>
             <ElementDescription>

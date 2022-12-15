@@ -5,9 +5,10 @@ import { useWindowSize } from 'usehooks-ts'
 
 interface MainViewProps {
     children: ReactNode
+    padding?: string
 }
 
-export const MainView = ({ children }: MainViewProps) => {
+export const MainView = ({ children, padding }: MainViewProps) => {
     const { user } = useUserContext()
 
     const { width } = useWindowSize()
@@ -28,7 +29,8 @@ export const MainView = ({ children }: MainViewProps) => {
                             : '0'
                     }
                 >
-                    <MainViewBox>{children}</MainViewBox>
+                    {/* Setting padding='0' when don't need default MainView padding */}
+                    <MainViewBox padding={padding ? padding : '24px 16px'}>{children}</MainViewBox>
                 </MainViewContainer>
             </section>
         </main>
