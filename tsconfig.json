@@ -24,7 +24,8 @@
     "@components/*": ["src/components/*"],
     "@assets/*": ["src/assets/*"], 
     "@pages/*": ["src/pages/*"],
-    "@CreatePlaylistPage": ["src/pages/CreatePlaylistPage/*"]
+    "@CreatePlaylistPage": ["src/pages/CreatePlaylistPage/*"],
+    "@PlaylistPage": ["src/pages/PlaylistsPage/*"]
   },
 
   "include": ["src", "**/*.ts", "**/*.tsx"]

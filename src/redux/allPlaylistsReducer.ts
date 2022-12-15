@@ -4,6 +4,7 @@ export interface AllPlaylistsArrayProps {
     playlistName: string
     playlistId: string
     playlistDescription: string
+    playlistImage: string
 }
 
 interface AllPlaylistsReducerState {
@@ -30,6 +31,7 @@ const allPlaylistsReducer = createSlice({
                 ...elem,
                 playlistName: action.payload.playlistName,
                 playlistDescription: action.payload.playlistDescription,
+                playlistImage: action.payload.playlistImage,
             }))
 
             state.allPlaylistsArray = changedPlaylist.concat(
@@ -41,7 +43,6 @@ const allPlaylistsReducer = createSlice({
     },
 })
 
-export const { addPlaylist, changePlaylistDetails } =
-    allPlaylistsReducer.actions
+export const { addPlaylist, changePlaylistDetails } = allPlaylistsReducer.actions
 
 export default allPlaylistsReducer.reducer

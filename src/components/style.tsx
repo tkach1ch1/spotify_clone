@@ -70,6 +70,7 @@ export const GreenPlayButtonBox = styled(Box)({
     backgroundColor: theme.palette.success.main,
     '&:hover': {
         transform: 'scale(1.05)',
+        backgroundColor: '#1fdf64',
     },
     '&:active': {
         transform: 'scale(0.97)',
@@ -78,8 +79,15 @@ export const GreenPlayButtonBox = styled(Box)({
 })
 
 export const HoveredGreenPlayButtonBox = styled(Box)({
+    width: '50px',
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '50%',
+    backgroundColor: theme.palette.success.main,
     transform: 'translateY(8px)',
     opacity: '0',
     transition: 'all .5s ease',
-    borderRadius: '50%',
+    boxShadow: '0 8px 8px rgba(0,0,0,.3)',
 })

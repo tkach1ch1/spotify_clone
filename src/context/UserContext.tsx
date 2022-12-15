@@ -5,7 +5,7 @@ interface UserContextProps {
 }
 
 const UserContext = createContext<UserContextProps>({
-    user: true,
+    user: false,
 })
 
 export const useUserContext = () => useContext(UserContext)

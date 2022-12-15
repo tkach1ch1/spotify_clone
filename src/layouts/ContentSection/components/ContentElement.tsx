@@ -1,35 +1,72 @@
 import { Box } from '@mui/material'
-import { GreenPlayButton } from 'src/components/GreenPlayButton'
+import { useNavigate } from 'react-router-dom'
+import { HoveredGreenPlayButton } from 'src/components/HoveredGreenPlayButton'
 import {
+    DefaultPlaylistImageBox,
     ElementBox,
     ElementDescription,
     ElementName,
-    HoveredGreenPlayButtonBox,
     StyledImg,
 } from '../style'
+import { FiMusic } from 'react-icons/fi'
+import React from 'react'
 
-export const ContentElement = () => {
+interface ContentElementProps {
+    elemName?: string
+    elemDescription?: string
+    elemImage?: string
+    navigationPath?: string
+}
+
+export const ContentElement = ({
+    elemName = 'Deep Focus',
+    elemDescription = ' Keep calm and focus with ambient and positive music',
+    elemImage,
+    navigationPath,
+}: ContentElementProps) => {
+    const navigate = useNavigate()
+
+    const onEnterToElementNavigate = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            navigationPath && navigate(navigationPath)
+        }
+    }
+
     return (
-        <ElementBox tabIndex={0}>
-            <Box sx={{ marginBottom: '16px', position: 'relative' }}>
-                <StyledImg
-                    src='https://i.scdn.co/image/ab67706f000000025551996f500ba876bda73fa5'
-                    alt='Sea'
-                />
-                <HoveredGreenPlayButtonBox
-                    id='hoveredGreenButton'
-                    sx={{ position: 'absolute', bottom: '10px', right: '5px' }}
-                >
-                    <GreenPlayButton
-                        width='50px'
-                        height='50px'
+        <ElementBox
+            tabIndex={0}
+            onClick={() => navigationPath && navigate(navigationPath)}
+            onKeyDown={onEnterToElementNavigate}
+        >
+            <Box
+                sx={{
+                    marginBottom: '16px',
+                    position: 'relative',
+                }}
+            >
+                {elemImage ? (
+                    <StyledImg
+                        src={elemImage}
+                        alt='Playlist'
                     />
-                </HoveredGreenPlayButtonBox>
+                ) : (
+                    <DefaultPlaylistImageBox>
+                        <FiMusic
+                            style={{
+                                width: '60px',
+                                height: '60px',
+                            }}
+                        />
+                    </DefaultPlaylistImageBox>
+                )}
+
+                <HoveredGreenPlayButton
+                    bottom='10px'
+                    right='5px'
+                />
             </Box>
-            <ElementName>Deep Focus</ElementName>
-            <ElementDescription>
-                Keep calm and focus with ambient and positive music
-            </ElementDescription>
+            <ElementName>{elemName}</ElementName>
+            <ElementDescription>{elemDescription}</ElementDescription>
         </ElementBox>
     )
 }

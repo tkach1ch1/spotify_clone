@@ -10,6 +10,7 @@ export const PlaylistAddedSongs = () => {
                 <GreenPlayButton
                     width='58px'
                     height='58px'
+                    tabIndex={0}
                 />
             </PlayButtonBox>
             <SongsSection />

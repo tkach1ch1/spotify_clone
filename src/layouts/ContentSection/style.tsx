@@ -75,8 +75,7 @@ export const ElementBox = styled(Box)({
     '&:focus-visible #hoveredGreenButton': {
         opacity: '1',
         transform: 'translateY(0)',
-        outline: '1px solid white',
-        border: '2px solid #1a54c7',
+        outline: '2px solid white',
     },
 })
 
@@ -103,15 +102,14 @@ export const ElementDescription = styled(Box)({
     color: theme.palette.primary.dark,
 })
 
-export const HoveredGreenPlayButtonBox = styled(Box)({
-    width: '50px',
-    height: '50px',
+export const DefaultPlaylistImageBox = styled(Box)({
+    color: theme.palette.primary.dark,
+    width: '100%',
+    backgroundColor: '#333',
+    boxShadow: '0 8px 24px rgba(0,0,0,.5)',
+    borderRadius: '4px',
     display: 'flex',
+    height: '170px',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '50%',
-    backgroundColor: theme.palette.success.main,
-    transform: 'translateY(8px)',
-    opacity: '0',
-    transition: 'all .5s ease',
 })

@@ -17,6 +17,7 @@ export const usePlaylist = () => {
                 playlistName: 'My Playlist #' + (allPlaylistsArray.length + 1),
                 playlistId: nanoid(),
                 playlistDescription: '',
+                playlistImage: '',
             },
         ].concat(allPlaylistsArray)
 
@@ -25,7 +26,11 @@ export const usePlaylist = () => {
         navigate('/playlist/' + newPlaylist[0].playlistId)
     }
 
-    return { allPlaylistsArray, createPlaylist }
-}
+    const onEnterCreatePlaylist = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            createPlaylist()
+        }
+    }
 
-// { array }: createPlaylistProps
+    return { allPlaylistsArray, createPlaylist, onEnterCreatePlaylist }
+}

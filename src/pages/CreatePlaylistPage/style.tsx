@@ -4,7 +4,6 @@ import { Box } from '@mui/system'
 import { Link } from 'react-router-dom'
 import { theme } from 'src/assets/theme'
 import { BsSearch } from 'react-icons/bs'
-import { keyframes } from '@mui/system'
 
 //Playlist info section
 export const MainPlaylistTitleBox = styled(Box)({
