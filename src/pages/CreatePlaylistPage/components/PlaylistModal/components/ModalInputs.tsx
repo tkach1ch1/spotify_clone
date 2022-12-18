@@ -1,44 +1,20 @@
 import { ModalNameAndDescriptionSection } from 'src/pages/CreatePlaylistPage/style'
-import { useEffect, useState } from 'react'
-import { useAppDispatch } from 'src/hooks/hooks'
-import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
+import { useEffect } from 'react'
 import { MainSectionModalProps } from './MainModalSection'
 import { ModalNameInput } from './ModalNameInput'
 import { ModalDescriptionArea } from './ModalDescriptionArea'
 import { WhiteButton } from 'src/components/WhiteButton'
 import { Box } from '@mui/system'
 import { useModalInputsInfo } from '../../../hooks/useModalnputsInfo'
-import { useCurrentPlaylist } from '../../../hooks/useCurrentPlaylist'
 
 export const ModalInputs = ({ handleClose, nameInputHandler }: MainSectionModalProps) => {
-    const { currentPlaylist } = useCurrentPlaylist()
-
-    const { name, description, onNameChange, onDescriptionChange } = useModalInputsInfo()
-
-    const [loading, setLoading] = useState(false)
+    const { name, description, onNameChange, onDescriptionChange, loading, onButtonAction } =
+        useModalInputsInfo()
 
     //Sending name state to ChangePlaylistInfoModal component to show Alert component if name === ''
     useEffect(() => {
         nameInputHandler(name)
     }, [name, nameInputHandler])
-
-    const dispatch = useAppDispatch()
-
-    //Sending changed playlist info to redux and close modal window
-    const onButtonAction = () => {
-        setLoading(true)
-        if (name?.trim()) {
-            dispatch(
-                changePlaylistDetails({
-                    playlistId: currentPlaylist?.playlistId,
-                    playlistName: name?.trim(),
-                    playlistDescription: description,
-                })
-            )
-            setLoading(false)
-            handleClose()
-        }
-    }
 
     return (
         <ModalNameAndDescriptionSection>
@@ -57,7 +33,11 @@ export const ModalInputs = ({ handleClose, nameInputHandler }: MainSectionModalP
                     marginTop: '-10px',
                 }}
             >
-                {loading ? null : <WhiteButton onButtonAction={onButtonAction}>Save</WhiteButton>}
+                {loading ? null : (
+                    <WhiteButton onButtonAction={() => onButtonAction(handleClose)}>
+                        Save
+                    </WhiteButton>
+                )}
             </Box>
         </ModalNameAndDescriptionSection>
     )

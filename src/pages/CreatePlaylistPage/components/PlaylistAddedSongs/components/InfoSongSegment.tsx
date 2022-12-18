@@ -1,12 +1,18 @@
 import { Box } from '@mui/system'
 import { SongLink, SongSegment, StyledSongLink } from 'src/pages/CreatePlaylistPage/style'
 
-export const InfoSongSegment = () => {
+interface InfoSongSegmentProps {
+    songName: string
+    authorName: string
+    image: string
+}
+
+export const InfoSongSegment = ({ songName, authorName, image }: InfoSongSegmentProps) => {
     return (
         <SongSegment>
             <img
-                src='https://i.scdn.co/image/ab67616d000048516922e8b2d9fcd9d115748ba8'
-                alt='Song name'
+                src={image}
+                alt='Song'
                 style={{ marginRight: '16px' }}
                 width='40px'
                 height='40px'
@@ -16,13 +22,13 @@ export const InfoSongSegment = () => {
                     to=''
                     tabIndex={-1}
                 >
-                    SongSong
+                    {songName}
                 </SongLink>
                 <StyledSongLink
                     to=''
                     tabIndex={-1}
                 >
-                    Author
+                    {authorName}
                 </StyledSongLink>
             </Box>
         </SongSegment>

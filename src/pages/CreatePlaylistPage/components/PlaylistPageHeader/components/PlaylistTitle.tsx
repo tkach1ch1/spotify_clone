@@ -47,6 +47,7 @@ export const PlaylistTitle = ({ handleOpen, onEnterOpen }: PlaylistInfoProps) =>
                 onClick={handleOpen}
                 onKeyDown={onEnterOpen}
                 tabIndex={0}
+                data-testid='playlist_title'
             >
                 {currentPlaylist?.playlistName}
             </StyledPlaylistTitle>

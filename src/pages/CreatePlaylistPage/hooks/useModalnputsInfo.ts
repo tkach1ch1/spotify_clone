@@ -1,5 +1,7 @@
+import { useAppDispatch } from './../../../hooks/hooks'
 import { useCurrentPlaylist } from '../hooks/useCurrentPlaylist'
 import React, { useState } from 'react'
+import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
 
 export const useModalInputsInfo = () => {
     const { currentPlaylist } = useCurrentPlaylist()
@@ -15,5 +17,25 @@ export const useModalInputsInfo = () => {
     const onDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setDescription(event.target.value)
     }
-    return { name, description, onNameChange, onDescriptionChange }
+
+    const [loading, setLoading] = useState(false)
+
+    const dispatch = useAppDispatch()
+
+    //Sending changed playlist info to redux and close modal window
+    const onButtonAction = (handleClose: () => void) => {
+        setLoading(true)
+        if (name?.trim()) {
+            const changedCurrentPlaylist = {
+                ...currentPlaylist,
+                playlistName: name.trim(),
+                playlistDescription: description,
+            }
+
+            dispatch(changePlaylistDetails(changedCurrentPlaylist))
+            setLoading(false)
+            handleClose()
+        }
+    }
+    return { name, description, onNameChange, onDescriptionChange, loading, onButtonAction }
 }

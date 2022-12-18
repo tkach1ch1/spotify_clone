@@ -1,10 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export interface PlaylistTracksProps {
+    trackId: string
+    trackName: string
+    artistName: string
+    albumName: string
+    dateAdded: string
+    trackDuration: number
+    image: string
+}
+
 export interface AllPlaylistsArrayProps {
     playlistName: string
     playlistId: string
     playlistDescription: string
     playlistImage: string
+    playlistTracks: PlaylistTracksProps[]
 }
 
 interface AllPlaylistsReducerState {
@@ -20,25 +31,17 @@ const allPlaylistsReducer = createSlice({
     initialState,
     reducers: {
         addPlaylist: (state, action) => {
-            state.allPlaylistsArray = action.payload
+            state.allPlaylistsArray = [...state.allPlaylistsArray, action.payload]
         },
+        // Changing playlist details and removing previous version of changed playlist
         changePlaylistDetails: (state, action) => {
-            const filteredPlaylist = state.allPlaylistsArray.filter(
+            let currentPlaylistIndex = state.allPlaylistsArray.findIndex(
                 (elem) => elem.playlistId === action.payload.playlistId
             )
 
-            const changedPlaylist = filteredPlaylist.map((elem) => ({
-                ...elem,
-                playlistName: action.payload.playlistName,
-                playlistDescription: action.payload.playlistDescription,
-                playlistImage: action.payload.playlistImage,
-            }))
-
-            state.allPlaylistsArray = changedPlaylist.concat(
-                state.allPlaylistsArray.filter(
-                    (elem) => elem.playlistId !== action.payload.playlistId
-                )
-            )
+            if (currentPlaylistIndex !== -1) {
+                state.allPlaylistsArray[currentPlaylistIndex] = action.payload
+            }
         },
     },
 })

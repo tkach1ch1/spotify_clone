@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { Box } from '@mui/system'
-import { Link } from 'react-router-dom'
 import { theme } from 'src/assets/theme'
 import { FiMusic } from 'react-icons/fi'
 

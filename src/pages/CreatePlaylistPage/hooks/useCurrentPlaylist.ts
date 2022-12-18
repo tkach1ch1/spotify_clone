@@ -8,9 +8,9 @@ export const useCurrentPlaylist = () => {
     const location = useLocation()
 
     const currentPlaylist = allPlaylistsArray.find(
-        (elem) => '/playlist/' + elem.playlistId === location.pathname
+        (elem) => `/playlist/${elem.playlistId}` === location.pathname
     )
 
     //--//
-    return { currentPlaylist }
+    return { currentPlaylist, allPlaylistsArray }
 }

@@ -1,5 +1,4 @@
 import { Box } from '@mui/system'
-import { useState } from 'react'
 import {
     StyledSearchBar,
     StyledSearchIcon,
@@ -7,17 +6,17 @@ import {
 } from 'src/pages/CreatePlaylistPage/style'
 import CloseIcon from '@mui/icons-material/Close'
 
-export const SearchBar = () => {
-    const [search, setSearch] = useState('')
+interface SearchBarProps {
+    search: string
+    onSearchInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+    clearSearchBarOnClick: () => void
+}
 
-    const onSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value)
-    }
-
-    const clearSearchBarOnClick = () => {
-        setSearch('')
-    }
-
+export const SearchBar = ({
+    search,
+    onSearchInputChange,
+    clearSearchBarOnClick,
+}: SearchBarProps) => {
     return (
         <Box sx={{ position: 'relative' }}>
             <StyledSearchBar

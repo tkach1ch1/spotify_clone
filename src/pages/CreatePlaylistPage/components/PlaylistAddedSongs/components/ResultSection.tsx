@@ -1,28 +1,25 @@
 import { Box } from '@mui/system'
-import { NoResultFoundBox, ResultBox } from 'src/pages/CreatePlaylistPage/style'
+import { FoundResultItems } from 'src/pages/CreatePlaylistPage/hooks/useSearch'
+import { NoResult, NoResultFoundBox, ResultBox } from 'src/pages/CreatePlaylistPage/style'
 import { FoundResult } from './FoundResult'
 
-export const ResultSection = () => {
-    let searchResult = 's'
+interface ResultSectionProps {
+    foundResult: FoundResultItems | undefined
+    search: string
+}
+export const ResultSection = ({ search, foundResult }: ResultSectionProps) => {
     return (
         <ResultBox tabIndex={0}>
-            {!searchResult ? (
+            {foundResult === undefined && !!search ? (
                 <NoResultFoundBox>
-                    <Box
-                        sx={{
-                            fontSize: '1.5rem',
-                            fontWeight: '500',
-                        }}
-                    >
-                        No result found for " ( searchResult ) "
-                    </Box>
+                    <NoResult>No result found for "{search}"</NoResult>
                     <Box sx={{ fontSize: '0.875rem' }}>
                         Please make sure your words are spelled correctly or use less or different
                         keywords.
                     </Box>
                 </NoResultFoundBox>
             ) : (
-                <FoundResult />
+                <FoundResult foundResult={foundResult && foundResult} />
             )}
         </ResultBox>
     )

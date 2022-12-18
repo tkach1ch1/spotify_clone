@@ -276,6 +276,9 @@ export const Var1Segment = styled(SongSegment)({
 })
 
 export const Var2Segment = styled(SongSegment)({
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
         display: 'none',
     },
@@ -395,8 +398,21 @@ export const NoResultFoundBox = styled(Box)({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: '5px',
     color: theme.palette.primary.light,
+})
+
+export const NoResult = styled(Box)({
+    fontSize: '1.5rem',
+    fontWeight: '500',
+    display: '-webkit-box',
+    WebkitLineClamp: '1',
+    WebkitBoxOrient: 'vertical',
+    whiteSpace: 'unset',
+    wordBreak: 'break-all',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
 })
 
 //Result song
@@ -444,3 +460,16 @@ export const AddButton = styled('button')({
 })
 
 //Result artist
+
+export const FoundArtistBox = styled(SongBox)({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+})
+
+export const ArtistImageBox = styled(Box)({
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    marginRight: '16px',
+})

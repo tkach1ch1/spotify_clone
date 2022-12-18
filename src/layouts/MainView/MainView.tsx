@@ -29,7 +29,7 @@ export const MainView = ({ children, padding }: MainViewProps) => {
                             : '0'
                     }
                 >
-                    {/* Setting padding='0' when don't need default MainView padding */}
+                    {/* Setting padding when don't need default MainView padding */}
                     <MainViewBox padding={padding ? padding : '24px 16px'}>{children}</MainViewBox>
                 </MainViewContainer>
             </section>

@@ -5,25 +5,22 @@ import { addPlaylist } from 'src/redux/allPlaylistsReducer'
 
 export const usePlaylist = () => {
     const allPlaylistsArray = useAppSelector((state) => state.allPlaylists.allPlaylistsArray)
-
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     //Create playlist onClick on CreatePlaylistButton in NavBar and add him to allPlaylistsArray
-
     const createPlaylist = () => {
-        let newPlaylist = [
-            {
-                playlistName: 'My Playlist #' + (allPlaylistsArray.length + 1),
-                playlistId: nanoid(),
-                playlistDescription: '',
-                playlistImage: '',
-            },
-        ].concat(allPlaylistsArray)
+        let newPlaylist = {
+            playlistName: 'My Playlist #' + (allPlaylistsArray.length + 1),
+            playlistId: nanoid(),
+            playlistDescription: '',
+            playlistImage: '',
+            playlistTracks: [],
+        }
 
         dispatch(addPlaylist(newPlaylist))
 
-        navigate('/playlist/' + newPlaylist[0].playlistId)
+        navigate(`/playlist/${newPlaylist.playlistId}`)
     }
 
     const onEnterCreatePlaylist = (e: React.KeyboardEvent) => {

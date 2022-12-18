@@ -11,20 +11,54 @@ import {
 } from 'src/pages/CreatePlaylistPage/style'
 import { InfoSongSegment } from './InfoSongSegment'
 import { useHover } from 'usehooks-ts'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import { ResultSongProps } from './ResultSong'
+import { useTrackDuration } from 'src/hooks/useTrackDuration'
+import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
 
-export const Song = () => {
+interface SongProps extends ResultSongProps {
+    dateAdded: string
+}
+
+export const Song = ({
+    songName,
+    authorName,
+    id,
+    albumName,
+    image,
+    ariaRowIndex,
+    duration,
+    dateAdded,
+}: SongProps) => {
+    const { formatDuration } = useTrackDuration()
+    const { addedTrackTimeAgo } = useTrackAddedDate()
+
+    const [addedDate, setAddedDate] = useState<any>(addedTrackTimeAgo(dateAdded))
+    const [pageReload, setPageReload] = useState(false)
+
+    //Takes duration in ms, converts it to sec + rounds it up
+    let durationTrack = Math.floor(duration / 1000)
+
+    //Prevent component render by hovering component
+    useEffect(() => {
+        setPageReload(true)
+        if (pageReload) {
+            setAddedDate(addedTrackTimeAgo(dateAdded))
+        }
+        setPageReload(false)
+    }, [addedTrackTimeAgo, dateAdded, pageReload])
+
     const hoverRef = useRef(null)
-
     const isHovered = useHover(hoverRef)
 
     return (
         <SongBox
             role='row'
-            aria-rowindex={2} //Should increase with next added song
+            aria-rowindex={ariaRowIndex}
             aria-selected='false'
             ref={hoverRef}
+            id={id}
         >
             <SongSegment
                 role='gridcell'
@@ -33,7 +67,7 @@ export const Song = () => {
                 {isHovered ? (
                     <PlayArrowIcon sx={{ position: 'absolute', left: '12px' }} />
                 ) : (
-                    <IndexSegment>1</IndexSegment>
+                    <IndexSegment>{ariaRowIndex}</IndexSegment>
                 )}
             </SongSegment>
             <Box
@@ -41,7 +75,11 @@ export const Song = () => {
                 aria-colindex={2}
                 sx={{ display: 'flex', alignItems: 'center' }}
             >
-                <InfoSongSegment />
+                <InfoSongSegment
+                    songName={songName}
+                    authorName={authorName}
+                    image={image}
+                />
             </Box>
             <Var1Segment
                 role='gridcell'
@@ -51,20 +89,20 @@ export const Song = () => {
                     to=''
                     tabIndex={-1}
                 >
-                    Album
+                    {albumName}
                 </StyledSongLink>
             </Var1Segment>
             <Var2Segment
                 role='gridcell'
                 aria-colindex={4}
             >
-                <SegmentText>1 day ago</SegmentText>
+                <SegmentText>{addedDate}</SegmentText>
             </Var2Segment>
             <LastSegment
                 role='gridcell'
                 aria-colindex={5}
             >
-                <SegmentText>2:04</SegmentText>
+                <SegmentText>{formatDuration(durationTrack)}</SegmentText>
             </LastSegment>
         </SongBox>
     )
