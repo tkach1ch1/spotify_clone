@@ -10,12 +10,16 @@ import {
 import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
 import { InfoSongSegment } from './InfoSongSegment'
 
+interface ImageProps {
+    url: string
+}
+
 export interface ResultSongProps {
     songName: string
     authorName: string
     id: string
     albumName: string
-    image: string
+    image: ImageProps[]
     ariaRowIndex: number
     duration: number
 }
@@ -59,7 +63,7 @@ export const ResultSong = ({
             id={id}
         >
             <InfoSongSegment
-                image={image}
+                image={image[2].url}
                 songName={songName}
                 authorName={authorName}
             />

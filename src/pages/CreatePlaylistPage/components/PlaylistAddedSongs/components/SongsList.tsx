@@ -2,7 +2,6 @@ import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurren
 import { Song } from './Song'
 import { nanoid } from 'nanoid'
 
-//Array iteration
 export const SongsList = () => {
     const { currentPlaylist } = useCurrentPlaylist()
 
@@ -16,7 +15,7 @@ export const SongsList = () => {
                           songName={elem.trackName}
                           authorName={elem.artistName}
                           id={elem.trackId}
-                          image={elem.image}
+                          image={elem.image[2].url}
                           albumName={elem.albumName}
                           duration={elem.trackDuration}
                           dateAdded={elem.dateAdded}

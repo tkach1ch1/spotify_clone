@@ -7,7 +7,7 @@ import { PlaylistPageName } from './PlaylistPageName'
 import { LikedSongs } from './LikedSongs'
 export const ExistPlaylists = () => {
     const allPlaylistsArray = useAppSelector((state) => state.allPlaylists.allPlaylistsArray)
-
+    console.log(allPlaylistsArray)
     const { width } = useWindowSize()
 
     //Changing Content element width depends on how many elements is in array and depends on screen width
@@ -41,6 +41,7 @@ export const ExistPlaylists = () => {
                         elemDescription={elem?.playlistDescription}
                         navigationPath={`/playlist/${elem.playlistId}`}
                         elemImage={elem?.playlistImage}
+                        isPlayable={!!elem.playlistTracks.length}
                     />
                 ))}
             </AllPlaylistsMainContainer>

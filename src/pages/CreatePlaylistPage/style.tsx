@@ -44,7 +44,6 @@ export const PlaylistImageBox = styled('button')({
     justifyContent: 'center',
     alignItems: 'center',
     userSelect: 'none',
-    border: '2px solid transparent',
     '&:focus-visible': {
         outline: '1px solid white',
         border: '2px solid #1a54c7',

@@ -59,6 +59,7 @@ export const ElementBox = styled(Box)({
     backgroundColor: '#181818',
     borderRadius: '6px',
     cursor: 'pointer',
+    position: 'relative',
     '&:hover': {
         backgroundColor: theme.palette.secondary.light,
         transition: 'all 0.5s',
@@ -102,14 +103,13 @@ export const ElementDescription = styled(Box)({
     color: theme.palette.primary.dark,
 })
 
-export const DefaultPlaylistImageBox = styled(Box)({
+export const PlaylistImageBox = styled(Box)({
     color: theme.palette.primary.dark,
-    width: '100%',
+    position: 'relative',
     backgroundColor: '#333',
     boxShadow: '0 8px 24px rgba(0,0,0,.5)',
-    borderRadius: '4px',
+    borderRadius: '6px',
     display: 'flex',
-    height: '170px',
     justifyContent: 'center',
     alignItems: 'center',
 })

@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+interface ImageProps {
+    url: string
+}
+
 export interface PlaylistTracksProps {
     trackId: string
     trackName: string
@@ -7,7 +11,7 @@ export interface PlaylistTracksProps {
     albumName: string
     dateAdded: string
     trackDuration: number
-    image: string
+    image: ImageProps[]
 }
 
 export interface AllPlaylistsArrayProps {

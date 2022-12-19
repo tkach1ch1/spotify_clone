@@ -20,10 +20,10 @@ export const PlaylistPageHeader = () => {
                         <PlaylistImage
                             handleOpen={handleOpen}
                             sx={{
-                                width: '230px',
-                                height: '230px',
-                                minWidth: '236px',
-                                minHeight: '236px',
+                                width: '232px',
+                                height: '232px',
+                                minWidth: '232px',
+                                minHeight: '232px',
                                 [theme.breakpoints.down('lg')]: {
                                     width: '192px',
                                     height: '192px',

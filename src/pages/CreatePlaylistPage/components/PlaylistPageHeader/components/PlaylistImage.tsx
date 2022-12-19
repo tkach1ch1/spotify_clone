@@ -1,9 +1,10 @@
-import { HoveredDefaultImage, PlaylistImageBox, StyledImageLabel } from '../../../style'
-import { FiMusic } from 'react-icons/fi'
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
+import { PlaylistImageBox, StyledImageLabel } from 'src/pages/CreatePlaylistPage/style'
 import { Box } from '@mui/system'
-import React, { useState } from 'react'
-import { theme } from 'src/assets/theme'
+import React, { useEffect, useState } from 'react'
+import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurrentPlaylist'
+import { DefaultPlaylistImage } from './DefaultPlaylistImage'
+import { useAppDispatch } from 'src/hooks/hooks'
+import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
 
 interface PlaylistImageProps {
     handleOpen?: () => void
@@ -12,6 +13,25 @@ interface PlaylistImageProps {
 
 export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
     const [onImageHover, setOnImageHover] = useState(false)
+
+    const [playlistImage, setPlaylistImage] = useState('')
+
+    const { currentPlaylist } = useCurrentPlaylist()
+
+    const dispatch = useAppDispatch()
+
+    //If playlist image doesn't have setted image, it takes the image from the first track in the songs list
+    useEffect(() => {
+        if (!playlistImage && !!currentPlaylist?.playlistTracks.length) {
+            setPlaylistImage(currentPlaylist?.playlistTracks[0].image[1].url)
+        }
+
+        const changedCurrentPlaylist = {
+            ...currentPlaylist,
+            playlistImage: playlistImage,
+        }
+        dispatch(changePlaylistDetails(changedCurrentPlaylist))
+    }, [playlistImage, currentPlaylist?.playlistTracks])
 
     return (
         <Box sx={sx}>
@@ -27,20 +47,17 @@ export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
                     type='file'
                 />
                 <StyledImageLabel htmlFor='raised-button-file'>
-                    {onImageHover ? (
-                        <HoveredDefaultImage>
-                            <CreateOutlinedIcon sx={{ width: '55px', height: '55px' }} />
-                            <Box>Choose photo</Box>
-                        </HoveredDefaultImage>
+                    {!playlistImage ? (
+                        <DefaultPlaylistImage onImageHover={onImageHover} />
                     ) : (
-                        <Box sx={{ color: theme.palette.primary.dark }}>
-                            <FiMusic
-                                style={{
-                                    width: '60px',
-                                    height: '60px',
-                                }}
-                            />
-                        </Box>
+                        <img
+                            src={playlistImage && playlistImage}
+                            alt={'Playlist'}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                            }}
+                        />
                     )}
                 </StyledImageLabel>
             </PlaylistImageBox>

@@ -1,13 +1,7 @@
 import { Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { HoveredGreenPlayButton } from 'src/components/HoveredGreenPlayButton'
-import {
-    DefaultPlaylistImageBox,
-    ElementBox,
-    ElementDescription,
-    ElementName,
-    StyledImg,
-} from '../style'
+import { ElementBox, ElementDescription, ElementName, PlaylistImageBox, StyledImg } from '../style'
 import { FiMusic } from 'react-icons/fi'
 import React from 'react'
 
@@ -16,6 +10,7 @@ interface ContentElementProps {
     elemDescription?: string
     elemImage?: string
     navigationPath?: string
+    isPlayable?: boolean
 }
 
 export const ContentElement = ({
@@ -23,6 +18,7 @@ export const ContentElement = ({
     elemDescription = ' Keep calm and focus with ambient and positive music',
     elemImage,
     navigationPath,
+    isPlayable,
 }: ContentElementProps) => {
     const navigate = useNavigate()
 
@@ -40,30 +36,43 @@ export const ContentElement = ({
         >
             <Box
                 sx={{
-                    marginBottom: '16px',
                     position: 'relative',
+                    marginBottom: '16px',
                 }}
             >
-                {elemImage ? (
-                    <StyledImg
-                        src={elemImage}
-                        alt='Playlist'
-                    />
+                {!!elemImage ? (
+                    <PlaylistImageBox>
+                        <StyledImg
+                            src={elemImage}
+                            alt='Playlist'
+                        />
+                    </PlaylistImageBox>
                 ) : (
-                    <DefaultPlaylistImageBox>
+                    <PlaylistImageBox>
+                        <FiMusic
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                color: 'transparent',
+                            }}
+                        />
                         <FiMusic
                             style={{
                                 width: '60px',
                                 height: '60px',
+                                position: 'absolute',
                             }}
                         />
-                    </DefaultPlaylistImageBox>
+                    </PlaylistImageBox>
                 )}
 
-                <HoveredGreenPlayButton
-                    bottom='10px'
-                    right='5px'
-                />
+                {/* If playlist has tracks PlayButton will appear */}
+                {isPlayable ? (
+                    <HoveredGreenPlayButton
+                        bottom='5px'
+                        right='5px'
+                    />
+                ) : null}
             </Box>
             <ElementName>{elemName}</ElementName>
             <ElementDescription>{elemDescription}</ElementDescription>

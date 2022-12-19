@@ -13,12 +13,18 @@ import { InfoSongSegment } from './InfoSongSegment'
 import { useHover } from 'usehooks-ts'
 import { useEffect, useRef, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import { ResultSongProps } from './ResultSong'
 import { useTrackDuration } from 'src/hooks/useTrackDuration'
 import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
 
-interface SongProps extends ResultSongProps {
+interface SongProps {
     dateAdded: string
+    image: string
+    songName: string
+    authorName: string
+    id: string
+    albumName: string
+    ariaRowIndex: number
+    duration: number
 }
 
 export const Song = ({

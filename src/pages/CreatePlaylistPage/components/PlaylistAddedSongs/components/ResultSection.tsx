@@ -1,5 +1,5 @@
 import { Box } from '@mui/system'
-import { FoundResultItems } from 'src/pages/CreatePlaylistPage/hooks/useSearch'
+import { FoundResultItems } from 'src/hooks/useSearch'
 import { NoResult, NoResultFoundBox, ResultBox } from 'src/pages/CreatePlaylistPage/style'
 import { FoundResult } from './FoundResult'
 

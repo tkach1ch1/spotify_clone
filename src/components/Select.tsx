@@ -16,19 +16,20 @@ interface SelectProps {
 export const Select = ({ array }: SelectProps) => {
     return (
         <SelectStyledUl>
-            {array.map((elem) => (
-                <SelectStyledLi key={nanoid()}>
-                    <StyledSelectLink
-                        to={elem.link}
-                        target={elem.targetBlank ? '_blank' : '_self'}
-                    >
-                        <StyledTyphographie>{elem.name}</StyledTyphographie>
-                        {elem.image ? (
-                            <OpenInNewIcon sx={{ width: '20px', height: '20px' }} />
-                        ) : null}
-                    </StyledSelectLink>
-                </SelectStyledLi>
-            ))}
+            {array &&
+                array.map((elem) => (
+                    <SelectStyledLi key={nanoid()}>
+                        <StyledSelectLink
+                            to={elem.link}
+                            target={elem.targetBlank ? '_blank' : '_self'}
+                        >
+                            <StyledTyphographie>{elem.name}</StyledTyphographie>
+                            {elem.image ? (
+                                <OpenInNewIcon sx={{ width: '20px', height: '20px' }} />
+                            ) : null}
+                        </StyledSelectLink>
+                    </SelectStyledLi>
+                ))}
         </SelectStyledUl>
     )
 }

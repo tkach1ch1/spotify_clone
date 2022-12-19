@@ -2,7 +2,7 @@ import { SearchBox, SearchTitle, StyledSearchSongSection } from 'src/pages/Creat
 import { SearchBar } from './SearchBar'
 import { Box } from '@mui/system'
 import { ResultSection } from './ResultSection'
-import { useSearch } from 'src/pages/CreatePlaylistPage/hooks/useSearch'
+import { useSearch } from 'src/hooks/useSearch'
 
 export const SearchSongSection = () => {
     const { search, onSearchInputChange, clearSearchBarOnClick, foundResult } = useSearch()
