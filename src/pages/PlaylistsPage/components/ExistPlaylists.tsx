@@ -7,11 +7,10 @@ import { PlaylistPageName } from './PlaylistPageName'
 import { LikedSongs } from './LikedSongs'
 export const ExistPlaylists = () => {
     const allPlaylistsArray = useAppSelector((state) => state.allPlaylists.allPlaylistsArray)
-    console.log(allPlaylistsArray)
     const { width } = useWindowSize()
 
     //Changing Content element width depends on how many elements is in array and depends on screen width
-    const contentElementsWidthControl = () => {
+    const contentElementsPlaylistsWidthControl = () => {
         if (allPlaylistsArray.length === 1) {
             return {
                 gridTemplateColumns:
@@ -32,7 +31,7 @@ export const ExistPlaylists = () => {
     return (
         <>
             <PlaylistPageName />
-            <AllPlaylistsMainContainer sx={contentElementsWidthControl()}>
+            <AllPlaylistsMainContainer sx={contentElementsPlaylistsWidthControl()}>
                 <LikedSongs />
                 {allPlaylistsArray.map((elem) => (
                     <ContentElement
@@ -41,7 +40,7 @@ export const ExistPlaylists = () => {
                         elemDescription={elem?.playlistDescription}
                         navigationPath={`/playlist/${elem.playlistId}`}
                         elemImage={elem?.playlistImage}
-                        isPlayable={!!elem.playlistTracks.length}
+                        isNotPlayable={!elem.playlistTracks.length}
                     />
                 ))}
             </AllPlaylistsMainContainer>

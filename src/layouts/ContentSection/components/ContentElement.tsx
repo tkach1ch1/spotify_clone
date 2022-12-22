@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { HoveredGreenPlayButton } from 'src/components/HoveredGreenPlayButton'
 import { ElementBox, ElementDescription, ElementName, PlaylistImageBox, StyledImg } from '../style'
 import { FiMusic } from 'react-icons/fi'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useWindowSize } from 'usehooks-ts'
 
 interface ContentElementProps {
     elemName?: string
     elemDescription?: string
     elemImage?: string
     navigationPath?: string
-    isPlayable?: boolean
+    isNotPlayable?: boolean
+    index?: string
 }
 
 export const ContentElement = ({
@@ -18,19 +20,42 @@ export const ContentElement = ({
     elemDescription = ' Keep calm and focus with ambient and positive music',
     elemImage,
     navigationPath,
-    isPlayable,
+    isNotPlayable, //For playlists
+    index, //For content on Home page
 }: ContentElementProps) => {
     const navigate = useNavigate()
 
+    //On Enter navigate
     const onEnterToElementNavigate = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
             navigationPath && navigate(navigationPath)
         }
     }
 
+    //Disable tabindex on elements in a row which are hidden
+    const [inView, setInView] = useState(true)
+
+    //Taking window width to force useEffect every time the width will change
+    const { width } = useWindowSize()
+
+    useEffect(() => {
+        //Taking first element in a row
+        const firstElement = document.querySelector('#first')
+        //Taking another element according to it's id
+        const element = document.querySelector(`#${index}`)
+        //Compare if this two elements on the same hight in a row
+        //If not, the hidden element will not tabindex
+        if (firstElement?.getBoundingClientRect().top !== element?.getBoundingClientRect().top) {
+            setInView(false)
+        } else {
+            setInView(true)
+        }
+    }, [width, index])
+
     return (
         <ElementBox
-            tabIndex={0}
+            id={index}
+            tabIndex={!inView ? -1 : 0}
             onClick={() => navigationPath && navigate(navigationPath)}
             onKeyDown={onEnterToElementNavigate}
         >
@@ -66,13 +91,13 @@ export const ContentElement = ({
                     </PlaylistImageBox>
                 )}
 
-                {/* If playlist has tracks PlayButton will appear */}
-                {isPlayable ? (
+                {/* If playlist has no tracks PlayButton will disappear */}
+                {isNotPlayable ? null : (
                     <HoveredGreenPlayButton
                         bottom='5px'
                         right='5px'
                     />
-                ) : null}
+                )}
             </Box>
             <ElementName>{elemName}</ElementName>
             <ElementDescription>{elemDescription}</ElementDescription>

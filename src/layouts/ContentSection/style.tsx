@@ -45,12 +45,11 @@ export const ShowAllText = styled(Link)({
 
 export const ContentBox = styled(Box)({
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(155px,100%/3, max(155px, 100%/9)), 1fr))',
     overflowY: 'hidden',
     gridGap: '18px',
     gridTemplateRows: '1fr',
     gridAutoRows: '0',
-    // rowGap: 0,
+    rowGap: 0,
 })
 
 export const ElementBox = styled(Box)({

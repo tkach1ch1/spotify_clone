@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Snackbar } from 'src/components/Snackbar'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurrentPlaylist'
