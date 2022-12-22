@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { Snackbar } from 'src/components/Snackbar'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurrentPlaylist'
 import {
@@ -32,12 +34,17 @@ export const ResultSong = ({
     ariaRowIndex,
     duration,
 }: ResultSongProps) => {
+    const [openSnackbar, setOpenSnackbar] = useState(false)
+
     const { currentPlaylist } = useCurrentPlaylist()
 
     const dispatch = useAppDispatch()
 
     //onClick adds track to current playlist
     const onButtonAddTrack = () => {
+        //Show Added track to playlist snackbar
+        setOpenSnackbar(true)
+
         let newTrack = {
             trackId: id,
             trackName: songName,
@@ -48,12 +55,20 @@ export const ResultSong = ({
             image: image,
         }
 
-        //TODO: add Added to your library and added to your playlist blue popup
         const changedCurrentPlaylist = {
             ...currentPlaylist,
             playlistTracks: currentPlaylist && [...currentPlaylist?.playlistTracks, newTrack],
         }
         dispatch(changePlaylistDetails(changedCurrentPlaylist))
+
+        //Close Snackbar
+        setTimeout(() => {
+            try {
+                setOpenSnackbar(false)
+            } catch (error) {
+                console.log(error)
+            }
+        }, 2000)
     }
 
     return (
@@ -82,6 +97,7 @@ export const ResultSong = ({
                 >
                     Add
                 </AddButton>
+                {openSnackbar ? <Snackbar content='Added to Playlist' /> : null}
             </AddButtonBox>
         </ResultSongBox>
     )

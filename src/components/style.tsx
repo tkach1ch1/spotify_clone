@@ -91,3 +91,22 @@ export const HoveredGreenPlayButtonBox = styled(Box)({
     transition: 'all .5s ease',
     boxShadow: '0 8px 8px rgba(0,0,0,.3)',
 })
+
+export const SnackbarBox = styled(Box)({
+    position: 'fixed',
+    width: '100%',
+    bottom: '105px',
+    left: '40px',
+    display: 'flex',
+    justifyContent: 'center',
+    zIndex: 100,
+})
+
+export const SnackbarText = styled(Box)({
+    backgroundColor: '#3a85e0',
+    padding: '8px 20px',
+    borderRadius: '6px',
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    color: theme.palette.primary.main,
+})

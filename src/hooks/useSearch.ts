@@ -1,5 +1,6 @@
 import { APIController } from 'src/controllers/APIController'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 interface ImagesElements {
     url: string
@@ -37,6 +38,18 @@ export const useSearch = () => {
     const clearSearchBarOnClick = () => {
         setSearch('')
     }
+
+    //If locations aren't equel clears search input
+    const location = useLocation()
+
+    const [curLocation, setCurLocation] = useState('')
+
+    useEffect(() => {
+        if (curLocation !== location.pathname) {
+            setSearch('')
+            setCurLocation(location.pathname)
+        }
+    }, [curLocation, location.pathname])
 
     //Taking functions from APIController
     const { getSearch, getToken } = APIController

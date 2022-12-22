@@ -14,24 +14,20 @@ interface PlaylistImageProps {
 export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
     const [onImageHover, setOnImageHover] = useState(false)
 
-    const [playlistImage, setPlaylistImage] = useState('')
-
     const { currentPlaylist } = useCurrentPlaylist()
 
     const dispatch = useAppDispatch()
 
     //If playlist image doesn't have setted image, it takes the image from the first track in the songs list
     useEffect(() => {
-        if (!playlistImage && !!currentPlaylist?.playlistTracks.length) {
-            setPlaylistImage(currentPlaylist?.playlistTracks[0].image[1].url)
+        if (currentPlaylist?.playlistImage === '' && !!currentPlaylist?.playlistTracks.length) {
+            const changedCurrentPlaylist = {
+                ...currentPlaylist,
+                playlistImage: currentPlaylist?.playlistTracks[0].image[1].url,
+            }
+            dispatch(changePlaylistDetails(changedCurrentPlaylist))
         }
-
-        const changedCurrentPlaylist = {
-            ...currentPlaylist,
-            playlistImage: playlistImage,
-        }
-        dispatch(changePlaylistDetails(changedCurrentPlaylist))
-    }, [playlistImage, currentPlaylist?.playlistTracks])
+    }, [currentPlaylist, dispatch])
 
     return (
         <Box sx={sx}>
@@ -47,11 +43,11 @@ export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
                     type='file'
                 />
                 <StyledImageLabel htmlFor='raised-button-file'>
-                    {!playlistImage ? (
+                    {!currentPlaylist?.playlistImage ? (
                         <DefaultPlaylistImage onImageHover={onImageHover} />
                     ) : (
                         <img
-                            src={playlistImage && playlistImage}
+                            src={currentPlaylist?.playlistImage}
                             alt={'Playlist'}
                             style={{
                                 width: '100%',
