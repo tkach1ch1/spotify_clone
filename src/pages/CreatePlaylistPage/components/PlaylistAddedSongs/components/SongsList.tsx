@@ -7,7 +7,6 @@ interface SongsListProps {
 }
 
 export const SongsList = ({ songsArray }: SongsListProps) => {
-    console.log(songsArray)
     return (
         <>
             {!!songsArray

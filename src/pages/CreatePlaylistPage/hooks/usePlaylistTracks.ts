@@ -23,8 +23,6 @@ export interface AllPlaylistTracksElements {
 export const usePlaylistTracks = () => {
     const [allPlaylistTracks, setAllPlaylistTracks] = useState<AllPlaylistTracksElements[]>([])
 
-    console.log(allPlaylistTracks)
-
     const { getToken, getPlaylistTracks } = APIController
 
     const playlistId = useAppSelector((state) => state.playlist.playlistInfo.playlistId)

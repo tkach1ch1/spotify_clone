@@ -12,7 +12,7 @@ export const InfoSongSegment = ({ songName, authorName, image }: InfoSongSegment
         <SongSegment>
             <img
                 src={image}
-                alt='Song'
+                alt={songName}
                 style={{ marginRight: '16px' }}
                 width='40px'
                 height='40px'

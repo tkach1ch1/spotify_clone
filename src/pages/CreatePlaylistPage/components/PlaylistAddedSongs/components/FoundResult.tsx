@@ -13,7 +13,6 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
     const foundArtists = foundResult && foundResult['artists'].items
     const foundAlbums = foundResult && foundResult['albums'].items
 
-    console.log(foundArtists)
     return (
         <>
             {/* Tracks */}

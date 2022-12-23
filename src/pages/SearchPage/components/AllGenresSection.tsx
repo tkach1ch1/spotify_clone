@@ -11,16 +11,18 @@ export const AllGenresSection = () => {
         return color
     }
     return (
-        <AllGenresBox>
-            {allGenres.map((elem) => (
-                <Genre
-                    key={nanoid()}
-                    genreName={elem.name}
-                    genreId={elem.id}
-                    genreIcon={elem.icons[0].url}
-                    bgColor={getRandomColor()}
-                />
-            ))}
-        </AllGenresBox>
+        <>
+            <AllGenresBox>
+                {allGenres.map((elem) => (
+                    <Genre
+                        key={nanoid()}
+                        genreName={elem.name}
+                        genreId={elem.id}
+                        genreIcon={elem.icons[0].url}
+                        bgColor={getRandomColor()}
+                    />
+                ))}
+            </AllGenresBox>
+        </>
     )
 }

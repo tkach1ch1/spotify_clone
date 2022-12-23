@@ -13,11 +13,13 @@ export interface GenresElements {
 
 export const useAllGenres = () => {
     const [allGenres, setAllGenres] = useState<GenresElements[]>([])
-
+    const [loading, setLoading] = useState(false)
     const { getToken, getGenres } = APIController
 
     //Geting all genres from API
     useEffect(() => {
+        setLoading(true)
+
         try {
             //Taking data from API
             const fetchedData = async () => {
@@ -25,6 +27,7 @@ export const useAllGenres = () => {
                     const token = await getToken()
                     const genres = await getGenres(token)
                     setAllGenres(genres)
+                    setLoading(false)
                 } catch (error) {
                     console.log('Fetched data error: ' + error)
                 }
@@ -34,5 +37,5 @@ export const useAllGenres = () => {
             console.log('Error: ' + error)
         }
     }, [getToken, getGenres])
-    return { allGenres }
+    return { allGenres, loading }
 }

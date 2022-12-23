@@ -22,8 +22,11 @@ export const useGenrePlaylists = () => {
     const genreName = useAppSelector((state) => state.genreInfo.genre.genreName)
 
     const [genrePlaylists, setGenrePlaylists] = useState<GenrePlaylistsElements[]>([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
+
         try {
             //Taking data from API
             const fetchedData = async () => {
@@ -31,6 +34,7 @@ export const useGenrePlaylists = () => {
                     const token = await getToken()
                     const fetchGenrePlaylists = await getGenrePlaylists(token, genreId)
                     setGenrePlaylists(fetchGenrePlaylists)
+                    setLoading(false)
                 } catch (error) {
                     console.log('Fetched data error: ' + error)
                 }
@@ -41,5 +45,5 @@ export const useGenrePlaylists = () => {
         }
     }, [getToken, getGenrePlaylists, genreId])
 
-    return { genrePlaylists, genreName }
+    return { genrePlaylists, genreName, loading }
 }
