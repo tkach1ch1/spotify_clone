@@ -1,8 +1,12 @@
+import { ReactNode } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 import { ContentBox } from '../style'
-import { ContentElement } from './ContentElement'
 
-export const Content = () => {
+interface ContentProps {
+    children: ReactNode
+}
+
+export const Content = ({ children }: ContentProps) => {
     const { width } = useWindowSize()
 
     //Changing Content element width depends on screen width
@@ -24,15 +28,7 @@ export const Content = () => {
             tabIndex={-1}
             sx={contentElementsWidthControl()}
         >
-            <ContentElement index='first' />
-            <ContentElement index='second' />
-            <ContentElement index='third' />
-            <ContentElement index='four' />
-            <ContentElement index='five' />
-            <ContentElement index='six' />
-            <ContentElement index='seven' />
-            <ContentElement index='eight' />
-            <ContentElement index='nine' />
+            {children}
         </ContentBox>
     )
 }

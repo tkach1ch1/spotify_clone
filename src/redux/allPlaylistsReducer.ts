@@ -1,25 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-interface ImageProps {
-    url: string
-}
-
-export interface PlaylistTracksProps {
-    trackId: string
-    trackName: string
-    artistName: string
-    albumName: string
-    dateAdded: string
-    trackDuration: number
-    image: ImageProps[]
-}
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 
 export interface AllPlaylistsArrayProps {
     playlistName: string
     playlistId: string
     playlistDescription: string
     playlistImage: string
-    playlistTracks: PlaylistTracksProps[]
+    playlistTracks: AllPlaylistTracksElements[]
+    playlistCollab: boolean
 }
 
 interface AllPlaylistsReducerState {

@@ -1,4 +1,4 @@
-import { ContentElement } from 'src/layouts/ContentSection/components/ContentElement'
+import { PlaylistElement } from 'src/layouts/ContentSection/components/PlaylistElement'
 import { AllPlaylistsMainContainer } from 'src/pages/PlaylistsPage/style'
 import { useAppSelector } from 'src/hooks/hooks'
 import { nanoid } from 'nanoid'
@@ -34,12 +34,12 @@ export const ExistPlaylists = () => {
             <AllPlaylistsMainContainer sx={contentElementsPlaylistsWidthControl()}>
                 <LikedSongs />
                 {allPlaylistsArray.map((elem) => (
-                    <ContentElement
+                    <PlaylistElement
                         key={nanoid()}
-                        elemName={elem?.playlistName}
-                        elemDescription={elem?.playlistDescription}
-                        navigationPath={`/playlist/${elem.playlistId}`}
-                        elemImage={elem?.playlistImage}
+                        playlistName={elem?.playlistName}
+                        playlistDescription={elem?.playlistDescription}
+                        playlistId={elem?.playlistId}
+                        playlistImage={elem?.playlistImage}
                         isNotPlayable={!elem.playlistTracks.length}
                     />
                 ))}

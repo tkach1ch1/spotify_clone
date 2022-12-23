@@ -16,14 +16,10 @@ export const MainPlaylistTitleBox = styled(Box)({
     [theme.breakpoints.down('lg')]: {
         padding: '65px 32px 0 32px',
     },
-    [theme.breakpoints.down('md')]: {
-        padding: '65px 16px 0 16px',
-    },
 })
 
 export const TitleBackground = styled(Box)({
     position: 'relative',
-    padding: '0',
     backgroundColor: 'rgb(83, 83, 83)',
     width: '100%',
     height: '300px',
@@ -47,6 +43,21 @@ export const PlaylistImageBox = styled('button')({
     '&:focus-visible': {
         outline: '1px solid white',
         border: '2px solid #1a54c7',
+    },
+})
+
+export const UneditStyledImageBox = styled(Box)({
+    width: '232px',
+    height: '232px',
+    minWidth: '232px',
+    minHeight: '232px',
+    userSelect: 'none',
+    background: theme.palette.secondary.light,
+    [theme.breakpoints.down('lg')]: {
+        width: '192px',
+        height: '192px',
+        minWidth: '192px',
+        minHeight: '192px',
     },
 })
 
@@ -88,6 +99,15 @@ export const PlaylistDescriptionBox = styled(Box)({
     WebkitBoxOrient: 'vertical',
     overflow: 'hidden',
     color: theme.palette.primary.light,
+})
+
+export const PlaylistDetailsBox = styled(Box)({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '5px',
+    fontSize: '0.875rem',
+    color: theme.palette.primary.main,
+    marginTop: '15px',
 })
 
 //Modal window
@@ -212,18 +232,21 @@ export const StyledAgreeText = styled('p')({
 //Songs list
 
 export const PlayButtonBox = styled(Box)({
-    padding: '24px 30px',
+    padding: '24px 0',
     width: '100%',
     height: 'auto',
-    [theme.breakpoints.down('md')]: {
-        padding: '24px 16px',
-    },
+    display: 'flex',
+    alignItems: 'center',
+    gap: '30px',
 })
 
-export const SongsListMainContainer = styled(Box)({
-    padding: '0 32px',
-    [theme.breakpoints.down('md')]: {
-        padding: '0 16px',
+export const PlaylistLikeButton = styled('button')({
+    border: 'none',
+    backgroundColor: 'transparent',
+    padding: '0',
+    color: 'hsla(0,0%,100%,.7)',
+    '&:hover': {
+        color: theme.palette.primary.main,
     },
 })
 

@@ -12,6 +12,8 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
     const foundTracks = foundResult && foundResult['tracks'].items
     const foundArtists = foundResult && foundResult['artists'].items
     const foundAlbums = foundResult && foundResult['albums'].items
+
+    console.log(foundArtists)
     return (
         <>
             {/* Tracks */}
@@ -19,13 +21,13 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
                 ? foundTracks.map((elem) => (
                       <ResultSong
                           key={nanoid()}
-                          songName={elem.name}
-                          authorName={elem.artists[0]?.name}
+                          name={elem.name}
+                          artists={elem.artists}
                           id={elem.id}
-                          albumName={elem.album?.name}
-                          image={elem.album?.images}
-                          duration={elem.duration_ms}
+                          album={elem.album}
+                          duration_ms={elem.duration_ms}
                           ariaRowIndex={foundTracks.indexOf(elem) + 1}
+                          dateAdded=''
                       />
                   ))
                 : null}
@@ -35,7 +37,7 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
                       <Result
                           key={nanoid()}
                           name={elem.name}
-                          image={elem.images[2]?.url}
+                          image={elem.images[0].url}
                           subtitle='Artist'
                       />
                   ))
@@ -47,7 +49,7 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
                       <Result
                           key={nanoid()}
                           name={elem.name}
-                          image={elem.images[2]?.url}
+                          image={elem.images[0].url}
                           subtitle='Album'
                       />
                   ))

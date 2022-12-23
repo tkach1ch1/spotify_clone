@@ -1,4 +1,3 @@
-import { Content } from './components/Content'
 import { SectionTitle } from './components/SectionTitle'
 import { SectionBox } from './style'
 
@@ -10,7 +9,7 @@ export const ContentSection = ({ title }: ConternSectionProps) => {
     return (
         <SectionBox>
             <SectionTitle title={title} />
-            <Content />
+            {/* <Content /> */}
         </SectionBox>
     )
 }

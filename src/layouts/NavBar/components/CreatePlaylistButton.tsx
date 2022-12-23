@@ -22,15 +22,17 @@ export const CreatePlaylistButton = () => {
     }
 
     return (
-        <NavBarButtonBox
-            onClick={onCreatePlaylistButtonClick}
-            onKeyDown={onEnterCreatePlaylist}
-            tabIndex={0}
-            role='button'
-        >
-            <AddBoxIcon sx={{ width: '32px', height: '32px' }} />
-            <HideTextBox>Create Playlist</HideTextBox>
+        <>
+            <NavBarButtonBox
+                onClick={onCreatePlaylistButtonClick}
+                onKeyDown={onEnterCreatePlaylist}
+                tabIndex={0}
+                role='button'
+            >
+                <AddBoxIcon sx={{ width: '32px', height: '32px' }} />
+                <HideTextBox>Create Playlist</HideTextBox>
+            </NavBarButtonBox>
             {openSnackbar ? <Snackbar content='Saved to Your Library' /> : null}
-        </NavBarButtonBox>
+        </>
     )
 }

@@ -16,7 +16,7 @@ export const MainContainer = ({ children, padding }: MainContainerProps) => {
             <TopBar />
             <NavBar />
             <NowPlayingBar />
-            <MainView padding={padding}>{children}</MainView>
+            <MainView>{children}</MainView>
         </TopContainer>
     )
 }

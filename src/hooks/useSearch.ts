@@ -1,30 +1,26 @@
 import { APIController } from 'src/controllers/APIController'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
+
+export interface FoundResultElements extends AllPlaylistTracksElements {
+    type: string
+}
 
 interface ImagesElements {
     url: string
 }
 
-export interface AlbumElements {
-    name: string
-    images: ImagesElements[]
-}
-
-export interface FoundResultElements {
-    name: string
-    artists: [{ name: string }]
+interface FoundArtistsAndAlbumsResults {
     id: string
-    album: AlbumElements
+    name: string
     images: ImagesElements[]
-    type: string
-    duration_ms: number
 }
 
 export interface FoundResultItems {
-    albums: { items: FoundResultElements[] }
     tracks: { items: FoundResultElements[] }
-    artists: { items: FoundResultElements[] }
+    albums: { items: FoundArtistsAndAlbumsResults[] }
+    artists: { items: FoundArtistsAndAlbumsResults[] }
 }
 
 export const useSearch = () => {

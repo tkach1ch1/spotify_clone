@@ -1,20 +1,23 @@
-import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurrentPlaylist'
-import { SongsListMainContainer, StyledSongsBox } from 'src/pages/CreatePlaylistPage/style'
+import { Box } from '@mui/material'
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
+import { StyledSongsBox } from 'src/pages/CreatePlaylistPage/style'
 import { SearchSongSection } from './SearchSongSection'
 import { SongsList } from './SongsList'
 import { SongsListHeader } from './SongsListHeader'
 
-export const SongsSection = () => {
-    const { currentPlaylist } = useCurrentPlaylist()
+interface SongsSectionProps {
+    songsArray: AllPlaylistTracksElements[] | undefined
+    playlistCollab: boolean
+}
+
+export const SongsSection = ({ songsArray, playlistCollab }: SongsSectionProps) => {
     return (
-        <SongsListMainContainer>
+        <Box>
             <StyledSongsBox tabIndex={0}>
-                {currentPlaylist && !!currentPlaylist.playlistTracks.length ? (
-                    <SongsListHeader />
-                ) : null}
-                <SongsList />
+                {songsArray && !!songsArray.length ? <SongsListHeader /> : null}
+                <SongsList songsArray={songsArray} />
             </StyledSongsBox>
-            <SearchSongSection />
-        </SongsListMainContainer>
+            {playlistCollab ? <SearchSongSection /> : null}
+        </Box>
     )
 }

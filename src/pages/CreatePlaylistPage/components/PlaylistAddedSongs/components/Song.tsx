@@ -15,28 +15,17 @@ import { useEffect, useRef, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { useTrackDuration } from 'src/hooks/useTrackDuration'
 import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
-
-interface SongProps {
-    dateAdded: string
-    image: string
-    songName: string
-    authorName: string
-    id: string
-    albumName: string
-    ariaRowIndex: number
-    duration: number
-}
+import { ResultSongProps } from './ResultSong'
 
 export const Song = ({
-    songName,
-    authorName,
+    name,
     id,
-    albumName,
-    image,
-    ariaRowIndex,
-    duration,
+    artists,
+    album,
+    duration_ms,
     dateAdded,
-}: SongProps) => {
+    ariaRowIndex,
+}: ResultSongProps) => {
     const { formatDuration } = useTrackDuration()
     const { addedTrackTimeAgo } = useTrackAddedDate()
 
@@ -44,7 +33,7 @@ export const Song = ({
     const [pageReload, setPageReload] = useState(false)
 
     //Takes duration in ms, converts it to sec + rounds it up
-    let durationTrack = Math.floor(duration / 1000)
+    let durationTrack = Math.floor(duration_ms / 1000)
 
     //Prevent component render by hovering component
     useEffect(() => {
@@ -82,9 +71,9 @@ export const Song = ({
                 sx={{ display: 'flex', alignItems: 'center' }}
             >
                 <InfoSongSegment
-                    songName={songName}
-                    authorName={authorName}
-                    image={image}
+                    songName={name}
+                    authorName={artists.map((elem) => elem.name).join(' ')}
+                    image={album.images && album.images[0].url}
                 />
             </Box>
             <Var1Segment
@@ -95,7 +84,7 @@ export const Song = ({
                     to=''
                     tabIndex={-1}
                 >
-                    {albumName}
+                    {album.name}
                 </StyledSongLink>
             </Var1Segment>
             <Var2Segment

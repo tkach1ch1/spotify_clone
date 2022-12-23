@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import { Account } from 'src/pages/Account'
 import { CreatePlaylistPage } from 'src/pages/CreatePlaylistPage/CreatePlaylistPage'
+import { GenrePage } from 'src/pages/GenrePage/GenrePage'
 import { Profile } from 'src/pages/Profile'
 import { AlbumsPage } from '../../pages/AlbumsPage'
 import { ArtistsPage } from '../../pages/ArtistsPage'
@@ -17,7 +18,7 @@ import { LikedSongsPage } from '../../pages/LikedSongsPage'
 import { LogIn } from '../../pages/LogIn'
 import { PlaylistsPage } from '../../pages/PlaylistsPage/PlaylistsPage'
 import { PremiumSubscriptionPage } from '../../pages/PremiumSubscriptionPage'
-import { SearchPage } from '../../pages/SearchPage'
+import { SearchPage } from '../../pages/SearchPage/SearchPage'
 import { SignUp } from '../../pages/SignUp'
 import { SupportPage } from '../../pages/SupportPage'
 
@@ -55,8 +56,12 @@ const router = createBrowserRouter(
                 element={<AlbumsPage />}
             />
             <Route
-                path='/playlist/*'
+                path='/playlist/:playlistId'
                 element={<CreatePlaylistPage />}
+            />
+            <Route
+                path='/genre/:genreId'
+                element={<GenrePage />}
             />
             <Route
                 path='/collection/tracks'

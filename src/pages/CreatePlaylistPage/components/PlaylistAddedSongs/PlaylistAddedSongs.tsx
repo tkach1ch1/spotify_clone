@@ -2,8 +2,10 @@ import { Box } from '@mui/system'
 import { GreenPlayButton } from 'src/components/GreenPlayButton'
 import { PlayButtonBox } from 'src/pages/CreatePlaylistPage/style'
 import { SongsSection } from './components/SongsSection'
+import { useCreatedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCreatedPlaylist'
 
 export const PlaylistAddedSongs = () => {
+    const { createdPlaylist } = useCreatedPlaylist()
     return (
         <Box>
             <PlayButtonBox>
@@ -13,7 +15,10 @@ export const PlaylistAddedSongs = () => {
                     tabIndex={0}
                 />
             </PlayButtonBox>
-            <SongsSection />
+            <SongsSection
+                songsArray={createdPlaylist?.playlistTracks}
+                playlistCollab={true}
+            />
         </Box>
     )
 }

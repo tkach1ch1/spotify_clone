@@ -1,23 +1,25 @@
-import { useCurrentPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCurrentPlaylist'
 import { Song } from './Song'
 import { nanoid } from 'nanoid'
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 
-export const SongsList = () => {
-    const { currentPlaylist } = useCurrentPlaylist()
+interface SongsListProps {
+    songsArray: AllPlaylistTracksElements[] | undefined
+}
 
+export const SongsList = ({ songsArray }: SongsListProps) => {
+    console.log(songsArray)
     return (
         <>
-            {currentPlaylist && currentPlaylist.playlistTracks
-                ? currentPlaylist.playlistTracks.map((elem) => (
+            {!!songsArray
+                ? songsArray.map((elem) => (
                       <Song
                           key={nanoid()}
-                          ariaRowIndex={currentPlaylist.playlistTracks.indexOf(elem) + 1}
-                          songName={elem.trackName}
-                          authorName={elem.artistName}
-                          id={elem.trackId}
-                          image={elem.image[2].url}
-                          albumName={elem.albumName}
-                          duration={elem.trackDuration}
+                          ariaRowIndex={songsArray.indexOf(elem) + 1}
+                          name={elem.name}
+                          artists={elem.artists}
+                          id={elem.id}
+                          album={elem.album}
+                          duration_ms={elem.duration_ms}
                           dateAdded={elem.dateAdded}
                       />
                   ))

@@ -9,7 +9,7 @@ import { ChangePlaylistInfoModal } from '../PlaylistModal/ChangePlaylistInfoModa
 import { useModal } from '../../hooks/useModal'
 import { theme } from 'src/assets/theme'
 
-export const PlaylistPageHeader = () => {
+export const EditablePlaylistPageHeader = () => {
     const { open, handleClose, handleOpen, onEnterOpen } = useModal()
 
     return (

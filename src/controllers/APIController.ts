@@ -16,14 +16,39 @@ export const APIController = (function () {
     }
 
     const _getGenres = async (token: string) => {
-        const result = await fetch('https://api.spotify.com/v1/browse/categories', {
+        const result = await fetch('https://api.spotify.com/v1/browse/categories?limit=50', {
             method: 'GET',
             headers: { Authorization: 'Bearer ' + token },
         })
 
         const data = await result.json()
 
-        return data
+        return data.categories.items
+    }
+
+    const _getGenrePlaylist = async (token: string, id: string) => {
+        const result = await fetch(
+            `https://api.spotify.com/v1/browse/categories/${id}/playlists?limit=50`,
+            {
+                method: 'GET',
+                headers: { Authorization: 'Bearer ' + token },
+            }
+        )
+
+        const data = await result.json()
+
+        return data.playlists.items
+    }
+
+    const _getPlaylistTracks = async (token: string, id: string) => {
+        const result = await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+            method: 'GET',
+            headers: { Authorization: 'Bearer ' + token },
+        })
+
+        const data = await result.json()
+
+        return data.items
     }
 
     const _getTrack = async (token: string, trackEndPoint: string) => {
@@ -57,6 +82,14 @@ export const APIController = (function () {
 
         getGenres(token: string) {
             return _getGenres(token)
+        },
+
+        getGenrePlaylists(token: string, id: string) {
+            return _getGenrePlaylist(token, id)
+        },
+
+        getPlaylistTracks(token: string, id: string) {
+            return _getPlaylistTracks(token, id)
         },
 
         getTrack(token: string, trackEndPoint: string) {
