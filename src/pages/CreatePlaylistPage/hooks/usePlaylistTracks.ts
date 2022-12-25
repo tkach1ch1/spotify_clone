@@ -16,7 +16,7 @@ export interface AllPlaylistTracksElements {
     name: string
     id: string
     artists: ArtistsElement[]
-    album: { id: string; name: string; images: ImagesElements[] }
+    album: { id: string; name: string; images: ImagesElements[]; release_date: string }
     dateAdded: string
 }
 

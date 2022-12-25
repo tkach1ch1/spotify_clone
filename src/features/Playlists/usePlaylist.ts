@@ -17,6 +17,8 @@ export const usePlaylist = () => {
             playlistImage: '',
             playlistTracks: [],
             playlistCollab: true,
+            playlistOwnerName: '',
+            playlistOwnerId: '',
         }
 
         dispatch(addPlaylist(newPlaylist))

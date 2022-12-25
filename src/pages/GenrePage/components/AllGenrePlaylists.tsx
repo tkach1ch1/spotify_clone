@@ -22,6 +22,7 @@ export const AllGenrePlaylists = ({ playlistsArray }: AllGenrePlaylistsProps) =>
                                 playlistId={elem.id}
                                 playlistOwnerId={elem.owner.id}
                                 playlistOwnerName={elem.owner.display_name}
+                                playlistTracks={[]}
                             />
                         )
                 )}

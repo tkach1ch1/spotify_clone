@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Box } from '@mui/system'
 import { StyledSlider, TimerNumbers } from 'src/layouts/NowPlayingBar/style'
-import { useTrackDuration } from 'src/hooks/useTrackDuration'
+import { useFormatDuration } from 'src/hooks/useFormatDuration'
 
 export const PlaySlider = () => {
     const [position, setPosition] = useState(0)
 
-    const { formatDuration } = useTrackDuration()
+    const { trackDuration } = useFormatDuration()
 
     const duration = 200 // seconds
 
@@ -19,7 +19,7 @@ export const PlaySlider = () => {
                 gap: '15px',
             }}
         >
-            <TimerNumbers sx={{ textAlign: 'right' }}>{formatDuration(position)}</TimerNumbers>
+            <TimerNumbers sx={{ textAlign: 'right' }}>{trackDuration(position)}</TimerNumbers>
             <StyledSlider
                 aria-label='time-indicator'
                 size='small'
@@ -30,7 +30,7 @@ export const PlaySlider = () => {
                 onChange={(_, value) => setPosition(value as number)}
             />
             <TimerNumbers sx={{ textAlign: 'left' }}>
-                {formatDuration(duration - position)}
+                {trackDuration(duration - position)}
             </TimerNumbers>
         </Box>
     )

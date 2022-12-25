@@ -13,9 +13,11 @@ import { InfoSongSegment } from './InfoSongSegment'
 import { useHover } from 'usehooks-ts'
 import { useEffect, useRef, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import { useTrackDuration } from 'src/hooks/useTrackDuration'
+import { useFormatDuration } from 'src/hooks/useFormatDuration'
 import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
 import { ResultSongProps } from './ResultSong'
+import { LikeButton } from './LikeButton'
+import { ShowMoreButton } from './ShowMoreButton'
 
 export const Song = ({
     name,
@@ -26,7 +28,7 @@ export const Song = ({
     dateAdded,
     ariaRowIndex,
 }: ResultSongProps) => {
-    const { formatDuration } = useTrackDuration()
+    const { trackDuration } = useFormatDuration()
     const { addedTrackTimeAgo } = useTrackAddedDate()
 
     const [addedDate, setAddedDate] = useState<any>(addedTrackTimeAgo(dateAdded))
@@ -91,13 +93,21 @@ export const Song = ({
                 role='gridcell'
                 aria-colindex={4}
             >
-                <SegmentText>{addedDate}</SegmentText>
+                <SegmentText>{addedDate || album.release_date}</SegmentText>
             </Var2Segment>
             <LastSegment
                 role='gridcell'
                 aria-colindex={5}
             >
-                <SegmentText>{formatDuration(durationTrack)}</SegmentText>
+                <LikeButton
+                    sx={{ width: '20px', height: '20px' }}
+                    addTitle='Add to Liked Songs'
+                    removeTitle='Remove from Liked Songs'
+                    onButtonAdd={() => {}}
+                    alreadyAddedByUser={false}
+                />
+                <SegmentText>{trackDuration(durationTrack)}</SegmentText>
+                <ShowMoreButton />
             </LastSegment>
         </SongBox>
     )

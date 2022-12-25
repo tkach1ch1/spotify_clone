@@ -2,24 +2,24 @@ import { useAllGenres } from '../hooks/useAllGenres'
 import { nanoid } from 'nanoid'
 import { AllGenresBox } from '../style'
 import { Genre } from './Genre'
+import { genreColor } from '../assets/genreColor'
 
 export const AllGenresSection = () => {
     const { allGenres } = useAllGenres()
 
-    const getRandomColor = () => {
-        let color = Math.floor(Math.random() * 16777215).toString(16)
-        return color
-    }
+    //Adding to every genre bgColor
+    const allGenresWithBgColor = allGenres.map((elem, i) => ({ ...elem, bgColor: genreColor[i] }))
+
     return (
         <>
             <AllGenresBox>
-                {allGenres.map((elem) => (
+                {allGenresWithBgColor.map((elem) => (
                     <Genre
                         key={nanoid()}
                         genreName={elem.name}
                         genreId={elem.id}
                         genreIcon={elem.icons[0].url}
-                        bgColor={getRandomColor()}
+                        bgColor={elem.bgColor}
                     />
                 ))}
             </AllGenresBox>

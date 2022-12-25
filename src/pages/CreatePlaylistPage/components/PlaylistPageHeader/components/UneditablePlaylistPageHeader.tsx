@@ -1,19 +1,24 @@
 import { MainPlaylistTitleBox, UneditStyledImageBox } from 'src/pages/CreatePlaylistPage/style'
-import { useAppSelector } from 'src/hooks/hooks'
 import { UneditablePlaylistInfo } from './UneditablePlaylistInfo'
+import { PlaylistElementProps } from 'src/assets/types/types'
 
-export const UneditablePlaylistPageHeader = () => {
-    const playlist = useAppSelector((state) => state.playlist.playlistInfo)
+interface UneditablePlaylistPageHeaderProps {
+    currentUneditPlaylist: PlaylistElementProps
+}
+
+export const UneditablePlaylistPageHeader = ({
+    currentUneditPlaylist,
+}: UneditablePlaylistPageHeaderProps) => {
     return (
         <MainPlaylistTitleBox>
             <UneditStyledImageBox>
                 <img
-                    src={playlist.playlistImage}
-                    alt={playlist.playlistName}
+                    src={currentUneditPlaylist.playlistImage}
+                    alt={currentUneditPlaylist.playlistName}
                     style={{ width: '100%', height: '100%' }}
                 />
             </UneditStyledImageBox>
-            <UneditablePlaylistInfo playlistInfo={playlist && playlist} />
+            <UneditablePlaylistInfo playlistInfo={currentUneditPlaylist} />
         </MainPlaylistTitleBox>
     )
 }

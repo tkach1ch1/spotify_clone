@@ -31,6 +31,7 @@ export const PlaylistElement = ({
                 playlistImage,
                 playlistOwnerId,
                 playlistOwnerName,
+                playlistTracks: [],
             })
         )
     }

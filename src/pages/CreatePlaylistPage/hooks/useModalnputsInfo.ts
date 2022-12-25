@@ -1,14 +1,14 @@
 import { useAppDispatch } from './../../../hooks/hooks'
-import { useCreatedPlaylist } from './useCreatedPlaylist'
+import { useAddedPlaylist } from './useAddedPlaylist'
 import React, { useState } from 'react'
 import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
 
 export const useModalInputsInfo = () => {
-    const { createdPlaylist } = useCreatedPlaylist()
+    const { addedPlaylist } = useAddedPlaylist()
 
     //Input's value
-    const [name, setName] = useState(createdPlaylist?.playlistName)
-    const [description, setDescription] = useState(createdPlaylist?.playlistDescription)
+    const [name, setName] = useState(addedPlaylist?.playlistName)
+    const [description, setDescription] = useState(addedPlaylist?.playlistDescription)
 
     //Input's validation
     const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ export const useModalInputsInfo = () => {
         setLoading(true)
         if (name?.trim()) {
             const changedCurrentPlaylist = {
-                ...createdPlaylist,
+                ...addedPlaylist,
                 playlistName: name.trim(),
                 playlistDescription: description,
             }

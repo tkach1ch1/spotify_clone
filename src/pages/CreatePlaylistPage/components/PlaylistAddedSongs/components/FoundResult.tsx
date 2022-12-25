@@ -2,13 +2,12 @@ import { ResultSong } from './ResultSong'
 import { nanoid } from 'nanoid'
 import { FoundResultItems } from 'src/hooks/useSearch'
 import { Result } from './Result'
-import { memo } from 'react'
 
 interface FoundResultProps {
     foundResult: FoundResultItems | undefined
 }
 
-export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
+export const FoundResult = ({ foundResult }: FoundResultProps) => {
     const foundTracks = foundResult && foundResult['tracks'].items
     const foundArtists = foundResult && foundResult['artists'].items
     const foundAlbums = foundResult && foundResult['albums'].items
@@ -55,4 +54,4 @@ export const FoundResult = memo(({ foundResult }: FoundResultProps) => {
                 : null}
         </>
     )
-})
+}

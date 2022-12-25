@@ -20,7 +20,7 @@ export const Genre = ({ genreName, genreIcon, genreId, bgColor }: GenreProps) =>
         <GenreLink
             onClick={navigateAndGetGenreIdOnClick}
             to={`/genre/${genreId}`}
-            style={{ backgroundColor: `#${bgColor}` }}
+            style={{ backgroundColor: bgColor }}
         >
             <GenreName>{genreName}</GenreName>
             <GenreIconBox>

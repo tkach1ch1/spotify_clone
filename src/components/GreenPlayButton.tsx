@@ -1,4 +1,5 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import { memo } from 'react'
 import { GreenPlayButtonBox } from './style'
 
 interface GreenPlayButtonProps {
@@ -7,7 +8,7 @@ interface GreenPlayButtonProps {
     tabIndex?: number
 }
 
-export const GreenPlayButton = ({ width, height, tabIndex }: GreenPlayButtonProps) => {
+export const GreenPlayButton = memo(({ width, height, tabIndex }: GreenPlayButtonProps) => {
     return (
         <GreenPlayButtonBox
             width={width}
@@ -17,4 +18,4 @@ export const GreenPlayButton = ({ width, height, tabIndex }: GreenPlayButtonProp
             <PlayArrowIcon fontSize='large' />
         </GreenPlayButtonBox>
     )
-}
+})

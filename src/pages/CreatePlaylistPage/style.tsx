@@ -244,6 +244,18 @@ export const PlaylistLikeButton = styled('button')({
     border: 'none',
     backgroundColor: 'transparent',
     padding: '0',
+    display: 'flex',
+    alignItems: 'center',
+    color: 'hsla(0,0%,100%,.7)',
+    '&:hover': {
+        color: theme.palette.primary.main,
+    },
+})
+
+export const StyledShowMoreBox = styled(Box)({
+    padding: '0',
+    display: 'flex',
+    alignItems: 'center',
     color: 'hsla(0,0%,100%,.7)',
     '&:hover': {
         color: theme.palette.primary.main,
@@ -262,6 +274,7 @@ export const SongsListHeaderBox = styled(Box)({
     display: 'grid',
     padding: '0 16px',
     gridGap: '16px',
+    alignItems: 'center',
     color: theme.palette.primary.light,
     height: '36px',
     borderBottom: '1px solid hsla(0,0%,100%,.1)',
@@ -298,7 +311,6 @@ export const Var1Segment = styled(SongSegment)({
 })
 
 export const Var2Segment = styled(SongSegment)({
-    display: 'flex',
     width: '100%',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
@@ -307,11 +319,11 @@ export const Var2Segment = styled(SongSegment)({
 })
 
 export const LastSegment = styled(Box)({
-    justifySelf: 'end',
     gridColumn: 'last',
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginRight: '32px',
+    gap: '20px',
 })
 
 //Song

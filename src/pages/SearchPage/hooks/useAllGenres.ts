@@ -9,6 +9,7 @@ export interface GenresElements {
     name: string
     id: string
     icons: IconsElements[]
+    bgColor?: string
 }
 
 export const useAllGenres = () => {

@@ -2,6 +2,8 @@ import { PlayListInfoBox } from '../../../style'
 import { Box } from '@mui/system'
 import { PlaylistTitle } from './PlaylistTitle'
 import { PlaylistDescription } from './PlaylistDescription'
+import { PlaylistDetails } from './PlaylistDetails'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 
 export interface PlaylistInfoProps {
     handleOpen: () => void
@@ -9,6 +11,13 @@ export interface PlaylistInfoProps {
 }
 
 export const PlaylistInfo = ({ handleOpen, onEnterOpen }: PlaylistInfoProps) => {
+    const { addedPlaylist } = useAddedPlaylist()
+
+    //Sum duration of all playlist tracks
+    const allCreatedPlaylistTracksDuration = addedPlaylist?.playlistTracks
+        ?.map((elem) => elem.duration_ms)
+        .reduce((prev, cur) => prev + cur, 0)
+
     return (
         <PlayListInfoBox>
             <Box
@@ -29,7 +38,10 @@ export const PlaylistInfo = ({ handleOpen, onEnterOpen }: PlaylistInfoProps) => 
                 onEnterOpen={onEnterOpen}
             />
 
-            <Box sx={{ marginTop: '8px', fontSize: '14px', fontWeight: '500' }}>Bogdan Tkach</Box>
+            <PlaylistDetails
+                allPlaylistTracksLength={addedPlaylist?.playlistTracks?.length}
+                allTracksDuration={allCreatedPlaylistTracksDuration}
+            />
         </PlayListInfoBox>
     )
 }

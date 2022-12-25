@@ -1,3 +1,4 @@
+import { PlaylistElementProps } from 'src/assets/types/types'
 import { createSlice } from '@reduxjs/toolkit'
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 
@@ -11,7 +12,7 @@ export interface AllPlaylistsArrayProps {
 }
 
 interface AllPlaylistsReducerState {
-    allPlaylistsArray: AllPlaylistsArrayProps[]
+    allPlaylistsArray: PlaylistElementProps[]
 }
 
 const initialState: AllPlaylistsReducerState = {

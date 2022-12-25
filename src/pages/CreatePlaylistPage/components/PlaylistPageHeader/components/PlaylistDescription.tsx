@@ -1,20 +1,20 @@
 import { Box } from '@mui/material'
-import { useCreatedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCreatedPlaylist'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { PlaylistDescriptionBox } from 'src/pages/CreatePlaylistPage/style'
 import { PlaylistInfoProps } from './PlaylistInfo'
 
 export const PlaylistDescription = ({ handleOpen, onEnterOpen }: PlaylistInfoProps) => {
-    const { createdPlaylist } = useCreatedPlaylist()
+    const { addedPlaylist } = useAddedPlaylist()
 
     return (
         <>
-            {!!createdPlaylist?.playlistDescription ? (
+            {!!addedPlaylist?.playlistDescription ? (
                 <PlaylistDescriptionBox
                     tabIndex={0}
                     onClick={handleOpen}
                     onKeyDown={onEnterOpen}
                 >
-                    <Box>{createdPlaylist?.playlistDescription}</Box>
+                    <Box>{addedPlaylist?.playlistDescription}</Box>
                 </PlaylistDescriptionBox>
             ) : null}
         </>

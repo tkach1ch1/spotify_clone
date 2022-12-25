@@ -14,6 +14,7 @@ const initialState: PlaylistReducerElements = {
         playlistImage: '',
         playlistOwnerId: '',
         playlistOwnerName: '',
+        playlistTracks: [],
     },
 }
 
@@ -24,9 +25,12 @@ const playlistReducer = createSlice({
         getPlaylistInfo: (state, action) => {
             state.playlistInfo = action.payload
         },
+        getPlaylistTracks: (state, action) => {
+            state.playlistInfo = { ...state.playlistInfo, playlistTracks: action.payload }
+        },
     },
 })
 
-export const { getPlaylistInfo } = playlistReducer.actions
+export const { getPlaylistInfo, getPlaylistTracks } = playlistReducer.actions
 
 export default playlistReducer.reducer

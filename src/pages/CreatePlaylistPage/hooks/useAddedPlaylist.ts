@@ -1,16 +1,16 @@
 import { useLocation } from 'react-router-dom'
 import { useAppSelector } from 'src/hooks/hooks'
 
-export const useCreatedPlaylist = () => {
+export const useAddedPlaylist = () => {
     //Looking for certain playlist
     const allPlaylistsArray = useAppSelector((state) => state.allPlaylists.allPlaylistsArray)
 
     const location = useLocation()
 
-    const createdPlaylist = allPlaylistsArray.find(
+    const addedPlaylist = allPlaylistsArray.find(
         (elem) => `/playlist/${elem.playlistId}` === location.pathname
     )
 
     //--//
-    return { createdPlaylist, allPlaylistsArray }
+    return { addedPlaylist, allPlaylistsArray }
 }

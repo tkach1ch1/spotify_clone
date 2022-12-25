@@ -5,9 +5,9 @@ import {
     PlaylistDescriptionBox,
     PlayListInfoBox,
     StyledPlaylistTitle,
-    PlaylistDetailsBox,
 } from 'src/pages/CreatePlaylistPage/style'
-import { theme } from 'src/assets/theme'
+import { usePlaylistTracks } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
+import { PlaylistDetails } from './PlaylistDetails'
 
 interface UneditablePlaylistInfoProps {
     playlistInfo: PlaylistElementProps
@@ -15,6 +15,13 @@ interface UneditablePlaylistInfoProps {
 
 export const UneditablePlaylistInfo = ({ playlistInfo }: UneditablePlaylistInfoProps) => {
     const { lengthCheck } = useFontSizeChange()
+    const { allPlaylistTracks } = usePlaylistTracks()
+
+    //Sum duration of all playlist tracks
+    const allPlaylistTracksDuration = allPlaylistTracks
+        .map((elem) => elem.duration_ms)
+        .reduce((prev, cur) => prev + cur, 0)
+
     return (
         <PlayListInfoBox>
             <Box
@@ -45,12 +52,11 @@ export const UneditablePlaylistInfo = ({ playlistInfo }: UneditablePlaylistInfoP
 
             {/* Playlist owner, tracks amount and there duration */}
 
-            <PlaylistDetailsBox>
-                <Box sx={{ fontWeight: '500' }}>{playlistInfo.playlistOwnerName}</Box>
-                <Box>•</Box>
-                <Box>50 songs, </Box>
-                <Box sx={{ color: theme.palette.primary.light }}>2 hr 51 min</Box>
-            </PlaylistDetailsBox>
+            <PlaylistDetails
+                allTracksDuration={allPlaylistTracksDuration}
+                playlistOwnerName={playlistInfo.playlistOwnerName}
+                allPlaylistTracksLength={allPlaylistTracks.length}
+            />
         </PlayListInfoBox>
     )
 }

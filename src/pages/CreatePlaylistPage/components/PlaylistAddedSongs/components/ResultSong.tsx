@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Snackbar } from 'src/components/Snackbar'
 import { useAppDispatch } from 'src/hooks/hooks'
-import { useCreatedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCreatedPlaylist'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import {
     AddButton,
@@ -26,7 +26,7 @@ export const ResultSong = ({
 }: ResultSongProps) => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
-    const { createdPlaylist } = useCreatedPlaylist()
+    const { addedPlaylist } = useAddedPlaylist()
 
     const dispatch = useAppDispatch()
 
@@ -41,12 +41,12 @@ export const ResultSong = ({
             artists: artists,
             album: album,
             dateAdded: new Date().toISOString(),
-            trackDuration: duration_ms,
+            duration_ms: duration_ms,
         }
 
         const changedCurrentPlaylist = {
-            ...createdPlaylist,
-            playlistTracks: createdPlaylist && [...createdPlaylist?.playlistTracks, newTrack],
+            ...addedPlaylist,
+            playlistTracks: addedPlaylist && [...addedPlaylist.playlistTracks, newTrack],
         }
         dispatch(changePlaylistDetails(changedCurrentPlaylist))
 

@@ -1,7 +1,7 @@
 import { PlaylistImageBox, StyledImageLabel } from 'src/pages/CreatePlaylistPage/style'
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
-import { useCreatedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useCreatedPlaylist'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { DefaultPlaylistImage } from './DefaultPlaylistImage'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'
@@ -14,20 +14,20 @@ interface PlaylistImageProps {
 export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
     const [onImageHover, setOnImageHover] = useState(false)
 
-    const { createdPlaylist } = useCreatedPlaylist()
+    const { addedPlaylist } = useAddedPlaylist()
 
     const dispatch = useAppDispatch()
 
     //If playlist image doesn't have setted image, it takes the image from the first track in the songs list
     useEffect(() => {
-        if (createdPlaylist?.playlistImage === '' && !!createdPlaylist?.playlistTracks.length) {
+        if (addedPlaylist?.playlistImage === '' && !!addedPlaylist.playlistTracks?.length) {
             const changedCurrentPlaylist = {
-                ...createdPlaylist,
-                playlistImage: createdPlaylist?.playlistTracks[0].album.images[0].url,
+                ...addedPlaylist,
+                playlistImage: addedPlaylist?.playlistTracks[0].album.images[0].url,
             }
             dispatch(changePlaylistDetails(changedCurrentPlaylist))
         }
-    }, [createdPlaylist, dispatch])
+    }, [addedPlaylist, dispatch])
 
     return (
         <Box sx={sx}>
@@ -43,11 +43,11 @@ export const PlaylistImage = ({ handleOpen, sx }: PlaylistImageProps) => {
                     type='file'
                 />
                 <StyledImageLabel htmlFor='raised-button-file'>
-                    {!createdPlaylist?.playlistImage ? (
+                    {!addedPlaylist?.playlistImage ? (
                         <DefaultPlaylistImage onImageHover={onImageHover} />
                     ) : (
                         <img
-                            src={createdPlaylist?.playlistImage}
+                            src={addedPlaylist?.playlistImage}
                             alt={'Playlist'}
                             style={{
                                 width: '100%',
