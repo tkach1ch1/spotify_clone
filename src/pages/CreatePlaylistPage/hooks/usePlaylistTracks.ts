@@ -26,7 +26,6 @@ export const usePlaylistTracks = () => {
     const { getToken, getPlaylistTracks } = APIController
 
     const playlistId = useAppSelector((state) => state.playlist.playlistInfo.playlistId)
-
     //Geting all genres from API
     useEffect(() => {
         try {

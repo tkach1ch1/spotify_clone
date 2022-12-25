@@ -36,9 +36,14 @@ const allPlaylistsReducer = createSlice({
                 state.allPlaylistsArray[currentPlaylistIndex] = action.payload
             }
         },
+        removePlaylist: (state, action) => {
+            state.allPlaylistsArray = state.allPlaylistsArray.filter(
+                (elem) => elem.playlistId !== action.payload.playlistId
+            )
+        },
     },
 })
 
-export const { addPlaylist, changePlaylistDetails } = allPlaylistsReducer.actions
+export const { addPlaylist, changePlaylistDetails, removePlaylist } = allPlaylistsReducer.actions
 
 export default allPlaylistsReducer.reducer

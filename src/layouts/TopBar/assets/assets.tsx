@@ -10,19 +10,17 @@ export const topNavBarCategoriesArray = [
 ]
 
 export const topNavBarUserProfileArray = [
-    { name: 'Account', link: '/account', image: true, targetBlank: true },
-    { name: 'Profile', link: '/user', image: false, targetBlank: false },
+    { name: 'Account', link: '/account', image: true },
+    { name: 'Profile', link: '/user', image: false },
     {
         name: 'Upgrade to Premium',
         link: '/premium',
         image: true,
-        targetBlank: true,
     },
-    { name: 'Support', link: '/support', image: true, targetBlank: true },
+    { name: 'Support', link: '/support', image: true },
     {
         name: 'Download',
         link: '/download/windows',
         image: true,
-        targetBlank: true,
     },
 ]

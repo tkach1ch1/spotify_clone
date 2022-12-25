@@ -104,7 +104,9 @@ export const Song = ({
                     addTitle='Add to Liked Songs'
                     removeTitle='Remove from Liked Songs'
                     onButtonAdd={() => {}}
+                    onButtonRemove={() => {}}
                     alreadyAddedByUser={false}
+                    openSnackbar={false}
                 />
                 <SegmentText>{trackDuration(durationTrack)}</SegmentText>
                 <ShowMoreButton />

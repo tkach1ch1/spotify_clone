@@ -8,7 +8,7 @@ import { EditablePlaylistPageHeader } from './components/PlaylistPageHeader/Edit
 import { useAddedPlaylist } from './hooks/useAddedPlaylist'
 
 export const CreatePlaylistPage = () => {
-    const playlist = useAppSelector((state) => state.playlist.playlistInfo)
+    const notAddedPlaylist = useAppSelector((state) => state.playlist.playlistInfo)
     const { addedPlaylist } = useAddedPlaylist()
 
     return (
@@ -16,7 +16,7 @@ export const CreatePlaylistPage = () => {
         //that's why we are rendering editable playlist layout
         //Spotify already existed playlists aren't editable, so we are rendering unenditable playlist layout
         <MainContainer>
-            {addedPlaylist?.playlistCollab === true ? (
+            {addedPlaylist?.playlistCollab ? (
                 <>
                     <Box sx={{ margin: '0 -32px' }}>
                         <EditablePlaylistPageHeader />
@@ -24,14 +24,14 @@ export const CreatePlaylistPage = () => {
 
                     <PlaylistAddedSongs />
                 </>
-            ) : playlist.playlistCollab === false ? (
+            ) : !notAddedPlaylist.playlistCollab || !addedPlaylist?.playlistCollab ? (
                 <>
                     <Box sx={{ margin: '0 -32px' }}>
                         <UneditablePlaylistPageHeader
                             // We are passing on either a playlist from certain genre playlist on SearchPage
                             //which are not in all user playlists or we are passing on addedPlaylist which already
                             //in all user playlists
-                            currentUneditPlaylist={addedPlaylist || playlist}
+                            currentUneditPlaylist={addedPlaylist || notAddedPlaylist}
                         />
                     </Box>
 

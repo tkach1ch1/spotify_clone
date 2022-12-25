@@ -4,14 +4,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import { StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import { CSSProperties, useEffect, useState } from 'react'
 import 'animate.css'
+import { Snackbar } from 'src/components/Snackbar'
 
 interface LikeButtonProps {
     sx: CSSProperties
     addTitle: string
     removeTitle: string
     onButtonAdd: () => void
-    onButtonRemove?: () => void
+    onButtonRemove: () => void
     alreadyAddedByUser: boolean
+    openSnackbar: boolean
 }
 
 export const LikeButton = ({
@@ -21,14 +23,11 @@ export const LikeButton = ({
     onButtonAdd,
     onButtonRemove,
     alreadyAddedByUser,
+    openSnackbar,
 }: LikeButtonProps) => {
     const [added, setAdded] = useState(false)
     const [animateOnAdd, setAnimateOnAdd] = useState(false)
     const [animateOnRemove, setAnimateOnRemove] = useState(false)
-
-    useEffect(() => {
-        alreadyAddedByUser && setAdded(true)
-    }, [alreadyAddedByUser])
 
     const onAddButtonClick = () => {
         setAdded(true)
@@ -39,11 +38,16 @@ export const LikeButton = ({
     const onRemoveButtonClick = () => {
         setAdded(false)
         setAnimateOnAdd(true)
+        onButtonRemove()
     }
+
+    useEffect(() => {
+        alreadyAddedByUser && setAdded(true)
+    }, [alreadyAddedByUser])
 
     return (
         <>
-            {added ? (
+            {alreadyAddedByUser ? (
                 <StyledTooltip
                     title={removeTitle}
                     placement='top'
@@ -73,6 +77,11 @@ export const LikeButton = ({
                     </PlaylistLikeButton>
                 </StyledTooltip>
             )}
+            {openSnackbar && added ? (
+                <Snackbar content='Add to Your Library' />
+            ) : openSnackbar && !added ? (
+                <Snackbar content='Remove from Your Library' />
+            ) : null}
         </>
     )
 }

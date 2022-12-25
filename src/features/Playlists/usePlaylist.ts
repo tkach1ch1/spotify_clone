@@ -8,10 +8,15 @@ export const usePlaylist = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
+    //Taking only user created playlists
+    //to give next created playlistName number based only on user created playlists length
+    //not on allPlaylistsArray length
+    const allUserCreatedPlaylists = allPlaylistsArray.filter((elem) => !!elem.playlistCollab)
+
     //Create playlist onClick on CreatePlaylistButton in NavBar and add him to allPlaylistsArray
     const createPlaylist = () => {
         let newPlaylist = {
-            playlistName: 'My Playlist #' + (allPlaylistsArray.length + 1),
+            playlistName: 'My Playlist #' + (allUserCreatedPlaylists.length + 1),
             playlistId: nanoid(),
             playlistDescription: '',
             playlistImage: '',

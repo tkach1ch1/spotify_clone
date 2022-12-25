@@ -6,12 +6,12 @@ import {
     StyledPlaylistLink,
 } from '../style'
 import { nanoid } from 'nanoid'
-import { usePlaylist } from 'src/features/Playlists/usePlaylist'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 
 export const AllPlaylistsList = () => {
-    const { allPlaylistsArray } = usePlaylist()
+    const { allPlaylistsArray } = useAddedPlaylist()
 
     const navigate = useNavigate()
 

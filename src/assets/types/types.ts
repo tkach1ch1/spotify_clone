@@ -5,7 +5,7 @@ export interface PlaylistElementProps {
     playlistImage: string
     playlistId: string
     isNotPlayable?: boolean //For own created playlists
-    playlistCollab?: boolean
+    playlistCollab?: boolean //True - if playlist editable (self created playlists), false - if not editable (already exists spotify playlists)
     playlistOwnerId?: string
     playlistOwnerName: string
     playlistTracks: AllPlaylistTracksElements[]
