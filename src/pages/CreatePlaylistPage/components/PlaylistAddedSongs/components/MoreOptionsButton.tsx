@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Select } from 'src/components/Select'
 import { Snackbar } from 'src/components/Snackbar'
 import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
-import { useOnButtonAddRemove } from 'src/pages/CreatePlaylistPage/hooks/useOnButtonAddRemove'
+import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
 
 export const MoreOptionsButton = () => {
     const [openMoreOptions, setOpenMoreOptions] = useState(false)
@@ -20,7 +20,7 @@ export const MoreOptionsButton = () => {
             onButtonRemovePlaylist(addedPlaylist)
         }
     }
-
+    //Array for Select component
     const moreOptionsArray = [{ name: 'Delete', actionFunction: deletePlaylistOnClick }]
 
     return (

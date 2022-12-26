@@ -15,17 +15,17 @@ export const ExistPlaylists = () => {
         if (allPlaylistsArray.length === 1) {
             return {
                 gridTemplateColumns:
-                    'repeat(auto-fit, minmax(min(200px,100%/3, max(200px, 100%/9)), 200px))',
+                    'repeat(auto-fit, minmax(min(200px,100%/4, max(200px, 100%/9)), 200px))',
             }
         } else if (width > 1450) {
             return {
                 gridTemplateColumns:
-                    'repeat(auto-fit, minmax(min(200px,100%/3, max(200px, 100%/9)), 200px))',
+                    'repeat(auto-fit, minmax(min(200px,100%/4, max(200px, 100%/9)), 200px))',
             }
         } else {
             return {
                 gridTemplateColumns:
-                    'repeat(auto-fit, minmax(min(170px,100%/3, max(170px, 100%/9)), 1fr))',
+                    'repeat(auto-fit, minmax(min(170px,100%/4, max(170px, 100%/9)), 1fr))',
             }
         }
     }

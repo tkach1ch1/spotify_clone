@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import allPlaylistsReducer from './allPlaylistsReducer'
 import genreReducer from './genreReducer'
+import likedSongsReducer from './likedSongsReducer'
 import playlistReducer from './playlistReducer'
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
         allPlaylists: allPlaylistsReducer,
         genreInfo: genreReducer,
         playlist: playlistReducer,
+        likedSongs: likedSongsReducer,
     },
 })
 

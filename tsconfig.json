@@ -27,7 +27,8 @@
     "@Controllers": ["src/controllers/*"],
     "@CreatePlaylistPage": ["src/pages/CreatePlaylistPage/*"],
     "@PlaylistPage": ["src/pages/PlaylistsPage/*"],
-    "@SearchPage": ["src/pages/SearchPage/*"]
+    "@SearchPage": ["src/pages/SearchPage/*"],
+    "@LikedSongsPage": ["src/pages/LikedSongsPage/*"]
   },
 
   "include": ["src", "**/*.ts", "**/*.tsx"]

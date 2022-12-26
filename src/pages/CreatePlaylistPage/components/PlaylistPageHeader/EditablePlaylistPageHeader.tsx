@@ -1,7 +1,7 @@
 import { PlaylistImage } from './components/PlaylistImage'
 import { PlaylistInfo } from './components/PlaylistInfo'
 import {
-    GradientBackgound,
+    GradientBackground,
     MainPlaylistTitleBox,
     TitleBackground,
 } from 'src/pages/CreatePlaylistPage/style'
@@ -14,8 +14,12 @@ export const EditablePlaylistPageHeader = () => {
 
     return (
         <>
-            <TitleBackground>
-                <GradientBackgound>
+            <TitleBackground
+                sx={{
+                    backgroundColor: 'rgb(83, 83, 83)',
+                }}
+            >
+                <GradientBackground>
                     <MainPlaylistTitleBox>
                         <PlaylistImage
                             handleOpen={handleOpen}
@@ -37,7 +41,7 @@ export const EditablePlaylistPageHeader = () => {
                             onEnterOpen={onEnterOpen}
                         />
                     </MainPlaylistTitleBox>
-                </GradientBackgound>
+                </GradientBackground>
             </TitleBackground>
 
             {/* Modal window */}

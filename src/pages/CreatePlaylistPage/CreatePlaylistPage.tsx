@@ -1,4 +1,5 @@
 import { Box } from '@mui/system'
+import { theme } from 'src/assets/theme'
 import { useAppSelector } from 'src/hooks/hooks'
 import { MainContainer } from 'src/layouts/MainContainer/MainContainer'
 import { UneditablePlaylistSongs } from './components/PlaylistAddedSongs/components/UneditablePlaylistSongs'
@@ -18,7 +19,14 @@ export const CreatePlaylistPage = () => {
         <MainContainer>
             {addedPlaylist?.playlistCollab ? (
                 <>
-                    <Box sx={{ margin: '0 -32px' }}>
+                    <Box
+                        sx={{
+                            margin: '0 -32px',
+                            [theme.breakpoints.down('md')]: {
+                                margin: '0 -16px',
+                            },
+                        }}
+                    >
                         <EditablePlaylistPageHeader />
                     </Box>
 
@@ -26,7 +34,14 @@ export const CreatePlaylistPage = () => {
                 </>
             ) : !notAddedPlaylist.playlistCollab || !addedPlaylist?.playlistCollab ? (
                 <>
-                    <Box sx={{ margin: '0 -32px' }}>
+                    <Box
+                        sx={{
+                            margin: '0 -32px',
+                            [theme.breakpoints.down('md')]: {
+                                margin: '0 -16px',
+                            },
+                        }}
+                    >
                         <UneditablePlaylistPageHeader
                             // We are passing on either a playlist from certain genre playlist on SearchPage
                             //which are not in all user playlists or we are passing on addedPlaylist which already

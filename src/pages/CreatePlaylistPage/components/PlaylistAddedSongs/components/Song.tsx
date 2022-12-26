@@ -18,6 +18,9 @@ import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
 import { ResultSongProps } from './ResultSong'
 import { LikeButton } from './LikeButton'
 import { ShowMoreButton } from './ShowMoreButton'
+import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
+import { useFindTrack } from 'src/pages/CreatePlaylistPage/hooks/useFindTrack'
+import { useAppSelector } from 'src/hooks/hooks'
 
 export const Song = ({
     name,
@@ -28,6 +31,9 @@ export const Song = ({
     dateAdded,
     ariaRowIndex,
 }: ResultSongProps) => {
+    const hoverRef = useRef(null)
+    const isHovered = useHover(hoverRef)
+
     const { trackDuration } = useFormatDuration()
     const { addedTrackTimeAgo } = useTrackAddedDate()
 
@@ -37,7 +43,7 @@ export const Song = ({
     //Takes duration in ms, converts it to sec + rounds it up
     let durationTrack = Math.floor(duration_ms / 1000)
 
-    //Prevent component render by hovering component
+    //Prevent component render by hovering on song component
     useEffect(() => {
         setPageReload(true)
         if (pageReload) {
@@ -46,71 +52,86 @@ export const Song = ({
         setPageReload(false)
     }, [addedTrackTimeAgo, dateAdded, pageReload])
 
-    const hoverRef = useRef(null)
-    const isHovered = useHover(hoverRef)
+    //Check if song is already in likedSongs
+    const allSongsArray = useAppSelector((state) => state.likedSongs.allLikedSongs)
+    const alreadyLikedSong = allSongsArray.find((elem) => elem.id === id)
+
+    const { openSnackbar, onButtonAddSong, onButtonRemoveSong } = useOnButtonAddRemove()
+
+    const { findTrack } = useFindTrack(id)
+
+    const onButtonAdd = () => {
+        findTrack && onButtonAddSong(findTrack)
+    }
+
+    const onButtonRemove = () => {
+        alreadyLikedSong && onButtonRemoveSong(alreadyLikedSong)
+    }
 
     return (
-        <SongBox
-            role='row'
-            aria-rowindex={ariaRowIndex}
-            aria-selected='false'
-            ref={hoverRef}
-            id={id}
-        >
-            <SongSegment
-                role='gridcell'
-                aria-colindex={1}
+        <>
+            <SongBox
+                role='row'
+                aria-rowindex={ariaRowIndex}
+                aria-selected='false'
+                ref={hoverRef}
+                id={id}
             >
-                {isHovered ? (
-                    <PlayArrowIcon sx={{ position: 'absolute', left: '12px' }} />
-                ) : (
-                    <IndexSegment>{ariaRowIndex}</IndexSegment>
-                )}
-            </SongSegment>
-            <Box
-                role='gridcell'
-                aria-colindex={2}
-                sx={{ display: 'flex', alignItems: 'center' }}
-            >
-                <InfoSongSegment
-                    songName={name}
-                    authorName={artists.map((elem) => elem.name).join(' ')}
-                    image={album.images && album.images[0].url}
-                />
-            </Box>
-            <Var1Segment
-                role='gridcell'
-                aria-colindex={3}
-            >
-                <StyledSongLink
-                    to=''
-                    tabIndex={-1}
+                <SongSegment
+                    role='gridcell'
+                    aria-colindex={1}
                 >
-                    {album.name}
-                </StyledSongLink>
-            </Var1Segment>
-            <Var2Segment
-                role='gridcell'
-                aria-colindex={4}
-            >
-                <SegmentText>{addedDate || album.release_date}</SegmentText>
-            </Var2Segment>
-            <LastSegment
-                role='gridcell'
-                aria-colindex={5}
-            >
-                <LikeButton
-                    sx={{ width: '20px', height: '20px' }}
-                    addTitle='Add to Liked Songs'
-                    removeTitle='Remove from Liked Songs'
-                    onButtonAdd={() => {}}
-                    onButtonRemove={() => {}}
-                    alreadyAddedByUser={false}
-                    openSnackbar={false}
-                />
-                <SegmentText>{trackDuration(durationTrack)}</SegmentText>
-                <ShowMoreButton />
-            </LastSegment>
-        </SongBox>
+                    {isHovered ? (
+                        <PlayArrowIcon sx={{ position: 'absolute', left: '12px' }} />
+                    ) : (
+                        <IndexSegment>{ariaRowIndex}</IndexSegment>
+                    )}
+                </SongSegment>
+                <Box
+                    role='gridcell'
+                    aria-colindex={2}
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                >
+                    <InfoSongSegment
+                        songName={name}
+                        authorName={artists.map((elem) => elem.name).join(' ')}
+                        image={album.images && album.images[0].url}
+                    />
+                </Box>
+                <Var1Segment
+                    role='gridcell'
+                    aria-colindex={3}
+                >
+                    <StyledSongLink
+                        to=''
+                        tabIndex={-1}
+                    >
+                        {album.name}
+                    </StyledSongLink>
+                </Var1Segment>
+                <Var2Segment
+                    role='gridcell'
+                    aria-colindex={4}
+                >
+                    <SegmentText>{addedDate || album.release_date}</SegmentText>
+                </Var2Segment>
+                <LastSegment
+                    role='gridcell'
+                    aria-colindex={5}
+                >
+                    <LikeButton
+                        sx={{ width: '20px', height: '20px' }}
+                        addTitle='Add to Liked Songs'
+                        removeTitle='Remove from Liked Songs'
+                        onButtonAdd={onButtonAdd}
+                        onButtonRemove={onButtonRemove}
+                        alreadyAddedByUser={!!alreadyLikedSong}
+                        openSnackbar={openSnackbar}
+                    />
+                    <SegmentText>{trackDuration(durationTrack)}</SegmentText>
+                    <ShowMoreButton />
+                </LastSegment>
+            </SongBox>
+        </>
     )
 }

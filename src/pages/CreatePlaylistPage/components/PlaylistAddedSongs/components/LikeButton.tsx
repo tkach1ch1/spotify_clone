@@ -78,9 +78,9 @@ export const LikeButton = ({
                 </StyledTooltip>
             )}
             {openSnackbar && added ? (
-                <Snackbar content='Add to Your Library' />
+                <Snackbar content={addTitle} />
             ) : openSnackbar && !added ? (
-                <Snackbar content='Remove from Your Library' />
+                <Snackbar content={removeTitle} />
             ) : null}
         </>
     )

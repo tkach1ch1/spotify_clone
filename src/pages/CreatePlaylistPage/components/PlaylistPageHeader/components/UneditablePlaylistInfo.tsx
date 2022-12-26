@@ -38,7 +38,6 @@ export const UneditablePlaylistInfo = ({ playlistInfo }: UneditablePlaylistInfoP
 
             <StyledPlaylistTitle
                 sx={!!playlistInfo ? lengthCheck(playlistInfo.playlistName) : null}
-                data-testid='playlist_title'
                 style={{ cursor: 'initial' }}
             >
                 {playlistInfo.playlistName}

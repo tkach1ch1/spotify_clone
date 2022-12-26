@@ -37,7 +37,7 @@ const allPlaylistsReducer = createSlice({
             }
         },
         removePlaylist: (state, action) => {
-            state.allPlaylistsArray = state.allPlaylistsArray.filter(
+            state.allPlaylistsArray = [...state.allPlaylistsArray].filter(
                 (elem) => elem.playlistId !== action.payload.playlistId
             )
         },

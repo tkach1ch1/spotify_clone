@@ -8,13 +8,13 @@ import { useAppDispatch, useAppSelector } from 'src/hooks/hooks'
 import { useEffect } from 'react'
 import { getPlaylistInfo, getPlaylistTracks } from 'src/redux/playlistReducer'
 import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
-import { useOnButtonAddRemove } from 'src/pages/CreatePlaylistPage/hooks/useOnButtonAddRemove'
+import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
 
 export const UneditablePlaylistSongs = () => {
     const dispatch = useAppDispatch()
 
     //--//
-    //Finding existed playlist and remove him on click
+    //Finding existed playlist
     const { addedPlaylist, allPlaylistsArray } = useAddedPlaylist()
     const { allPlaylistTracks } = usePlaylistTracks()
 
@@ -56,28 +56,30 @@ export const UneditablePlaylistSongs = () => {
     return (
         <Box>
             {!!allPlaylistTracks.length ? (
-                <PlayButtonBox>
-                    <GreenPlayButton
-                        width='58px'
-                        height='58px'
-                        tabIndex={0}
-                    />
-                    <LikeButton
-                        sx={{ width: '40px', height: '40px' }}
-                        addTitle='Add to Your Library'
-                        removeTitle='Remove from Your Library'
-                        onButtonAdd={onButtonClickAdd}
-                        onButtonRemove={onButtonClickRemove}
-                        alreadyAddedByUser={!!addedPlaylist}
-                        openSnackbar={openSnackbar}
-                    />
-                </PlayButtonBox>
-            ) : null}
+                <>
+                    <PlayButtonBox>
+                        <GreenPlayButton
+                            width='58px'
+                            height='58px'
+                            tabIndex={0}
+                        />
+                        <LikeButton
+                            sx={{ width: '40px', height: '40px' }}
+                            addTitle='Add to Your Library'
+                            removeTitle='Remove from Your Library'
+                            onButtonAdd={onButtonClickAdd}
+                            onButtonRemove={onButtonClickRemove}
+                            alreadyAddedByUser={!!addedPlaylist}
+                            openSnackbar={openSnackbar}
+                        />
+                    </PlayButtonBox>
 
-            <SongsSection
-                songsArray={addedPlaylist?.playlistTracks || allPlaylistTracks}
-                playlistCollab={false}
-            />
+                    <SongsSection
+                        songsArray={addedPlaylist?.playlistTracks || allPlaylistTracks}
+                        playlistCollab={false}
+                    />
+                </>
+            ) : null}
         </Box>
     )
 }

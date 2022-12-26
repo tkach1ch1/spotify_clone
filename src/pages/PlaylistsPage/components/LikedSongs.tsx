@@ -1,5 +1,8 @@
+import { Box } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
+import { theme } from 'src/assets/theme'
 import { HoveredGreenPlayButton } from 'src/components/HoveredGreenPlayButton'
+import { useAppSelector } from 'src/hooks/hooks'
 import {
     InnerLikedSongsBox,
     LikedSongsBox,
@@ -11,6 +14,8 @@ import {
 } from 'src/pages/PlaylistsPage/style'
 
 export const LikedSongs = () => {
+    const allLikedSongs = useAppSelector((state) => state.likedSongs.allLikedSongs)
+
     const navigate = useNavigate()
 
     const onEnterToLikedSongsPageNavigate = (event: React.KeyboardEvent) => {
@@ -27,13 +32,19 @@ export const LikedSongs = () => {
             <InnerLikedSongsBox>
                 <LikedSongsListBox>
                     <LikedSongsList>
-                        <span></span>
+                        {allLikedSongs.map((elem) => (
+                            <Box sx={{ color: theme.palette.primary.main }}>
+                                <span>{`${elem.name} `}</span>
+                                <span style={{ opacity: '0.7' }}>{elem.album.name}</span>
+                                <span>•</span>
+                            </Box>
+                        ))}
                     </LikedSongsList>
                 </LikedSongsListBox>
 
                 <LikedSongsTitleBox>
                     <LikedSongsTitle>Liked Songs</LikedSongsTitle>
-                    <LikedSongsCount>5 songs liked</LikedSongsCount>
+                    <LikedSongsCount>{`${allLikedSongs.length} songs liked`}</LikedSongsCount>
                 </LikedSongsTitleBox>
                 <HoveredGreenPlayButton
                     bottom='20px'

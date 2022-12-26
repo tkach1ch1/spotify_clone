@@ -1,9 +1,11 @@
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import { useNavigate } from 'react-router-dom'
 import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { PlaylistElementProps } from 'src/assets/types/types'
 import { removePlaylist, addPlaylist } from 'src/redux/allPlaylistsReducer'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { useState } from 'react'
+import { addSongToLikedSongs, removeSongFromLikedSongs } from 'src/redux/likedSongsReducer'
 
 export const useOnButtonAddRemove = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
@@ -60,9 +62,42 @@ export const useOnButtonAddRemove = () => {
             }, 2000)
         }
     }
+
+    const onButtonAddSong = (song: AllPlaylistTracksElements) => {
+        if (song) {
+            setOpenSnackbar(true)
+            dispatch(addSongToLikedSongs(song))
+
+            setTimeout(() => {
+                try {
+                    setOpenSnackbar(false)
+                } catch (error) {
+                    console.log(error)
+                }
+            }, 2000)
+        }
+    }
+
+    const onButtonRemoveSong = (song: AllPlaylistTracksElements) => {
+        if (!!song) {
+            setOpenSnackbar(true)
+            dispatch(removeSongFromLikedSongs(song))
+
+            setTimeout(() => {
+                try {
+                    setOpenSnackbar(false)
+                } catch (error) {
+                    console.log(error)
+                }
+            }, 2000)
+        }
+    }
+
     return {
         openSnackbar,
         onButtonAddPlaylist,
         onButtonRemovePlaylist,
+        onButtonAddSong,
+        onButtonRemoveSong,
     }
 }

@@ -16,16 +16,18 @@ export const MainPlaylistTitleBox = styled(Box)({
     [theme.breakpoints.down('lg')]: {
         padding: '65px 32px 0 32px',
     },
+    [theme.breakpoints.down('md')]: {
+        padding: '65px 16px 0 16px',
+    },
 })
 
 export const TitleBackground = styled(Box)({
     position: 'relative',
-    backgroundColor: 'rgb(83, 83, 83)',
     width: '100%',
     height: '300px',
 })
 
-export const GradientBackgound = styled(TitleBackground)({
+export const GradientBackground = styled(TitleBackground)({
     backgroundImage:
         'linear-gradient(transparent 0,rgba(0,0,0,.5) 100%),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDov…0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=)',
 })
@@ -263,6 +265,7 @@ export const StyledShowMoreBox = styled(Box)({
 })
 
 export const StyledSongsBox = styled(Box)({
+    maxWidth: '1955px',
     '&:focus-visible ': {
         outline: '1px solid #b3b3b3',
         border: 'none',
@@ -323,7 +326,6 @@ export const LastSegment = styled(Box)({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '20px',
 })
 
 //Song
@@ -362,8 +364,11 @@ export const StyledSongLink = styled(SongLink)({
 })
 
 export const SegmentText = styled('span')({
+    display: 'flex',
+    justifyContent: 'center',
     fontSize: '0.875rem',
     color: theme.palette.primary.light,
+    width: '50px',
 })
 
 export const StyledSearchSongSection = styled('section')({
