@@ -1,26 +1,28 @@
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+
 export const topNavBarCategoriesArray = [
-    { name: 'Premium', link: '/premium', image: true, targetBlank: true },
-    { name: 'Support', link: '/support', image: true, targetBlank: true },
+    { name: 'Premium', link: '/premium', image: <OpenInNewIcon />, targetBlank: true },
+    { name: 'Support', link: '/support', image: <OpenInNewIcon />, targetBlank: true },
     {
         name: 'Download',
         link: '/download/windows',
-        image: true,
+        image: <OpenInNewIcon />,
         targetBlank: true,
     },
 ]
 
 export const topNavBarUserProfileArray = [
-    { name: 'Account', link: '/account', image: true },
-    { name: 'Profile', link: '/user', image: false },
+    { name: 'Account', link: '/account', image: <OpenInNewIcon /> },
+    { name: 'Profile', link: '/user', image: <></> },
     {
         name: 'Upgrade to Premium',
         link: '/premium',
-        image: true,
+        image: <OpenInNewIcon />,
     },
-    { name: 'Support', link: '/support', image: true },
+    { name: 'Support', link: '/support', image: <OpenInNewIcon /> },
     {
         name: 'Download',
         link: '/download/windows',
-        image: true,
+        image: <OpenInNewIcon />,
     },
 ]

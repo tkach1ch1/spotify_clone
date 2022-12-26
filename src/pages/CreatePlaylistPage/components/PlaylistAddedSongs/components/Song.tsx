@@ -17,10 +17,10 @@ import { useFormatDuration } from 'src/hooks/useFormatDuration'
 import { useTrackAddedDate } from 'src/hooks/useTrackAddedDate'
 import { ResultSongProps } from './ResultSong'
 import { LikeButton } from './LikeButton'
-import { ShowMoreButton } from './ShowMoreButton'
-import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
-import { useFindTrack } from 'src/pages/CreatePlaylistPage/hooks/useFindTrack'
-import { useAppSelector } from 'src/hooks/hooks'
+import { MoreOptionsButton } from '../../../../../components/MoreOptionsButton'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
+import { useSongActions } from 'src/pages/CreatePlaylistPage/hooks/useSongActions'
+import { useAddSongToSelectedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddSongToSelectedPlaylist'
 
 export const Song = ({
     name,
@@ -34,6 +34,8 @@ export const Song = ({
     const hoverRef = useRef(null)
     const isHovered = useHover(hoverRef)
 
+    //--//
+
     const { trackDuration } = useFormatDuration()
     const { addedTrackTimeAgo } = useTrackAddedDate()
 
@@ -43,7 +45,7 @@ export const Song = ({
     //Takes duration in ms, converts it to sec + rounds it up
     let durationTrack = Math.floor(duration_ms / 1000)
 
-    //Prevent component render by hovering on song component
+    //Prevent addedDate render by hovering on song component
     useEffect(() => {
         setPageReload(true)
         if (pageReload) {
@@ -52,22 +54,32 @@ export const Song = ({
         setPageReload(false)
     }, [addedTrackTimeAgo, dateAdded, pageReload])
 
-    //Check if song is already in likedSongs
-    const allSongsArray = useAppSelector((state) => state.likedSongs.allLikedSongs)
-    const alreadyLikedSong = allSongsArray.find((elem) => elem.id === id)
+    //--//
 
-    const { openSnackbar, onButtonAddSong, onButtonRemoveSong } = useOnButtonAddRemove()
+    const {
+        openSnackbar,
+        alreadyLikedSong,
+        onButtonAddToLikedSongs,
+        onButtonRemoveFromLikedSongs,
+    } = useSongActions(id)
 
-    const { findTrack } = useFindTrack(id)
+    //Sort all self created playlists from all user
+    const { allPlaylistsArray } = useAddedPlaylist()
+    const allCreatedPlaylists = allPlaylistsArray.filter((elem) => !!elem.playlistCollab)
 
-    const onButtonAdd = () => {
-        findTrack && onButtonAddSong(findTrack)
-    }
+    //Songs select list on More options button click
+    const selectElementsArray = allCreatedPlaylists.map((elem) => ({
+        name: elem.playlistName,
+        id: elem.playlistId,
+        actionFunction: () => {
+            addSongsToSelectedPlaylist(elem.playlistId)
+        },
+    }))
 
-    const onButtonRemove = () => {
-        alreadyLikedSong && onButtonRemoveSong(alreadyLikedSong)
-    }
-
+    const { addSongsToSelectedPlaylist, open } = useAddSongToSelectedPlaylist(
+        id,
+        selectElementsArray
+    )
     return (
         <>
             <SongBox
@@ -123,13 +135,22 @@ export const Song = ({
                         sx={{ width: '20px', height: '20px' }}
                         addTitle='Add to Liked Songs'
                         removeTitle='Remove from Liked Songs'
-                        onButtonAdd={onButtonAdd}
-                        onButtonRemove={onButtonRemove}
+                        onButtonAdd={onButtonAddToLikedSongs}
+                        onButtonRemove={onButtonRemoveFromLikedSongs}
                         alreadyAddedByUser={!!alreadyLikedSong}
                         openSnackbar={openSnackbar}
                     />
-                    <SegmentText>{trackDuration(durationTrack)}</SegmentText>
-                    <ShowMoreButton />
+                    <SegmentText style={{ width: '50px' }}>
+                        {trackDuration(durationTrack)}
+                    </SegmentText>
+                    <MoreOptionsButton
+                        moreOptionsArray={selectElementsArray}
+                        fontSize='medium'
+                        style={{ right: '0', bottom: '0' }}
+                        selectTitle='Add to Playlist'
+                        snackBarContent='Add to Playlist'
+                        openSnackbar={open}
+                    />
                 </LastSegment>
             </SongBox>
         </>

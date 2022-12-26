@@ -25,9 +25,16 @@ export const StyledWhiteButton = styled(Button)({
     },
 })
 
+export const SelectTitle = styled(Box)({
+    padding: '10px 12px',
+    color: theme.palette.primary.main,
+    fontWeight: '500',
+    borderBottom: '1px solid #b3b3b3',
+    margin: '0 -4px 4px',
+})
+
 export const SelectStyledUl = styled('ul')({
     position: 'absolute',
-
     display: 'flex',
     flexDirection: 'column',
     padding: '4px',
@@ -35,6 +42,8 @@ export const SelectStyledUl = styled('ul')({
     borderRadius: '4px',
     minWidth: '200px',
     maxWidth: '360px',
+    maxHeight: '300px',
+    overflowY: 'auto',
 })
 
 export const SelectStyledLi = styled('li')({
@@ -45,7 +54,7 @@ export const SelectStyledLi = styled('li')({
     },
 })
 
-export const StyledSelectLink = styled('button')({
+export const StyledSelectElement = styled('button')({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -109,4 +118,12 @@ export const SnackbarText = styled(Box)({
     fontSize: '0.875rem',
     fontWeight: '500',
     color: theme.palette.primary.main,
+})
+
+export const MoreOptionsButtonBox = styled(Box)({
+    color: 'hsla(0,0%,100%,.6)',
+    paddingTop: '5px',
+    '&:hover': {
+        color: theme.palette.primary.main,
+    },
 })

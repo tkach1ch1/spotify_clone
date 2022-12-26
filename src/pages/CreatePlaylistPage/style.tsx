@@ -368,7 +368,6 @@ export const SegmentText = styled('span')({
     justifyContent: 'center',
     fontSize: '0.875rem',
     color: theme.palette.primary.light,
-    width: '50px',
 })
 
 export const StyledSearchSongSection = styled('section')({

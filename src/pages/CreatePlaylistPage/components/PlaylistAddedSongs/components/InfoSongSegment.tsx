@@ -1,4 +1,5 @@
 import { Box } from '@mui/system'
+import { memo } from 'react'
 import { SongLink, SongSegment, StyledSongLink } from 'src/pages/CreatePlaylistPage/style'
 
 interface InfoSongSegmentProps {
@@ -7,7 +8,7 @@ interface InfoSongSegmentProps {
     image: string
 }
 
-export const InfoSongSegment = ({ songName, authorName, image }: InfoSongSegmentProps) => {
+export const InfoSongSegment = memo(({ songName, authorName, image }: InfoSongSegmentProps) => {
     return (
         <SongSegment>
             <img
@@ -33,4 +34,4 @@ export const InfoSongSegment = ({ songName, authorName, image }: InfoSongSegment
             </Box>
         </SongSegment>
     )
-}
+})
