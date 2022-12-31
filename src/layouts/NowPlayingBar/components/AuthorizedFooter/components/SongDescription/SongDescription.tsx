@@ -5,13 +5,31 @@ import { SongAndArtistName } from '../SongDescription/components/SongAndArtistNa
 import { SaveToLibraryButton } from '../SongDescription/components/SaveToLibraryButton'
 import { PictureInPictureButton } from '../SongDescription/components/PictureInPictureButton'
 
-export const SongDescription = () => {
+interface SongDescriptionProps {
+    image: string
+    songName: string
+    artistName: string
+    albumName: string
+}
+
+export const SongDescription = ({
+    image,
+    songName,
+    artistName,
+    albumName,
+}: SongDescriptionProps) => {
     return (
         <SongDescriptionBox>
-            <AlbumImage />
-            <SongAndArtistName />
+            <AlbumImage
+                image={image}
+                albumName={albumName}
+            />
+            <SongAndArtistName
+                songName={songName}
+                artistName={artistName}
+            />
 
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px', pl: '20px' }}>
+            <Box sx={{ display: 'flex', gap: '15px', pl: '20px' }}>
                 <SaveToLibraryButton />
                 <PictureInPictureButton />
             </Box>

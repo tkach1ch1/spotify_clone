@@ -21,6 +21,10 @@ import { MoreOptionsButton } from '../../../../../components/MoreOptionsButton'
 import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { useSongActions } from 'src/pages/CreatePlaylistPage/hooks/useSongActions'
 import { useAddSongToSelectedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddSongToSelectedPlaylist'
+import { useFindTrack } from 'src/pages/CreatePlaylistPage/hooks/useFindTrack'
+import { useAppDispatch, useAppSelector } from 'src/hooks/hooks'
+import { addToNowPlayingPlaylist } from 'src/redux/nowPlayingPlaylistReducer'
+import { getSnackbar } from 'src/redux/openSnackbar'
 
 export const Song = ({
     name,
@@ -34,6 +38,8 @@ export const Song = ({
     const hoverRef = useRef(null)
     const isHovered = useHover(hoverRef)
 
+    const dispatch = useAppDispatch()
+
     //--//
 
     const { trackDuration } = useFormatDuration()
@@ -41,9 +47,6 @@ export const Song = ({
 
     const [addedDate, setAddedDate] = useState<any>(addedTrackTimeAgo(dateAdded))
     const [pageReload, setPageReload] = useState(false)
-
-    //Takes duration in ms, converts it to sec + rounds it up
-    let durationTrack = Math.floor(duration_ms / 1000)
 
     //Prevent addedDate render by hovering on song component
     useEffect(() => {
@@ -73,13 +76,33 @@ export const Song = ({
         id: elem.playlistId,
         actionFunction: () => {
             addSongsToSelectedPlaylist(elem.playlistId)
+            dispatch(getSnackbar(true))
         },
     }))
 
-    const { addSongsToSelectedPlaylist, open } = useAddSongToSelectedPlaylist(
-        id,
-        selectElementsArray
-    )
+    //Add song to selected playlist
+    const { addSongsToSelectedPlaylist } = useAddSongToSelectedPlaylist(id, selectElementsArray)
+
+    const isSnackbar = useAppSelector((state) => state.openSnack.snackbar)
+
+    useEffect(() => {
+        if (isSnackbar) {
+            setTimeout(() => {
+                dispatch(getSnackbar(false))
+            }, 2000)
+        }
+    })
+
+    //Add song to NowPlayingBar
+    //Find track on his id
+    const { findTrack } = useFindTrack(id)
+
+    //Add single song to nowPlayingPlaylist
+    const SongInfo = () => {
+        dispatch(addToNowPlayingPlaylist(findTrack))
+    }
+    //--//
+
     return (
         <>
             <SongBox
@@ -92,6 +115,7 @@ export const Song = ({
                 <SongSegment
                     role='gridcell'
                     aria-colindex={1}
+                    onClick={SongInfo}
                 >
                     {isHovered ? (
                         <PlayArrowIcon sx={{ position: 'absolute', left: '12px' }} />
@@ -141,7 +165,7 @@ export const Song = ({
                         openSnackbar={openSnackbar}
                     />
                     <SegmentText style={{ width: '50px' }}>
-                        {trackDuration(durationTrack)}
+                        {trackDuration(duration_ms)}
                     </SegmentText>
                     <MoreOptionsButton
                         moreOptionsArray={selectElementsArray}
@@ -149,7 +173,7 @@ export const Song = ({
                         style={{ right: '0', bottom: '0' }}
                         selectTitle='Add to Playlist'
                         snackBarContent='Add to Playlist'
-                        openSnackbar={open}
+                        openSnackbar={isSnackbar}
                     />
                 </LastSegment>
             </SongBox>

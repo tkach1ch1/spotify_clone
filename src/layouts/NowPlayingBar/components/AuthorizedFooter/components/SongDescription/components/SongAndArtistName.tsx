@@ -5,17 +5,22 @@ import {
     StyledSongName,
 } from 'src/layouts/NowPlayingBar/style'
 
-export const SongAndArtistName = () => {
+interface SongAndArtistNameProps {
+    songName: string
+    artistName: string
+}
+
+export const SongAndArtistName = ({ songName, artistName }: SongAndArtistNameProps) => {
     return (
         <SongAndArtistNameBox>
             {/* SONG NAME */}
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <StyledSongName to={''}>Simply the best</StyledSongName>
+                <StyledSongName to={''}>{songName}</StyledSongName>
             </Box>
 
             {/* ARTIST NAME */}
             <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                <StyledArtistName to={''}>Black Eyed Peas, Anitta, El Alfa</StyledArtistName>
+                <StyledArtistName to={''}>{artistName}</StyledArtistName>
             </Box>
         </SongAndArtistNameBox>
     )

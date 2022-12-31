@@ -4,15 +4,13 @@ import { StyledTooltip, StyledIcon } from 'src/layouts/NowPlayingBar/style'
 
 export const PictureInPictureButton = () => {
     return (
-        <Box>
-            <StyledIcon>
-                <StyledTooltip
-                    title='Picture in picture'
-                    placement='top'
-                >
-                    <FeaturedVideoIcon fontSize='small' />
-                </StyledTooltip>
-            </StyledIcon>
-        </Box>
+        <StyledIcon>
+            <StyledTooltip
+                title='Picture in picture'
+                placement='top'
+            >
+                <FeaturedVideoIcon fontSize='small' />
+            </StyledTooltip>
+        </StyledIcon>
     )
 }

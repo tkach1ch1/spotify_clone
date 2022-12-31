@@ -3,12 +3,14 @@ import { Box } from '@mui/system'
 import { StyledSlider, TimerNumbers } from 'src/layouts/NowPlayingBar/style'
 import { useFormatDuration } from 'src/hooks/useFormatDuration'
 
-export const PlaySlider = () => {
+interface PlaylSlider {
+    ms_duration: number
+}
+
+export const PlaySlider = ({ ms_duration }: PlaylSlider) => {
     const [position, setPosition] = useState(0)
 
     const { trackDuration } = useFormatDuration()
-
-    const duration = 200 // seconds
 
     return (
         <Box
@@ -26,11 +28,11 @@ export const PlaySlider = () => {
                 value={position}
                 min={0}
                 step={1}
-                max={duration}
+                max={ms_duration}
                 onChange={(_, value) => setPosition(value as number)}
             />
             <TimerNumbers sx={{ textAlign: 'left' }}>
-                {trackDuration(duration - position)}
+                {trackDuration(ms_duration - position)}
             </TimerNumbers>
         </Box>
     )

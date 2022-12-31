@@ -1,13 +1,30 @@
 import { Box } from '@mui/system'
+import { useAppSelector } from 'src/hooks/hooks'
+import { FiMusic } from 'react-icons/fi'
+import { theme } from 'src/assets/theme'
+import { DefaultNowPlayingSongBox } from 'src/layouts/NowPlayingBar/style'
 
-export const AlbumImage = () => {
+interface AlbumImageProps {
+    image: string
+    albumName: string
+}
+
+export const AlbumImage = ({ image, albumName }: AlbumImageProps) => {
+    const nowPlayingPlaylist = useAppSelector((state) => state.playingPlaylist.nowPlayingPlaylist)
+
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <img
-                style={{ width: '56px', height: '56px' }}
-                src='https://i.scdn.co/image/ab67616d00004851749901160fa2d11425c9a8fc'
-                alt='Album'
-            />
+            {image ? (
+                <img
+                    style={{ width: '56px', height: '56px' }}
+                    src={image}
+                    alt={albumName}
+                />
+            ) : (
+                <DefaultNowPlayingSongBox>
+                    <FiMusic style={{ width: '23px', height: '23px' }} />
+                </DefaultNowPlayingSongBox>
+            )}
         </Box>
     )
 }

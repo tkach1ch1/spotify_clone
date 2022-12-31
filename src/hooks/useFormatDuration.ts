@@ -1,7 +1,7 @@
 export const useFormatDuration = () => {
     const trackDuration = (value: number) => {
-        const minute = Math.floor(value / 60)
-        const secondLeft = value - minute * 60
+        const minute = Math.floor((value / (1000 * 60)) % 60)
+        const secondLeft = Math.floor(((value % 60000) / 1000) % 60)
         return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`
     }
 

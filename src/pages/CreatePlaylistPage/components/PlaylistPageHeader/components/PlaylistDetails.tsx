@@ -21,7 +21,10 @@ export const PlaylistDetails = ({
         <PlaylistDetailsBox>
             <Box sx={{ fontWeight: '500' }}>{playlistOwnerName}</Box>
             <Box>•</Box>
-            <Box> {`${allPlaylistTracksLength} songs, `} </Box>
+            <Box>
+                {' '}
+                {!allPlaylistTracksLength ? `0 songs, ` : `${allPlaylistTracksLength} songs, `}{' '}
+            </Box>
             <Box sx={{ color: theme.palette.primary.light }}>
                 {allTracksDuration ? playlistDuration(allTracksDuration) : '0 hr 0 min'}
             </Box>

@@ -1,4 +1,5 @@
 import { Box } from '@mui/system'
+import { nanoid } from 'nanoid'
 import { useNavigate } from 'react-router-dom'
 import { theme } from 'src/assets/theme'
 import { HoveredGreenPlayButton } from 'src/components/HoveredGreenPlayButton'
@@ -33,7 +34,10 @@ export const LikedSongs = () => {
                 <LikedSongsListBox>
                     <LikedSongsList>
                         {allLikedSongs.map((elem) => (
-                            <Box sx={{ color: theme.palette.primary.main }}>
+                            <Box
+                                sx={{ color: theme.palette.primary.main }}
+                                key={nanoid()}
+                            >
                                 <span>{`${elem.name} `}</span>
                                 <span style={{ opacity: '0.7' }}>{elem.album.name}</span>
                                 <span>•</span>
@@ -49,6 +53,7 @@ export const LikedSongs = () => {
                 <HoveredGreenPlayButton
                     bottom='20px'
                     right='20px'
+                    playlistTracks={allLikedSongs}
                 />
             </InnerLikedSongsBox>
         </LikedSongsBox>

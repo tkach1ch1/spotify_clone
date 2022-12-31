@@ -1,3 +1,7 @@
+import React from 'react'
+import { useAppDispatch } from 'src/hooks/hooks'
+import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
+import { addToNowPlayingPlaylist } from 'src/redux/nowPlayingPlaylistReducer'
 import { GreenPlayButton } from './GreenPlayButton'
 import { HoveredGreenPlayButtonBox } from './style'
 
@@ -6,6 +10,7 @@ interface HoveredGreenPlayButtonProps {
     bottom?: string
     right?: string
     left?: string
+    playlistTracks: AllPlaylistTracksElements[]
 }
 
 export const HoveredGreenPlayButton = ({
@@ -13,6 +18,7 @@ export const HoveredGreenPlayButton = ({
     bottom,
     right,
     left,
+    playlistTracks,
 }: HoveredGreenPlayButtonProps) => {
     return (
         <HoveredGreenPlayButtonBox
@@ -28,6 +34,7 @@ export const HoveredGreenPlayButton = ({
             <GreenPlayButton
                 width='50px'
                 height='50px'
+                playlistTracks={playlistTracks}
             />
         </HoveredGreenPlayButtonBox>
     )

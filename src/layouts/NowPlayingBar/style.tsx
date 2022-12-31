@@ -33,7 +33,7 @@ export const AuthorizedFooterBox = styled(Box)({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: '20px',
+    width: '100%',
     height: '90px',
     padding: '0 16px',
     backgroundColor: '#181818',
@@ -54,6 +54,8 @@ export const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 export const StyledIcon = styled(Box)({
     color: theme.palette.primary.dark,
+    display: 'flex',
+    alignItems: 'center',
     '&:hover': {
         color: theme.palette.primary.main,
         transition: 'all 0.2s',
@@ -97,12 +99,23 @@ export const StyledSlider = styled(Slider)({
 
 // SongDescription section //
 
+export const DefaultNowPlayingSongBox = styled(Box)({
+    width: '56px',
+    height: '56px',
+    color: theme.palette.primary.dark,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.palette.secondary.light,
+})
+
 export const SongDescriptionBox = styled(Box)({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    flexGrow: 1,
     gap: '10px',
+    minWidth: '180px',
+    width: '30%',
 })
 
 export const SongAndArtistNameBox = styled(Box)({
@@ -112,6 +125,11 @@ export const SongAndArtistNameBox = styled(Box)({
 })
 
 export const StyledSongName = styled(Link)({
+    wordBreak: 'break-all',
+    display: '-webkit-box',
+    WebkitLineClamp: '1',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
     color: 'white',
     textDecoration: 'none',
     fontSize: '14px',
@@ -123,6 +141,11 @@ export const StyledSongName = styled(Link)({
 
 export const StyledArtistName = styled(Link)({
     color: theme.palette.primary.dark,
+    wordBreak: 'break-all',
+    display: '-webkit-box',
+    WebkitLineClamp: '1',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
     textDecoration: 'none',
     fontSize: '11px',
     '&:hover': {
@@ -144,8 +167,8 @@ export const StyledPlayIcon = styled(Box)({
 export const PlayBarBox = styled(Box)({
     display: 'flex',
     flexDirection: 'column',
-    width: '40%',
     maxWidth: '722px',
+    width: '40%',
 })
 
 export const GreenDot = styled(Box)({
@@ -170,6 +193,7 @@ export const RightSideBarBox = styled(Box)({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    flexGrow: 1,
     gap: '15px',
+    minWidth: '180px',
+    width: '30%',
 })

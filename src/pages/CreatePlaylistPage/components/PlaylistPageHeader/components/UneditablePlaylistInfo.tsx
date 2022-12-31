@@ -15,12 +15,12 @@ interface UneditablePlaylistInfoProps {
 
 export const UneditablePlaylistInfo = ({ playlistInfo }: UneditablePlaylistInfoProps) => {
     const { lengthCheck } = useFontSizeChange()
-    const { allPlaylistTracks } = usePlaylistTracks()
+    const { allPlaylistTracks } = usePlaylistTracks(playlistInfo.playlistId)
 
     //Sum duration of all playlist tracks
-    const allPlaylistTracksDuration = allPlaylistTracks
-        .map((elem) => elem.duration_ms)
-        .reduce((prev, cur) => prev + cur, 0)
+    const allPlaylistTracksDuration =
+        allPlaylistTracks &&
+        allPlaylistTracks.map((elem) => elem.duration_ms).reduce((prev, cur) => prev + cur, 0)
 
     return (
         <PlayListInfoBox>
@@ -54,7 +54,7 @@ export const UneditablePlaylistInfo = ({ playlistInfo }: UneditablePlaylistInfoP
             <PlaylistDetails
                 allTracksDuration={allPlaylistTracksDuration}
                 playlistOwnerName={playlistInfo.playlistOwnerName}
-                allPlaylistTracksLength={allPlaylistTracks.length}
+                allPlaylistTracksLength={allPlaylistTracks && allPlaylistTracks.length}
             />
         </PlayListInfoBox>
     )

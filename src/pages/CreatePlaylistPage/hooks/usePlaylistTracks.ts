@@ -1,4 +1,4 @@
-import { useAppSelector } from './../../../hooks/hooks'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { APIController } from 'src/controllers/APIController'
 import { useState, useEffect } from 'react'
 
@@ -20,12 +20,14 @@ export interface AllPlaylistTracksElements {
     dateAdded: string
 }
 
-export const usePlaylistTracks = () => {
+export const usePlaylistTracks = (playlistId: string) => {
     const [allPlaylistTracks, setAllPlaylistTracks] = useState<AllPlaylistTracksElements[]>([])
+    const { allPlaylistsArray } = useAddedPlaylist()
+
+    const notAddedPlaylist = allPlaylistsArray.filter((elem) => elem.playlistId === playlistId)
 
     const { getToken, getPlaylistTracks } = APIController
 
-    const playlistId = useAppSelector((state) => state.playlist.playlistInfo.playlistId)
     //Geting all genres from API
     useEffect(() => {
         try {
@@ -34,7 +36,7 @@ export const usePlaylistTracks = () => {
                 try {
                     const token = await getToken()
                     const tracks = await getPlaylistTracks(token, playlistId)
-                    setAllPlaylistTracks(tracks.map((elem: any) => elem.track))
+                    setAllPlaylistTracks(tracks && tracks.map((elem: any) => elem.track))
                 } catch (error) {
                     console.log('Fetched data error: ' + error)
                 }
@@ -43,6 +45,6 @@ export const usePlaylistTracks = () => {
         } catch (error) {
             console.log('Error: ' + error)
         }
-    }, [getToken, getPlaylistTracks, playlistId])
+    }, [getToken, getPlaylistTracks, playlistId, notAddedPlaylist.length])
     return { allPlaylistTracks }
 }

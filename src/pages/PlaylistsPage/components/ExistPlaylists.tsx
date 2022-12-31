@@ -34,18 +34,19 @@ export const ExistPlaylists = () => {
             <PlaylistPageName />
             <AllPlaylistsMainContainer sx={contentElementsPlaylistsWidthControl()}>
                 <LikedSongs />
-                {allPlaylistsArray.map((elem) => (
-                    <PlaylistElement
-                        key={nanoid()}
-                        playlistName={elem?.playlistName}
-                        playlistDescription={elem?.playlistDescription}
-                        playlistId={elem?.playlistId}
-                        playlistImage={elem?.playlistImage}
-                        isNotPlayable={!elem.playlistTracks?.length}
-                        playlistOwnerName={''}
-                        playlistTracks={[]}
-                    />
-                ))}
+                {allPlaylistsArray &&
+                    allPlaylistsArray.map((elem) => (
+                        <PlaylistElement
+                            key={nanoid()}
+                            playlistName={elem?.playlistName}
+                            playlistDescription={elem?.playlistDescription}
+                            playlistId={elem?.playlistId}
+                            playlistImage={elem?.playlistImage}
+                            isNotPlayable={!elem.playlistTracks?.length}
+                            playlistOwnerName={''}
+                            playlistTracks={elem.playlistTracks}
+                        />
+                    ))}
             </AllPlaylistsMainContainer>
         </>
     )

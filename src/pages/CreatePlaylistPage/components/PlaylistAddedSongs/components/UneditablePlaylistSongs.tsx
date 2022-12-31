@@ -12,25 +12,20 @@ import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
 
 export const UneditablePlaylistSongs = () => {
     const dispatch = useAppDispatch()
-
+    //Current spotify playlist, that not added yet
+    const notAddedPlaylist = useAppSelector((state) => state.playlist.playlistInfo)
     //--//
     //Finding existed playlist
     const { addedPlaylist, allPlaylistsArray } = useAddedPlaylist()
-    const { allPlaylistTracks } = usePlaylistTracks()
-
-    //Current spotify playlist, that not added yet
-    const notAddedPlaylist = useAppSelector((state) => state.playlist.playlistInfo)
+    const { allPlaylistTracks } = usePlaylistTracks(notAddedPlaylist.playlistId)
 
     //Add playlist tracks to current playlist in playlistReducer
     //to get this tracks if the playlist will added to all user Playlists
     useEffect(() => {
-        if (
-            !allPlaylistsArray.find((elem) => elem.playlistId === notAddedPlaylist.playlistId)
-                ?.playlistTracks.length
-        ) {
+        if (notAddedPlaylist.playlistId) {
             dispatch(getPlaylistTracks(allPlaylistTracks))
         }
-    }, [dispatch, allPlaylistTracks, allPlaylistsArray, notAddedPlaylist.playlistId])
+    }, [dispatch, allPlaylistTracks, notAddedPlaylist.playlistId])
 
     //--//
 
@@ -45,23 +40,27 @@ export const UneditablePlaylistSongs = () => {
             return onButtonRemovePlaylist(addedPlaylist)
         }
     }
+
     //Overwrite playlistReducer with added playlist to stay on this playlist
     //in case when playlist will be removed and not to go to memorized previous playlist in playlisReducer
     useEffect(() => {
         if (allPlaylistsArray.find((elem) => elem.playlistId === addedPlaylist?.playlistId)) {
             dispatch(getPlaylistInfo(addedPlaylist))
         }
-    })
+    }, [dispatch, addedPlaylist, allPlaylistsArray])
 
     return (
         <Box>
-            {!!allPlaylistTracks.length ? (
+            {allPlaylistTracks && !!allPlaylistTracks.length ? (
                 <>
                     <PlayButtonBox>
                         <GreenPlayButton
                             width='58px'
                             height='58px'
                             tabIndex={0}
+                            playlistTracks={
+                                addedPlaylist ? addedPlaylist.playlistTracks : allPlaylistTracks
+                            }
                         />
                         <LikeButton
                             sx={{ width: '40px', height: '40px' }}

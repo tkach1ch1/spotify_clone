@@ -14,8 +14,6 @@ export const useAddSongToSelectedPlaylist = (curTrackId: string, selectElementsA
     const { allPlaylistsArray } = useAddedPlaylist()
     const allCreatedPlaylists = allPlaylistsArray.filter((elem) => !!elem.playlistCollab)
 
-    const [open, setOpen] = useState(false)
-
     const addSongsToSelectedPlaylist = (id: string) => {
         //Find clicked playlist in Select
         const clickedPlaylist = selectElementsArray.find((elem) => elem.id === id)
@@ -23,25 +21,19 @@ export const useAddSongToSelectedPlaylist = (curTrackId: string, selectElementsA
         const findPlaylist = allCreatedPlaylists.find(
             (elem) => elem.playlistId === clickedPlaylist?.id
         )
+        //Change track release date to track added date to playlist
+        const foundTrackWithDateAdded = { ...findTrack, dateAdded: new Date().toISOString() }
         //Update playlist
         const changedCurrentPlaylist = {
             ...findPlaylist,
-            playlistTracks: findPlaylist && [...findPlaylist.playlistTracks, findTrack],
+            playlistTracks: findPlaylist && [
+                ...findPlaylist.playlistTracks,
+                foundTrackWithDateAdded,
+            ],
         }
         //Send it to all playlists
         dispatch(changePlaylistDetails(changedCurrentPlaylist))
     }
 
-    useEffect(() => {
-        setOpen(true)
-        setTimeout(() => {
-            try {
-                setOpen(false)
-            } catch (error) {
-                console.log(error)
-            }
-        }, 2000)
-    }, [])
-
-    return { addSongsToSelectedPlaylist, open }
+    return { addSongsToSelectedPlaylist }
 }

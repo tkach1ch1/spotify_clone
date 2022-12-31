@@ -6,6 +6,8 @@ import { FiMusic } from 'react-icons/fi'
 import { PlaylistElementProps } from 'src/assets/types/types'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { getPlaylistInfo } from 'src/redux/playlistReducer'
+import { usePlaylistTracks } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
+import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 
 export const PlaylistElement = ({
     playlistName,
@@ -15,11 +17,13 @@ export const PlaylistElement = ({
     playlistOwnerId,
     playlistOwnerName,
     isNotPlayable, //For playlists
+    playlistTracks,
 }: PlaylistElementProps) => {
     const navigate = useNavigate()
 
     const dispatch = useAppDispatch()
 
+    //On playlist click
     const navigatePlaylistAndGetInfo = () => {
         navigate(`/playlist/${playlistId}`)
         dispatch(
@@ -42,6 +46,12 @@ export const PlaylistElement = ({
             navigatePlaylistAndGetInfo()
         }
     }
+
+    const { allPlaylistsArray } = useAddedPlaylist()
+
+    // const findAddedPlaylist = allPlaylistsArray.find((elem) => elem.playlistId === playlistId)
+    //Get current or clicked playlist tracks
+    const { allPlaylistTracks } = usePlaylistTracks(playlistId)
 
     return (
         <ElementBox
@@ -86,6 +96,7 @@ export const PlaylistElement = ({
                     <HoveredGreenPlayButton
                         bottom='5px'
                         right='5px'
+                        playlistTracks={playlistTracks || allPlaylistTracks}
                     />
                 )}
             </Box>

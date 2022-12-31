@@ -7,7 +7,11 @@ import { NextButton } from './components/NextButton'
 import { RepeatButton } from './components/RepeatButton'
 import { PlaySlider } from './components/PlaySlider'
 
-export const PlayBar = () => {
+interface PlayBarProps {
+    duration_ms: number
+}
+
+export const PlayBar = ({ duration_ms }: PlayBarProps) => {
     return (
         <PlayBarBox>
             <Box
@@ -25,7 +29,7 @@ export const PlayBar = () => {
                 <RepeatButton />
             </Box>
             <Box>
-                <PlaySlider />
+                <PlaySlider ms_duration={duration_ms} />
             </Box>
         </PlayBarBox>
     )
