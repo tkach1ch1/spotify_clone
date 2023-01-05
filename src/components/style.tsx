@@ -104,7 +104,7 @@ export const SnackbarBox = styled(Box)({
     position: 'fixed',
     width: '100%',
     bottom: '105px',
-    left: '40px',
+    left: '0',
     display: 'flex',
     justifyContent: 'center',
     zIndex: 100,

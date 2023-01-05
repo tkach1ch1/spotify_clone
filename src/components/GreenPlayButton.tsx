@@ -1,7 +1,6 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React, { memo } from 'react'
 import { useAppDispatch } from 'src/hooks/hooks'
-import { useNowPlayingTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNowPlayingTrack'
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import { addToNowPlayingPlaylist, trackIsPlaying } from 'src/redux/nowPlayingPlaylistReducer'
 import { GreenPlayButtonBox } from './style'

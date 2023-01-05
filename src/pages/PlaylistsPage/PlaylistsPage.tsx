@@ -2,7 +2,6 @@ import { MainContainer } from '../../layouts/MainContainer/MainContainer'
 import { useAppSelector } from 'src/hooks/hooks'
 import { ExistPlaylists } from './components/ExistPlaylists'
 import { NoPlaylists } from './components/NoPlaylists'
-import { useNowPlayingTrack } from '../../layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNowPlayingTrack'
 
 export const PlaylistsPage = () => {
     const allPlaylistsArray = useAppSelector((state) => state.allPlaylists.allPlaylistsArray)

@@ -54,12 +54,7 @@ export const Song = memo(
 
         //--//
 
-        const {
-            openSnackbar,
-            alreadyLikedSong,
-            onButtonAddToLikedSongs,
-            onButtonRemoveFromLikedSongs,
-        } = useSongActions(id)
+        // -- ADD SONG TO SELECTED PLAYLIST ON MORE OPTIONS BUTTON CLICK -- //
 
         //Sort all self created playlists from all user
         const { allPlaylistsArray } = useAddedPlaylist()
@@ -78,6 +73,19 @@ export const Song = memo(
         //Add song to selected playlist
         const { addSongsToSelectedPlaylist } = useAddSongToSelectedPlaylist(id, selectElementsArray)
 
+        // -- //
+
+        // -- ADD/REMOVE SONG TO/FROM LIKED SONGS -- //
+
+        const {
+            openSnackbar,
+            alreadyLikedSong,
+            onButtonAddToLikedSongs,
+            onButtonRemoveFromLikedSongs,
+        } = useSongActions(id)
+
+        //--//
+
         const isSnackbar = useAppSelector((state) => state.openSnack.snackbar)
 
         useEffect(() => {
@@ -87,6 +95,8 @@ export const Song = memo(
                 }, 2000)
             }
         })
+
+        // -- ADD TRACK TO NOW PLAYING BAR -- //
 
         //Add song to NowPlayingBar
         //Find track on his id
@@ -114,6 +124,7 @@ export const Song = memo(
         const trackPause = () => {
             dispatch(trackIsPlaying(false))
         }
+
         //--//
 
         return (
@@ -160,6 +171,7 @@ export const Song = memo(
                             songName={name}
                             authorName={artists.map((elem) => elem.name).join(' ')}
                             image={album.images && album.images[0].url}
+                            trackInPlayBar={currentlyPlayingTrack?.id}
                         />
                     </Box>
                     <Var1Segment

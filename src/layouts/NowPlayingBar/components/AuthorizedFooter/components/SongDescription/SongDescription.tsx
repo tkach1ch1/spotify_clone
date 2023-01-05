@@ -10,6 +10,7 @@ interface SongDescriptionProps {
     songName: string
     artistName: string
     albumName: string
+    id: string
 }
 
 export const SongDescription = ({
@@ -17,6 +18,7 @@ export const SongDescription = ({
     songName,
     artistName,
     albumName,
+    id,
 }: SongDescriptionProps) => {
     return (
         <SongDescriptionBox>
@@ -30,7 +32,7 @@ export const SongDescription = ({
             />
 
             <Box sx={{ display: 'flex', gap: '15px', pl: '20px' }}>
-                <SaveToLibraryButton />
+                <SaveToLibraryButton id={id} />
                 <PictureInPictureButton />
             </Box>
         </SongDescriptionBox>

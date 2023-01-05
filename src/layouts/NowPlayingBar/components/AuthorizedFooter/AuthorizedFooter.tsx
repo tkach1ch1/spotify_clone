@@ -23,6 +23,7 @@ export const AuthorizedFooter = memo(() => {
                             .map((elem) => elem.name)
                             .join(' ')}
                         albumName={currentlyPlayingTrack?.album.name}
+                        id={currentlyPlayingTrack?.id}
                     />
                     <PlayBar
                         audio={audio}
@@ -39,6 +40,7 @@ export const AuthorizedFooter = memo(() => {
                         songName=''
                         artistName=''
                         albumName=''
+                        id=''
                     />
                     <PlayBar
                         audio={new Audio()}

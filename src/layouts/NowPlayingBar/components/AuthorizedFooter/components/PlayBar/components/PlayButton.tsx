@@ -37,9 +37,6 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
     // and pause him if another track was chosen
     useEffect(() => {
         if (isPlaying) {
-            audio.currentTime = 0
-            dispatch(trackCurrentDuration(audio.currentTime * 0))
-
             audio.play()
         } else if (!isPlaying) {
             audio.pause()
