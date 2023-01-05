@@ -2,25 +2,35 @@ import { AuthorizedFooterBox } from 'src/layouts/NowPlayingBar/style'
 import { SongDescription } from './components/SongDescription/SongDescription'
 import { PlayBar } from './components/PlayBar/PlayBar'
 import { RightSideBar } from './components/RightSideBar/RightSideBar'
-import { useAppSelector } from 'src/hooks/hooks'
+import { memo } from 'react'
+import { useNowPlayingTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNowPlayingTrack'
 
-export const AuthorizedFooter = () => {
-    const nowPlayingPlaylist = useAppSelector((state) => state.playingPlaylist.nowPlayingPlaylist)
-    const trackIndex = useAppSelector((state) => state.playingPlaylist.trackIndex)
+export const AuthorizedFooter = memo(() => {
+    const { currentlyPlayingTrack, nowPlayingPlaylist } = useNowPlayingTrack()
+
+    const audio = currentlyPlayingTrack?.file
+
     return (
         <AuthorizedFooterBox>
-            {nowPlayingPlaylist && nowPlayingPlaylist.length > 0 ? (
+            {currentlyPlayingTrack && nowPlayingPlaylist.length > 0 ? (
                 <>
+                    {/* Taking first elem in now playing playlist   */}
+                    {/* and then on prev and next button changing track elements */}
                     <SongDescription
-                        image={nowPlayingPlaylist[trackIndex].album.images[0].url}
-                        songName={nowPlayingPlaylist[trackIndex].name}
-                        artistName={nowPlayingPlaylist[trackIndex].artists
+                        image={currentlyPlayingTrack?.album.images[0].url}
+                        songName={currentlyPlayingTrack?.name}
+                        artistName={currentlyPlayingTrack?.artists
                             .map((elem) => elem.name)
                             .join(' ')}
-                        albumName={nowPlayingPlaylist[trackIndex].album.name}
+                        albumName={currentlyPlayingTrack?.album.name}
                     />
-                    <PlayBar duration_ms={nowPlayingPlaylist[trackIndex].duration_ms} />
-                    <RightSideBar />
+                    <PlayBar
+                        audio={audio}
+                        isPlaying={currentlyPlayingTrack?.isPlaying}
+                        current_duration={currentlyPlayingTrack?.current_duration}
+                    />
+
+                    <RightSideBar audio={audio} />
                 </>
             ) : (
                 <>
@@ -30,10 +40,14 @@ export const AuthorizedFooter = () => {
                         artistName=''
                         albumName=''
                     />
-                    <PlayBar duration_ms={0} />
-                    <RightSideBar />
+                    <PlayBar
+                        audio={new Audio()}
+                        isPlaying={false}
+                        current_duration={0}
+                    />
+                    <RightSideBar audio={new Audio()} />
                 </>
             )}
         </AuthorizedFooterBox>
     )
-}
+})

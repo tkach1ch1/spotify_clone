@@ -1,16 +1,18 @@
-import { useState } from 'react'
 import { Box } from '@mui/system'
 import { StyledSlider, TimerNumbers } from 'src/layouts/NowPlayingBar/style'
 import { useFormatDuration } from 'src/hooks/useFormatDuration'
+import { useAppDispatch, useAppSelector } from 'src/hooks/hooks'
+import { trackCurrentDuration } from 'src/redux/nowPlayingPlaylistReducer'
 
 interface PlaylSlider {
     ms_duration: number
+    current_duration: number
 }
 
-export const PlaySlider = ({ ms_duration }: PlaylSlider) => {
-    const [position, setPosition] = useState(0)
-
+export const PlaySlider = ({ ms_duration, current_duration }: PlaylSlider) => {
     const { trackDuration } = useFormatDuration()
+
+    const dispatch = useAppDispatch()
 
     return (
         <Box
@@ -21,18 +23,22 @@ export const PlaySlider = ({ ms_duration }: PlaylSlider) => {
                 gap: '15px',
             }}
         >
-            <TimerNumbers sx={{ textAlign: 'right' }}>{trackDuration(position)}</TimerNumbers>
+            <TimerNumbers sx={{ textAlign: 'right' }}>
+                {trackDuration(current_duration)}
+            </TimerNumbers>
             <StyledSlider
                 aria-label='time-indicator'
                 size='small'
-                value={position}
+                value={current_duration}
                 min={0}
                 step={1}
                 max={ms_duration}
-                onChange={(_, value) => setPosition(value as number)}
+                onChange={(_, value) => {
+                    dispatch(trackCurrentDuration(value))
+                }}
             />
             <TimerNumbers sx={{ textAlign: 'left' }}>
-                {trackDuration(ms_duration - position)}
+                {trackDuration(ms_duration - current_duration)}
             </TimerNumbers>
         </Box>
     )

@@ -10,8 +10,6 @@ interface AlbumImageProps {
 }
 
 export const AlbumImage = ({ image, albumName }: AlbumImageProps) => {
-    const nowPlayingPlaylist = useAppSelector((state) => state.playingPlaylist.nowPlayingPlaylist)
-
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {image ? (

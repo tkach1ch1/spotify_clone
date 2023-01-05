@@ -18,6 +18,9 @@ export interface AllPlaylistTracksElements {
     artists: ArtistsElement[]
     album: { id: string; name: string; images: ImagesElements[]; release_date: string }
     dateAdded: string
+    preview_url?: string
+    isPlaying?: boolean
+    current_duration?: number
 }
 
 export const usePlaylistTracks = (playlistId: string) => {

@@ -2,7 +2,6 @@ import { PlaylistElement } from 'src/layouts/ContentSection/components/PlaylistE
 import { AllGenresBox } from 'src/pages/SearchPage/style'
 import { GenrePlaylistsElements } from '../hooks/useGenrePlaylists'
 import { nanoid } from 'nanoid'
-import { usePlaylistTracks } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 
 interface AllGenrePlaylistsProps {
     playlistsArray: GenrePlaylistsElements[]

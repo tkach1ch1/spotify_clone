@@ -15,7 +15,7 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
     return (
         <>
             {/* Tracks */}
-            {foundTracks
+            {foundTracks && foundTracks?.length > 0
                 ? foundTracks.map((elem) => (
                       <ResultSong
                           key={nanoid()}
@@ -30,24 +30,25 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
                   ))
                 : null}
             {/* Artists */}
-            {foundArtists
+            {foundArtists && foundArtists?.length > 0
                 ? foundArtists.map((elem) => (
                       <Result
                           key={nanoid()}
                           name={elem.name}
-                          image={elem.images[0].url}
+                          image={elem.images[0]?.url}
                           subtitle='Artist'
                       />
                   ))
                 : null}
 
             {/* Albums */}
-            {foundAlbums
+
+            {foundAlbums && foundAlbums?.length > 0
                 ? foundAlbums.map((elem) => (
                       <Result
                           key={nanoid()}
                           name={elem.name}
-                          image={elem.images[0].url}
+                          image={elem.images[0]?.url}
                           subtitle='Album'
                       />
                   ))

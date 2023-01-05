@@ -5,12 +5,12 @@ import { SongsSection } from './SongsSection'
 import { usePlaylistTracks } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import { LikeButton } from './LikeButton'
 import { useAppDispatch, useAppSelector } from 'src/hooks/hooks'
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { getPlaylistInfo, getPlaylistTracks } from 'src/redux/playlistReducer'
 import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { useOnButtonAddRemove } from 'src/hooks/useOnButtonAddRemove'
 
-export const UneditablePlaylistSongs = () => {
+export const UneditablePlaylistSongs = memo(() => {
     const dispatch = useAppDispatch()
     //Current spotify playlist, that not added yet
     const notAddedPlaylist = useAppSelector((state) => state.playlist.playlistInfo)
@@ -81,4 +81,4 @@ export const UneditablePlaylistSongs = () => {
             ) : null}
         </Box>
     )
-}
+})

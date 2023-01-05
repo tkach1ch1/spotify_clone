@@ -4,13 +4,17 @@ import { LyricsButton } from '../RightSideBar/components/LyricsButton'
 import { QueueButton } from '../RightSideBar/components/QueueButton'
 import { SoundBar } from '../RightSideBar/components/SoundBar'
 
-export const RightSideBar = () => {
+interface RightSideBarProps {
+    audio: HTMLAudioElement
+}
+
+export const RightSideBar = ({ audio }: RightSideBarProps) => {
     return (
         <RightSideBarBox>
             <LyricsButton />
             <QueueButton />
             <ConnectToDeviceButton />
-            <SoundBar />
+            <SoundBar audio={audio} />
         </RightSideBarBox>
     )
 }

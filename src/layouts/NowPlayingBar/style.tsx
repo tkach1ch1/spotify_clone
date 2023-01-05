@@ -56,10 +56,10 @@ export const StyledIcon = styled(Box)({
     color: theme.palette.primary.dark,
     display: 'flex',
     alignItems: 'center',
-    '&:hover': {
-        color: theme.palette.primary.main,
-        transition: 'all 0.2s',
-    },
+    // '&:hover': {
+    //     color: theme.palette.primary.main,
+    //     transition: 'all 0.2s',
+    // },
     '&:active': {
         color: theme.palette.primary.dark,
     },
@@ -156,7 +156,10 @@ export const StyledArtistName = styled(Link)({
 
 // PlayBar section //
 
-export const StyledPlayIcon = styled(Box)({
+export const StyledPlayIcon = styled('button')({
+    backgroundColor: 'transparent',
+    border: 'none',
+
     color: theme.palette.primary.main,
     '&:active': {
         transform: 'scale(0.9)',
@@ -174,7 +177,7 @@ export const PlayBarBox = styled(Box)({
 export const GreenDot = styled(Box)({
     position: 'absolute',
     left: '42%',
-    bottom: '1px',
+    bottom: '-3px',
     width: '4px',
     height: '4px',
     borderRadius: '50%',

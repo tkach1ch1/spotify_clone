@@ -7,7 +7,7 @@ export const ConnectToDeviceButton = () => {
     const [connect, setConnect] = useState(false)
 
     return (
-        <Box>
+        <Box sx={{ cursor: 'not-allowed' }}>
             {/* On connect true the connect window will appear */}
             {connect ? null : null}
             <Box sx={{ mb: '2px' }}>

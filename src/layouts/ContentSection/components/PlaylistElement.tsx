@@ -7,7 +7,6 @@ import { PlaylistElementProps } from 'src/assets/types/types'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { getPlaylistInfo } from 'src/redux/playlistReducer'
 import { usePlaylistTracks } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
-import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 
 export const PlaylistElement = ({
     playlistName,
@@ -46,8 +45,6 @@ export const PlaylistElement = ({
             navigatePlaylistAndGetInfo()
         }
     }
-
-    const { allPlaylistsArray } = useAddedPlaylist()
 
     // const findAddedPlaylist = allPlaylistsArray.find((elem) => elem.playlistId === playlistId)
     //Get current or clicked playlist tracks

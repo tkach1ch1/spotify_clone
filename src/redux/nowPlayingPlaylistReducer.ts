@@ -1,14 +1,25 @@
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import { createSlice } from '@reduxjs/toolkit'
 
-interface nowPlayingPlaylistReducerElements {
-    nowPlayingPlaylist: AllPlaylistTracksElements[]
-    trackIndex: number
+interface NowPlayingPlaylistElements extends AllPlaylistTracksElements {
+    isPlaying: boolean
+    preview_url: string
+    file: HTMLAudioElement
+    current_duration: number
 }
 
-const initialState: nowPlayingPlaylistReducerElements = {
+interface NowPlayingPlaylistReducerElements {
+    nowPlayingPlaylist: NowPlayingPlaylistElements[]
+    trackIndex: number
+    track_volume: number
+    muted: boolean
+}
+
+const initialState: NowPlayingPlaylistReducerElements = {
     nowPlayingPlaylist: [],
     trackIndex: 0,
+    track_volume: 30,
+    muted: false,
 }
 
 const nowPlayingPlaylistReducer = createSlice({
@@ -18,19 +29,40 @@ const nowPlayingPlaylistReducer = createSlice({
         addToNowPlayingPlaylist: (state, action) => {
             state.nowPlayingPlaylist = [action.payload].flat(1)
         },
-        getNextTrack: (state) => {
-            if (state.trackIndex !== state.nowPlayingPlaylist.length - 1)
-                state.trackIndex = state.trackIndex + 1
+        updateTrackIndex: (state, action) => {
+            state.trackIndex = action.payload
         },
-        getPrevTrack: (state) => {
-            if (state.trackIndex !== 0) {
-                state.trackIndex = state.trackIndex - 1
+
+        trackVolumeControll: (state, action) => {
+            state.track_volume = action.payload
+        },
+        trackMuted: (state, action) => {
+            state.muted = action.payload
+        },
+
+        trackCurrentDuration: (state, action) => {
+            state.nowPlayingPlaylist[state.trackIndex] = {
+                ...state.nowPlayingPlaylist[state.trackIndex],
+                current_duration: action.payload,
+            }
+        },
+
+        trackIsPlaying: (state, action) => {
+            state.nowPlayingPlaylist[state.trackIndex] = {
+                ...state.nowPlayingPlaylist[state.trackIndex],
+                isPlaying: action.payload,
             }
         },
     },
 })
 
-export const { addToNowPlayingPlaylist, getNextTrack, getPrevTrack } =
-    nowPlayingPlaylistReducer.actions
+export const {
+    addToNowPlayingPlaylist,
+    updateTrackIndex,
+    trackVolumeControll,
+    trackMuted,
+    trackCurrentDuration,
+    trackIsPlaying,
+} = nowPlayingPlaylistReducer.actions
 
 export default nowPlayingPlaylistReducer.reducer

@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+import { memo } from 'react'
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
 import { StyledSongsBox } from 'src/pages/CreatePlaylistPage/style'
 import { SearchSongSection } from './SearchSongSection'

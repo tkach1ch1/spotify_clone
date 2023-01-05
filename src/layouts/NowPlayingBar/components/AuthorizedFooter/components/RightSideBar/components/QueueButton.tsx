@@ -9,7 +9,7 @@ export const QueueButton = () => {
 
     return (
         <Box sx={{ mt: '3px' }}>
-            {queue ? (
+            {/* {queue ? (
                 <Box sx={{ position: 'relative' }}>
                     <StyledIcon
                         style={{ color: theme.palette.success.main }}
@@ -24,16 +24,19 @@ export const QueueButton = () => {
                     </StyledIcon>
                     <GreenDot />
                 </Box>
-            ) : (
-                <StyledIcon onClick={() => setQueue(true)}>
-                    <StyledTooltip
-                        title='Queue'
-                        placement='top'
-                    >
-                        <QueueMusicIcon fontSize='medium' />
-                    </StyledTooltip>
-                </StyledIcon>
-            )}
+            ) : ( */}
+            <StyledIcon
+                onClick={() => setQueue(true)}
+                sx={{ cursor: 'not-allowed' }}
+            >
+                <StyledTooltip
+                    title='Queue'
+                    placement='top'
+                >
+                    <QueueMusicIcon fontSize='medium' />
+                </StyledTooltip>
+            </StyledIcon>
+            {/* )} */}
         </Box>
     )
 }

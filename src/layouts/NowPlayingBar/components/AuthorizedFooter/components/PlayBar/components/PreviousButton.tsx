@@ -1,12 +1,20 @@
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
-import { useDispatch } from 'react-redux'
+import { useNextAndPrevTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNextAndPrevTrack'
 import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
-import { getPrevTrack } from 'src/redux/nowPlayingPlaylistReducer'
 
-export const PreviousButton = () => {
-    const dispatch = useDispatch()
+interface PrevButtonProps {
+    audio: HTMLAudioElement
+}
+
+export const PreviousButton = ({ audio }: PrevButtonProps) => {
+    const { getPrevTrack } = useNextAndPrevTrack()
+
+    const onPrevButtonClick = () => {
+        getPrevTrack(audio)
+    }
+
     return (
-        <StyledIcon onClick={() => dispatch(getPrevTrack())}>
+        <StyledIcon onClick={onPrevButtonClick}>
             <StyledTooltip
                 title='Previous'
                 placement='top'

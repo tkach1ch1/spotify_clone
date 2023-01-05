@@ -8,10 +8,15 @@ import { RepeatButton } from './components/RepeatButton'
 import { PlaySlider } from './components/PlaySlider'
 
 interface PlayBarProps {
-    duration_ms: number
+    audio: HTMLAudioElement
+    isPlaying: boolean
+    current_duration: number
 }
 
-export const PlayBar = ({ duration_ms }: PlayBarProps) => {
+export const PlayBar = ({ audio, isPlaying, current_duration }: PlayBarProps) => {
+    //Due to spotify API rules it is unallowed to get full track duration, only 30 sec
+    let previewDuration = 30000
+
     return (
         <PlayBarBox>
             <Box
@@ -23,13 +28,20 @@ export const PlayBar = ({ duration_ms }: PlayBarProps) => {
                 }}
             >
                 <ShuffleButton />
-                <PreviousButton />
-                <PlayButton />
-                <NextButton />
+                <PreviousButton audio={audio} />
+                <PlayButton
+                    audio={audio}
+                    isPlaying={isPlaying}
+                    current_duration={current_duration}
+                />
+                <NextButton audio={audio} />
                 <RepeatButton />
             </Box>
             <Box>
-                <PlaySlider ms_duration={duration_ms} />
+                <PlaySlider
+                    ms_duration={previewDuration}
+                    current_duration={current_duration}
+                />
             </Box>
         </PlayBarBox>
     )

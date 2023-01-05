@@ -1,12 +1,20 @@
 import SkipNextIcon from '@mui/icons-material/SkipNext'
-import { useAppDispatch } from 'src/hooks/hooks'
+import { useNextAndPrevTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNextAndPrevTrack'
 import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
-import { getNextTrack } from 'src/redux/nowPlayingPlaylistReducer'
 
-export const NextButton = () => {
-    const dispatch = useAppDispatch()
+interface NextButtonProps {
+    audio: HTMLAudioElement
+}
+
+export const NextButton = ({ audio }: NextButtonProps) => {
+    const { getNextTrack } = useNextAndPrevTrack()
+
+    const onNextButtonClick = () => {
+        getNextTrack(audio)
+    }
+
     return (
-        <StyledIcon onClick={() => dispatch(getNextTrack())}>
+        <StyledIcon onClick={onNextButtonClick}>
             <StyledTooltip
                 title='Next'
                 placement='top'

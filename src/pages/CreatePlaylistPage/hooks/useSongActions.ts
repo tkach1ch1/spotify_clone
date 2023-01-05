@@ -1,5 +1,5 @@
 import { useAppSelector } from './../../../hooks/hooks'
-import { useFindTrack } from './useFindTrack'
+import { useFindTrack } from '../../../hooks/useFindTrack'
 import { useOnButtonAddRemove } from './../../../hooks/useOnButtonAddRemove'
 
 export const useSongActions = (curTrackId: string) => {

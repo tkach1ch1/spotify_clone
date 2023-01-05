@@ -8,8 +8,8 @@ export const LyricsButton = () => {
     const [lyrics, setLyrics] = useState(false)
 
     return (
-        <Box>
-            {lyrics ? (
+        <>
+            {/* {lyrics ? (
                 <Box sx={{ position: 'relative' }}>
                     <StyledIcon
                         style={{ color: theme.palette.success.main }}
@@ -24,16 +24,19 @@ export const LyricsButton = () => {
                     </StyledIcon>
                     <GreenDot />
                 </Box>
-            ) : (
-                <StyledIcon onClick={() => setLyrics(true)}>
-                    <StyledTooltip
-                        title='Lyrics'
-                        placement='top'
-                    >
-                        <LyricsIcon fontSize='small' />
-                    </StyledTooltip>
-                </StyledIcon>
-            )}
-        </Box>
+            ) : ( */}
+            <StyledIcon
+                onClick={() => setLyrics(true)}
+                sx={{ cursor: 'not-allowed' }}
+            >
+                <StyledTooltip
+                    title='Lyrics'
+                    placement='top'
+                >
+                    <LyricsIcon fontSize='small' />
+                </StyledTooltip>
+            </StyledIcon>
+            {/* )} */}
+        </>
     )
 }

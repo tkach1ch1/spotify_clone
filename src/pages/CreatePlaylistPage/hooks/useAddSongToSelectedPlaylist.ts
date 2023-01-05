@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useFindTrack } from './useFindTrack'
+import { useFindTrack } from '../../../hooks/useFindTrack'
 import { useAddedPlaylist } from './useAddedPlaylist'
 import { useAppDispatch } from './../../../hooks/hooks'
 import { changePlaylistDetails } from 'src/redux/allPlaylistsReducer'

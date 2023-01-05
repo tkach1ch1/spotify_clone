@@ -15,6 +15,10 @@ export const store = configureStore({
         playingPlaylist: nowPlayingPlaylistReducer,
         openSnack: openSnackbar,
     },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
 
 export type RootState = ReturnType<typeof store.getState>
