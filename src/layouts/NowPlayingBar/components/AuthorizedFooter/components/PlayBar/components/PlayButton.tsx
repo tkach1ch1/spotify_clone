@@ -35,24 +35,25 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
 
     // Automatically play newly added track to NowPlaylingBar
     // and pause him if another track was chosen
-    useEffect(() => {
-        if (isPlaying) {
-            audio.play()
-        } else if (!isPlaying) {
-            audio.pause()
-        }
-    }, [isPlaying, audio])
+    // useEffect(() => {
+    //     if (isPlaying || audio.paused) {
+    //         audio.play()
+    //     }
+    //     if (!isPlaying || !audio.paused) {
+    //         !!audio.paused && audio.pause()
+    //     }
+    // }, [isPlaying, audio])
 
     //On Play and Pause button click
     const trackPlay = () => {
-        if (audio.paused) {
+        if (audio.paused || !isPlaying) {
             audio.play()
             dispatch(trackIsPlaying(true))
         }
     }
 
     const trackPause = () => {
-        if (!audio.paused) {
+        if (!audio.paused || isPlaying) {
             audio.pause()
             dispatch(trackIsPlaying(false))
         }

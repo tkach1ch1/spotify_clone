@@ -4,7 +4,7 @@ export const useNowPlayingTrack = () => {
     const nowPlayingPlaylist = useAppSelector((state) => state.playingPlaylist.nowPlayingPlaylist)
     const trackIndex = useAppSelector((state) => state.playingPlaylist.trackIndex)
 
-    const currentlyPlayingTrack = nowPlayingPlaylist[trackIndex]
+    const currentlyPlayingTrack = nowPlayingPlaylist && nowPlayingPlaylist[trackIndex]
 
     const audio = currentlyPlayingTrack?.file
 
