@@ -7,7 +7,7 @@ import LyricsIcon from '@mui/icons-material/Lyrics'
 //Component functionality is in progress
 
 export const LyricsButton = () => {
-    const [lyrics, setLyrics] = useState(false)
+    // const [lyrics, setLyrics] = useState(false)
 
     return (
         <>
@@ -28,7 +28,7 @@ export const LyricsButton = () => {
                 </Box>
             ) : ( */}
             <StyledIcon
-                onClick={() => setLyrics(true)}
+                // onClick={() => setLyrics(true)}
                 sx={{ cursor: 'not-allowed' }}
             >
                 <StyledTooltip

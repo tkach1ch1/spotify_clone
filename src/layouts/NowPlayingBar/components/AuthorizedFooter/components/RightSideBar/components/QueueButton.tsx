@@ -5,7 +5,7 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 // import { theme } from 'src/assets/theme'
 
 export const QueueButton = () => {
-    const [queue, setQueue] = useState(false)
+    // const [queue, setQueue] = useState(false)
 
     return (
         <Box sx={{ mt: '3px' }}>
@@ -26,7 +26,7 @@ export const QueueButton = () => {
                 </Box>
             ) : ( */}
             <StyledIcon
-                onClick={() => setQueue(true)}
+                // onClick={() => setQueue(true)}
                 sx={{ cursor: 'not-allowed' }}
             >
                 <StyledTooltip
