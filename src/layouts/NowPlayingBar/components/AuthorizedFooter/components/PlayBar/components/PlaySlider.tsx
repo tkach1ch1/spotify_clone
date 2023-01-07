@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import { StyledSlider, TimerNumbers } from 'src/layouts/NowPlayingBar/style'
 import { useFormatDuration } from 'src/hooks/useFormatDuration'
-import { useAppDispatch, useAppSelector } from 'src/hooks/hooks'
+import { useAppDispatch } from 'src/hooks/hooks'
 import { trackCurrentDuration } from 'src/redux/nowPlayingPlaylistReducer'
 
 interface PlaylSlider {

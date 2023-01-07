@@ -7,10 +7,9 @@ import { MainView } from '../MainView/MainView'
 
 interface MainContainerProps {
     children: ReactNode
-    padding?: string
 }
 
-export const MainContainer = ({ children, padding }: MainContainerProps) => {
+export const MainContainer = ({ children }: MainContainerProps) => {
     return (
         <TopContainer>
             <TopBar />

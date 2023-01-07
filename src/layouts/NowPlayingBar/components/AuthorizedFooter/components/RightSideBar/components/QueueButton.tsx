@@ -1,8 +1,8 @@
 import { Box } from '@mui/system'
 import { useState } from 'react'
-import { GreenDot, StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
+import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
-import { theme } from 'src/assets/theme'
+// import { theme } from 'src/assets/theme'
 
 export const QueueButton = () => {
     const [queue, setQueue] = useState(false)

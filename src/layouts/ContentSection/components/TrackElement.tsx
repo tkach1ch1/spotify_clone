@@ -16,6 +16,8 @@
 //     elemOwner?: { display_name: string; id: string }
 // }
 
+//TODO:   COMPONENT FOR HOME PAGE!!
+
 export const TrackElement = () => {}
 
 // export const TrackElement = ({

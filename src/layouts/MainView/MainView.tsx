@@ -5,10 +5,9 @@ import { useWindowSize } from 'usehooks-ts'
 
 interface MainViewProps {
     children: ReactNode
-    padding?: string
 }
 
-export const MainView = ({ children, padding }: MainViewProps) => {
+export const MainView = ({ children }: MainViewProps) => {
     const { user } = useUserContext()
 
     const { width } = useWindowSize()

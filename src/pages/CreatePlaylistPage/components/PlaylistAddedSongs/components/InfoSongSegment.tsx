@@ -6,11 +6,11 @@ interface InfoSongSegmentProps {
     songName: string
     authorName: string
     image: string
-    trackInPlayBar?: string
+    isPlaying?: boolean
 }
 
 export const InfoSongSegment = memo(
-    ({ songName, authorName, image, trackInPlayBar }: InfoSongSegmentProps) => {
+    ({ songName, authorName, image, isPlaying }: InfoSongSegmentProps) => {
         return (
             <SongSegment>
                 <img
@@ -24,7 +24,7 @@ export const InfoSongSegment = memo(
                     <SongLink
                         to=''
                         tabIndex={-1}
-                        style={trackInPlayBar ? { color: '#1db954' } : { color: 'inherit' }}
+                        style={isPlaying ? { color: '#1db954' } : { color: 'inherit' }}
                     >
                         {songName}
                     </SongLink>

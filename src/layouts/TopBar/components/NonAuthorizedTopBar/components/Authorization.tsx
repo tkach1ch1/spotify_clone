@@ -12,9 +12,7 @@ export const Authorization = () => {
             >
                 Sign up
             </StyledLink>
-            <WhiteButton onButtonAction={() => navigate('/login')}>
-                Log in
-            </WhiteButton>
+            <WhiteButton onButtonAction={() => navigate('/login')}>Log in</WhiteButton>
         </AuthorizationBox>
     )
 }

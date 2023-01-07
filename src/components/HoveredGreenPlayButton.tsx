@@ -1,7 +1,4 @@
-import React from 'react'
-import { useAppDispatch } from 'src/hooks/hooks'
 import { AllPlaylistTracksElements } from 'src/pages/CreatePlaylistPage/hooks/usePlaylistTracks'
-import { addToNowPlayingPlaylist } from 'src/redux/nowPlayingPlaylistReducer'
 import { GreenPlayButton } from './GreenPlayButton'
 import { HoveredGreenPlayButtonBox } from './style'
 

@@ -171,7 +171,7 @@ export const Song = memo(
                             songName={name}
                             authorName={artists.map((elem) => elem.name).join(' ')}
                             image={album.images && album.images[0].url}
-                            trackInPlayBar={currentlyPlayingTrack?.id}
+                            isPlaying={isPlaying}
                         />
                     </Box>
                     <Var1Segment

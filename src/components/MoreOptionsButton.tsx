@@ -4,7 +4,6 @@ import { Box } from '@mui/system'
 import { CSSProperties, memo, useState } from 'react'
 import { ArrayProps, Select } from 'src/components/Select'
 import { Snackbar } from 'src/components/Snackbar'
-import { useAddedPlaylist } from 'src/pages/CreatePlaylistPage/hooks/useAddedPlaylist'
 import { MoreOptionsButtonBox } from './style'
 
 interface MoreOptionsButtonProps {
