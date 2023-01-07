@@ -1,4 +1,3 @@
-import { useState } from 'react'
 // import { Box } from '@mui/system'
 import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import LyricsIcon from '@mui/icons-material/Lyrics'

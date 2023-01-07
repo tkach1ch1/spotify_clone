@@ -1,5 +1,4 @@
 import { Box } from '@mui/system'
-import { useState } from 'react'
 import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 // import { theme } from 'src/assets/theme'
