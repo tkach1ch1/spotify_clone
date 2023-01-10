@@ -11,7 +11,7 @@ export const AuthorizedFooter = memo(() => {
     const audio = currentlyPlayingTrack?.file
 
     useEffect(() => {
-        if (audio.currentSrc !== '') {
+        if (audio && audio.currentSrc !== '') {
             if (isPlaying) {
                 audio.play()
             } else if (!isPlaying) {
