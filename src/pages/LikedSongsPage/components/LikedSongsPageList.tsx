@@ -16,6 +16,7 @@ export const LikedSongsPageList = () => {
                         height='58px'
                         tabIndex={0}
                         playlistTracks={allLikedSongs}
+                        playlistId=''
                     />
                 </PlayButtonBox>
             </Box>

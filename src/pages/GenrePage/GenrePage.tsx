@@ -12,7 +12,11 @@ export const GenrePage = () => {
             <GenrePageTitleBox>
                 <GenrePageTitle>{genreName}</GenrePageTitle>
             </GenrePageTitleBox>
-            {loading ? <Loader /> : <AllGenrePlaylists playlistsArray={genrePlaylists} />}
+            {loading ? (
+                <Loader />
+            ) : (
+                <AllGenrePlaylists playlistsArray={!!genrePlaylists && genrePlaylists} />
+            )}
         </MainContainer>
     )
 }

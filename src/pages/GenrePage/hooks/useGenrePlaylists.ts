@@ -33,7 +33,7 @@ export const useGenrePlaylists = () => {
                 try {
                     const token = await getToken()
                     const fetchGenrePlaylists = await getGenrePlaylists(token, genreId)
-                    setGenrePlaylists(fetchGenrePlaylists)
+                    fetchGenrePlaylists && setGenrePlaylists(fetchGenrePlaylists)
                     setLoading(false)
                 } catch (error) {
                     console.log('Fetched data error: ' + error)

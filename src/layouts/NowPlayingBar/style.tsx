@@ -37,6 +37,7 @@ export const AuthorizedFooterBox = styled(Box)({
     height: '90px',
     padding: '0 16px',
     backgroundColor: '#181818',
+    position: 'relative',
 })
 
 export const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -159,7 +160,6 @@ export const StyledArtistName = styled(Link)({
 export const StyledPlayIcon = styled('button')({
     backgroundColor: 'transparent',
     border: 'none',
-
     color: theme.palette.primary.main,
     '&:active': {
         transform: 'scale(0.9)',

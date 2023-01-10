@@ -21,7 +21,7 @@ const reducers = combineReducers({
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['allPlaylists', 'playingPlaylist', 'likedSongs', 'playlist'],
+    whitelist: ['allPlaylists', 'genreInfo', 'playlist', 'likedSongs', 'playingPlaylist'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
@@ -32,7 +32,6 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-            immutableCheck: false,
         }),
 })
 

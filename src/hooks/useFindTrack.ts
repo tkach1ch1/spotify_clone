@@ -9,17 +9,19 @@ export const useFindTrack = (id: string) => {
     //Geting all genres from API
     useEffect(() => {
         try {
-            //Taking data from API
-            const fetchedData = async () => {
-                try {
-                    const token = await getToken()
-                    const track = await getTrack(token, id)
-                    setFindTrack(track)
-                } catch (error) {
-                    console.log('Fetched data error: ' + error)
+            if (!!id) {
+                //Taking data from API
+                const fetchedData = async () => {
+                    try {
+                        const token = await getToken()
+                        const track = await getTrack(token, id)
+                        setFindTrack(track)
+                    } catch (error) {
+                        console.log('Fetched data error: ' + error)
+                    }
                 }
+                fetchedData()
             }
-            fetchedData()
         } catch (error) {
             console.log('Error: ' + error)
         }

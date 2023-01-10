@@ -23,6 +23,7 @@ export const ResultSong = ({
     artists,
     name,
     duration_ms,
+    preview_url,
 }: ResultSongProps) => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
@@ -42,6 +43,7 @@ export const ResultSong = ({
             album: album,
             dateAdded: new Date().toISOString(),
             duration_ms: duration_ms,
+            preview_url: preview_url,
         }
 
         const changedCurrentPlaylist = {

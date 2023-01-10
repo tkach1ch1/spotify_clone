@@ -5,6 +5,9 @@ import { StyledPlayIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import { useAppDispatch } from 'src/hooks/hooks'
 import { trackCurrentDuration, trackIsPlaying } from 'src/redux/nowPlayingPlaylistReducer'
 import { useNextAndPrevTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNextAndPrevTrack'
+import { useNowPlayingTrack } from '../../../hooks/useNowPlayingTrack'
+import CircularProgress from '@mui/material/CircularProgress'
+import { Box } from '@mui/system'
 
 interface PlayButtonProps {
     audio: HTMLAudioElement
@@ -15,47 +18,46 @@ interface PlayButtonProps {
 export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonProps) => {
     const dispatch = useAppDispatch()
 
+    const { currentlyPlayingTrack } = useNowPlayingTrack()
+
     const { getNextTrack } = useNextAndPrevTrack()
 
     //Updating currentTrackTime on every audio update
     //When track ended turn next track on
-    audio.ontimeupdate = () => {
-        dispatch(trackCurrentDuration(audio.currentTime * 1000))
-        if (audio.ended) {
-            getNextTrack(audio)
+    if (audio) {
+        audio.ontimeupdate = () => {
+            dispatch(trackCurrentDuration(audio.currentTime * 1000))
+            if (audio.ended) {
+                getNextTrack(audio)
+            }
         }
     }
 
     // Change currentTrackTime on PlaySlider pull
     useEffect(() => {
-        if (current_duration !== audio.currentTime * 1000) {
-            audio.currentTime = current_duration / 1000
+        if (audio) {
+            if (current_duration !== audio.currentTime * 1000) {
+                audio.currentTime = current_duration / 1000
+            }
         }
     }, [current_duration, audio])
 
-    // Automatically play newly added track to NowPlaylingBar
-    // and pause him if another track was chosen
-    // useEffect(() => {
-    //     if (isPlaying || audio.paused) {
-    //         audio.play()
-    //     }
-    //     if (!isPlaying || !audio.paused) {
-    //         !!audio.paused && audio.pause()
-    //     }
-    // }, [isPlaying, audio])
-
     //On Play and Pause button click
     const trackPlay = () => {
-        if (audio.paused || !isPlaying) {
-            audio.play()
-            dispatch(trackIsPlaying(true))
+        if (!!currentlyPlayingTrack) {
+            if (audio.paused || !isPlaying) {
+                audio.play()
+                dispatch(trackIsPlaying(true))
+            }
         }
     }
 
     const trackPause = () => {
-        if (!audio.paused || isPlaying) {
-            audio.pause()
-            dispatch(trackIsPlaying(false))
+        if (!!currentlyPlayingTrack) {
+            if (!audio.paused || isPlaying) {
+                audio.pause()
+                dispatch(trackIsPlaying(false))
+            }
         }
     }
 
@@ -76,7 +78,22 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
 
     return (
         <>
-            {isPlaying ? (
+            {audio && audio.readyState === 0 && isPlaying ? (
+                <Box
+                    sx={{
+                        width: '48px',
+                        height: '45px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <CircularProgress
+                        size={30}
+                        sx={{ color: '#1db954' }}
+                    />
+                </Box>
+            ) : isPlaying ? (
                 <StyledTooltip
                     title={'Pause'}
                     placement='top'

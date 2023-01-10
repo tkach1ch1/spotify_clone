@@ -1,6 +1,7 @@
 import SkipNextIcon from '@mui/icons-material/SkipNext'
 import { useNextAndPrevTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNextAndPrevTrack'
 import { StyledIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
+import { useNowPlayingTrack } from '../../../hooks/useNowPlayingTrack'
 
 interface NextButtonProps {
     audio: HTMLAudioElement
@@ -9,8 +10,12 @@ interface NextButtonProps {
 export const NextButton = ({ audio }: NextButtonProps) => {
     const { getNextTrack } = useNextAndPrevTrack()
 
+    const { currentlyPlayingTrack } = useNowPlayingTrack()
+
     const onNextButtonClick = () => {
-        getNextTrack(audio)
+        if (!!currentlyPlayingTrack) {
+            getNextTrack(audio)
+        }
     }
 
     return (

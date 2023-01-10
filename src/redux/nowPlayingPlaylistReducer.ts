@@ -27,7 +27,11 @@ const nowPlayingPlaylistReducer = createSlice({
     initialState,
     reducers: {
         addToNowPlayingPlaylist: (state, action) => {
-            state.nowPlayingPlaylist = [action.payload].flat(1)
+            state.nowPlayingPlaylist = []
+            state.trackIndex = 0
+            if (state.nowPlayingPlaylist.length === 0) {
+                state.nowPlayingPlaylist = [action.payload].flat(1)
+            }
         },
         updateTrackIndex: (state, action) => {
             state.trackIndex = action.payload
@@ -46,7 +50,6 @@ const nowPlayingPlaylistReducer = createSlice({
                 current_duration: action.payload,
             }
         },
-
         trackIsPlaying: (state, action) => {
             state.nowPlayingPlaylist[state.trackIndex] = {
                 ...state.nowPlayingPlaylist[state.trackIndex],

@@ -102,19 +102,24 @@ export const Song = memo(
         //Find track on his id
         const { findTrack } = useFindTrack(id)
 
-        const { nowPlayingPlaylist } = useNowPlayingTrack()
+        const { nowPlayingPlaylist, audio } = useNowPlayingTrack()
 
         const currentlyPlayingTrack = nowPlayingPlaylist.find((elem) => elem.id === findTrack?.id)
         const isPlaying = currentlyPlayingTrack?.isPlaying
 
         //Add single song to nowPlayingPlaylist
         const trackPlay = () => {
-            if (findTrack) {
+            if (audio) {
+                audio.pause()
+                audio.currentTime = 0
+            }
+
+            if (findTrack !== undefined && findTrack?.id) {
                 dispatch(
                     addToNowPlayingPlaylist({
                         ...findTrack,
                         isPlaying: true,
-                        file: new Audio(findTrack.preview_url),
+                        file: new Audio(findTrack?.preview_url),
                         current_duration: 0,
                     })
                 )

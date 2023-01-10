@@ -8,20 +8,22 @@ export const AllGenresSection = () => {
     const { allGenres } = useAllGenres()
 
     //Adding to every genre bgColor
-    const allGenresWithBgColor = allGenres.map((elem, i) => ({ ...elem, bgColor: genreColor[i] }))
+    const allGenresWithBgColor =
+        allGenres && allGenres.map((elem, i) => ({ ...elem, bgColor: genreColor[i] }))
 
     return (
         <>
             <AllGenresBox>
-                {allGenresWithBgColor.map((elem) => (
-                    <Genre
-                        key={nanoid()}
-                        genreName={elem.name}
-                        genreId={elem.id}
-                        genreIcon={elem.icons[0].url}
-                        bgColor={elem.bgColor}
-                    />
-                ))}
+                {allGenresWithBgColor &&
+                    allGenresWithBgColor.map((elem) => (
+                        <Genre
+                            key={nanoid()}
+                            genreName={elem.name}
+                            genreId={elem.id}
+                            genreIcon={elem.icons[0].url}
+                            bgColor={elem.bgColor}
+                        />
+                    ))}
             </AllGenresBox>
         </>
     )

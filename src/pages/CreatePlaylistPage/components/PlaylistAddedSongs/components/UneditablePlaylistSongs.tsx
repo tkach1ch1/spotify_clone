@@ -17,7 +17,7 @@ export const UneditablePlaylistSongs = memo(() => {
     //--//
     //Finding existed playlist
     const { addedPlaylist, allPlaylistsArray } = useAddedPlaylist()
-    const { allPlaylistTracks } = usePlaylistTracks(notAddedPlaylist.playlistId)
+    const { allPlaylistTracks } = usePlaylistTracks(notAddedPlaylist?.playlistId)
 
     //Add playlist tracks to current playlist in playlistReducer
     //to get this tracks if the playlist will added to all user Playlists
@@ -58,6 +58,7 @@ export const UneditablePlaylistSongs = memo(() => {
                             width='58px'
                             height='58px'
                             tabIndex={0}
+                            playlistId=''
                             playlistTracks={
                                 addedPlaylist ? addedPlaylist.playlistTracks : allPlaylistTracks
                             }

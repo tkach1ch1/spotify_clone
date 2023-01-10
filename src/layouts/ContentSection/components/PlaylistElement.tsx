@@ -46,9 +46,16 @@ export const PlaylistElement = ({
         }
     }
 
-    // const findAddedPlaylist = allPlaylistsArray.find((elem) => elem.playlistId === playlistId)
     //Get current or clicked playlist tracks
     const { allPlaylistTracks } = usePlaylistTracks(playlistId)
+
+    const getTracks = () => {
+        if (playlistTracks.length > 0) {
+            return playlistTracks
+        } else {
+            return allPlaylistTracks
+        }
+    }
 
     return (
         <ElementBox
@@ -93,7 +100,8 @@ export const PlaylistElement = ({
                     <HoveredGreenPlayButton
                         bottom='5px'
                         right='5px'
-                        playlistTracks={playlistTracks || allPlaylistTracks}
+                        playlistId={playlistId}
+                        playlistTracks={getTracks()}
                     />
                 )}
             </Box>

@@ -13,7 +13,9 @@ export const Genre = ({ genreName, genreIcon, genreId, bgColor }: GenreProps) =>
     const dispatch = useAppDispatch()
 
     const navigateAndGetGenreIdOnClick = () => {
-        dispatch(getGenreInfo({ genreId: genreId, genreName: genreName }))
+        if (genreId) {
+            dispatch(getGenreInfo({ genreId: genreId, genreName: genreName }))
+        }
     }
 
     return (

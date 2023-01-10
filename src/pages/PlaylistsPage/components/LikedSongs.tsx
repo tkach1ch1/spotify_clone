@@ -54,6 +54,7 @@ export const LikedSongs = () => {
                     bottom='20px'
                     right='20px'
                     playlistTracks={allLikedSongs}
+                    playlistId=''
                 />
             </InnerLikedSongsBox>
         </LikedSongsBox>

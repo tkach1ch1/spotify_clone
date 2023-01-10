@@ -18,10 +18,12 @@ export const SoundBar = ({ audio }: SoundBarProps) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        if (!muted && current_volume) {
-            audio.volume = current_volume / 100
-        } else if (muted || current_volume === 0) {
-            audio.volume = 0
+        if (audio) {
+            if (!muted && current_volume) {
+                audio.volume = current_volume / 100
+            } else if (muted || current_volume === 0) {
+                audio.volume = 0
+            }
         }
     }, [current_volume, audio, muted, dispatch])
 

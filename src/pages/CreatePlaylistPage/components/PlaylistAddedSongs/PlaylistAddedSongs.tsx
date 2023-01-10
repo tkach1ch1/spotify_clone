@@ -31,6 +31,7 @@ export const PlaylistAddedSongs = () => {
                         height='58px'
                         tabIndex={0}
                         playlistTracks={addedPlaylist.playlistTracks}
+                        playlistId=''
                     />
                 ) : null}
 

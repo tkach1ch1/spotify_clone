@@ -20,6 +20,7 @@ export const SongsList = ({ songsArray }: SongsListProps) => {
                           album={elem.album}
                           duration_ms={elem.duration_ms}
                           dateAdded={elem.dateAdded}
+                          preview_url=''
                       />
                   ))
                 : null}

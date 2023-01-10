@@ -26,6 +26,7 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
                           duration_ms={elem.duration_ms}
                           ariaRowIndex={foundTracks.indexOf(elem) + 1}
                           dateAdded=''
+                          preview_url={elem.preview_url}
                       />
                   ))
                 : null}
