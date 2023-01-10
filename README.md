@@ -6,7 +6,7 @@
 - ### [Technologies](#technologies)
 - ### [Setup](#setup)
 
-### Deployed project could be found under: ...
+### Deployed project could be found under: https://spotify-clone-tkach.netlify.app/
 
 ---
 
