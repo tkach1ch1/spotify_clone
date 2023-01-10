@@ -109,12 +109,12 @@ export const Song = memo(
 
         //Add single song to nowPlayingPlaylist
         const trackPlay = () => {
-            if (audio) {
-                audio.pause()
-                audio.currentTime = 0
-            }
+            if (findTrack !== undefined && findTrack?.id !== currentlyPlayingTrack?.id) {
+                if (audio) {
+                    audio.pause()
+                    audio.currentTime = 0
+                }
 
-            if (findTrack !== undefined && findTrack?.id) {
                 dispatch(
                     addToNowPlayingPlaylist({
                         ...findTrack,
@@ -123,6 +123,8 @@ export const Song = memo(
                         current_duration: 0,
                     })
                 )
+            } else if (findTrack !== undefined && findTrack?.id === currentlyPlayingTrack?.id) {
+                dispatch(trackIsPlaying(true))
             }
         }
 

@@ -6,7 +6,7 @@ export const useNowPlayingTrack = () => {
 
     const currentlyPlayingTrack = nowPlayingPlaylist[trackIndex] && nowPlayingPlaylist[trackIndex]
 
-    const audio = currentlyPlayingTrack?.file
+    const audio = currentlyPlayingTrack && currentlyPlayingTrack.file
 
     const isPlaying = currentlyPlayingTrack?.isPlaying
 

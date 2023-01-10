@@ -11,12 +11,10 @@ export const AuthorizedFooter = memo(() => {
     const audio = currentlyPlayingTrack?.file
 
     useEffect(() => {
-        if (audio) {
-            if (isPlaying) {
-                audio.play()
-            } else if (!isPlaying) {
-                audio.pause()
-            }
+        if (isPlaying && audio) {
+            audio.play()
+        } else if (!isPlaying && audio) {
+            audio.pause()
         }
     }, [isPlaying, audio])
 

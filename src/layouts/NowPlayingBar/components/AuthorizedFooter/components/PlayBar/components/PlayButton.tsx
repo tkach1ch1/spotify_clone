@@ -45,7 +45,7 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
     //On Play and Pause button click
     const trackPlay = () => {
         if (!!currentlyPlayingTrack) {
-            if (audio.paused || !isPlaying) {
+            if (!isPlaying) {
                 audio.play()
                 dispatch(trackIsPlaying(true))
             }
@@ -54,7 +54,7 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
 
     const trackPause = () => {
         if (!!currentlyPlayingTrack) {
-            if (!audio.paused || isPlaying) {
+            if (isPlaying) {
                 audio.pause()
                 dispatch(trackIsPlaying(false))
             }
@@ -63,7 +63,7 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
 
     //Play and pause track on whitespace press
     window.onkeydown = (event: KeyboardEvent): any => {
-        if (event.key === ' ') {
+        if (event.key === ' ' && !!currentlyPlayingTrack) {
             event.preventDefault()
 
             if (audio.paused) {
