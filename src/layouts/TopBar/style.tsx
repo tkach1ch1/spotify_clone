@@ -132,10 +132,14 @@ export const UpgradeAndProfileBox = styled(Box)({
     width: '100%',
 })
 
-export const UpgradeButtonBox = styled(Box)({
-    padding: '3px 14px',
+export const UpgradeButtonBox = styled(Link)({
     border: '1px solid #A7A7A7',
     borderRadius: '500px',
+    padding: '3px 14px',
+    color: theme.palette.primary.main,
+    cursor: 'default',
+    textDecoration: 'none',
+
     '&:hover': {
         border: '1px solid white',
         backgroundColor: 'black',
@@ -146,12 +150,9 @@ export const UpgradeButtonBox = styled(Box)({
     },
 })
 
-export const StyledUpgradeLink = styled(Link)({
-    textDecoration: 'none',
+export const StyledUpgradeLink = styled('span')({
     fontSize: '14px',
-    color: theme.palette.primary.main,
     fontWeight: '500',
-    cursor: 'default',
 })
 
 export const ProfileButtonBox = styled(Box)({

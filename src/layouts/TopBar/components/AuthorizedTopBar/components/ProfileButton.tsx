@@ -19,7 +19,7 @@ export const ProfileButton = () => {
     return (
         <ClickAwayListener onClickAway={() => setIsOpen(false)}>
             <Box sx={{ position: 'relative' }}>
-                <ProfileButtonBox onClick={() => setIsOpen(!isOpen)}>
+                <ProfileButtonBox>
                     <ProfileButtonIcon>
                         <PersonOutlineIcon />
                     </ProfileButtonIcon>
