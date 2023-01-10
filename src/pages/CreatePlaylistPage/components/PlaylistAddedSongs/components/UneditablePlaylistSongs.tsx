@@ -49,6 +49,14 @@ export const UneditablePlaylistSongs = memo(() => {
         }
     }, [dispatch, addedPlaylist, allPlaylistsArray])
 
+    const getTrack = () => {
+        if (addedPlaylist && addedPlaylist.playlistTracks.length > 0) {
+            return addedPlaylist.playlistTracks
+        } else {
+            return allPlaylistTracks
+        }
+    }
+
     return (
         <Box>
             {allPlaylistTracks && !!allPlaylistTracks.length ? (
@@ -58,10 +66,7 @@ export const UneditablePlaylistSongs = memo(() => {
                             width='58px'
                             height='58px'
                             tabIndex={0}
-                            playlistId=''
-                            playlistTracks={
-                                addedPlaylist ? addedPlaylist.playlistTracks : allPlaylistTracks
-                            }
+                            playlistTracks={getTrack()}
                         />
                         <LikeButton
                             sx={{ width: '40px', height: '40px' }}

@@ -29,7 +29,6 @@ export const HoveredGreenPlayButton = memo(
                     <GreenPlayButton
                         width='50px'
                         height='50px'
-                        playlistId={playlistId}
                         playlistTracks={playlistTracks}
                     />
                 </HoveredGreenPlayButtonBox>

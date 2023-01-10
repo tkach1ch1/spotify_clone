@@ -10,12 +10,11 @@ interface GreenPlayButtonProps {
     width: string
     height: string
     tabIndex?: number
-    playlistTracks?: AllPlaylistTracksElements[]
-    playlistId: string
+    playlistTracks: AllPlaylistTracksElements[]
 }
 
 export const GreenPlayButton = memo(
-    ({ width, height, tabIndex, playlistTracks, playlistId }: GreenPlayButtonProps) => {
+    ({ width, height, tabIndex, playlistTracks }: GreenPlayButtonProps) => {
         const dispatch = useAppDispatch()
 
         const { audio } = useNowPlayingTrack()
