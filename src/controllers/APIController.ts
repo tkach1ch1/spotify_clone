@@ -64,7 +64,7 @@ export const APIController = (function () {
 
     const _getSearch = async (token: string, searchInput: string) => {
         const result = await fetch(
-            `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&limit=5`,
+            `https://api.spotify.com/v1/search?q=${searchInput}&type=artist,track,album&limit=15`,
             {
                 method: 'GET',
                 headers: { Authorization: 'Bearer ' + token },

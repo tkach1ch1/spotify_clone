@@ -1,7 +1,6 @@
 import { ResultSong } from './ResultSong'
 import { nanoid } from 'nanoid'
 import { FoundResultItems } from 'src/hooks/useSearch'
-import { Result } from './Result'
 
 interface FoundResultProps {
     foundResult: FoundResultItems | undefined
@@ -9,8 +8,8 @@ interface FoundResultProps {
 
 export const FoundResult = ({ foundResult }: FoundResultProps) => {
     const foundTracks = foundResult && foundResult['tracks'].items
-    const foundArtists = foundResult && foundResult['artists'].items
-    const foundAlbums = foundResult && foundResult['albums'].items
+    // const foundArtists = foundResult && foundResult['artists'].items
+    // const foundAlbums = foundResult && foundResult['albums'].items
 
     return (
         <>
@@ -31,7 +30,7 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
                   ))
                 : null}
             {/* Artists */}
-            {foundArtists && foundArtists?.length > 0
+            {/* {foundArtists && foundArtists?.length > 0
                 ? foundArtists.map((elem) => (
                       <Result
                           key={nanoid()}
@@ -40,11 +39,11 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
                           subtitle='Artist'
                       />
                   ))
-                : null}
+                : null} */}
 
             {/* Albums */}
 
-            {foundAlbums && foundAlbums?.length > 0
+            {/* {foundAlbums && foundAlbums?.length > 0
                 ? foundAlbums.map((elem) => (
                       <Result
                           key={nanoid()}
@@ -53,7 +52,7 @@ export const FoundResult = ({ foundResult }: FoundResultProps) => {
                           subtitle='Album'
                       />
                   ))
-                : null}
+                : null} */}
         </>
     )
 }
