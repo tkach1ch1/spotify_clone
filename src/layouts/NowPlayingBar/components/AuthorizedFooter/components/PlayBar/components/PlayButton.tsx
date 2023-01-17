@@ -1,10 +1,8 @@
-import { useEffect } from 'react'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import { StyledPlayIcon, StyledTooltip } from 'src/layouts/NowPlayingBar/style'
 import { useAppDispatch } from 'src/hooks/hooks'
-import { trackCurrentDuration, trackIsPlaying } from 'src/redux/nowPlayingPlaylistReducer'
-import { useNextAndPrevTrack } from 'src/layouts/NowPlayingBar/components/AuthorizedFooter/hooks/useNextAndPrevTrack'
+import { trackIsPlaying } from 'src/redux/nowPlayingPlaylistReducer'
 import { useNowPlayingTrack } from '../../../hooks/useNowPlayingTrack'
 import CircularProgress from '@mui/material/CircularProgress'
 import { Box } from '@mui/system'
@@ -19,28 +17,6 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
     const dispatch = useAppDispatch()
 
     const { currentlyPlayingTrack } = useNowPlayingTrack()
-
-    const { getNextTrack } = useNextAndPrevTrack()
-
-    //Updating currentTrackTime on every audio update
-    //When track ended turn next track on
-    if (audio) {
-        audio.ontimeupdate = () => {
-            dispatch(trackCurrentDuration(audio.currentTime * 1000))
-            if (audio.ended) {
-                getNextTrack(audio)
-            }
-        }
-    }
-
-    // Change currentTrackTime on PlaySlider pull
-    useEffect(() => {
-        if (audio) {
-            if (current_duration !== audio.currentTime * 1000) {
-                audio.currentTime = current_duration / 1000
-            }
-        }
-    }, [current_duration, audio])
 
     //On Play and Pause button click
     const trackPlay = () => {
@@ -78,7 +54,7 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
 
     return (
         <>
-            {audio && audio.readyState === 0 && isPlaying ? (
+            {isPlaying && !audio?.HAVE_ENOUGH_DATA ? (
                 <Box
                     sx={{
                         width: '48px',
@@ -93,7 +69,7 @@ export const PlayButton = ({ audio, isPlaying, current_duration }: PlayButtonPro
                         sx={{ color: '#1db954' }}
                     />
                 </Box>
-            ) : isPlaying ? (
+            ) : isPlaying && audio?.HAVE_ENOUGH_DATA ? (
                 <StyledTooltip
                     title={'Pause'}
                     placement='top'

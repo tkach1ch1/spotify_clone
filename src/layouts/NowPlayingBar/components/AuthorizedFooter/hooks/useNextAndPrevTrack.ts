@@ -17,6 +17,10 @@ export const useNextAndPrevTrack = () => {
         audio.currentTime = 0
         dispatch(trackCurrentDuration(audio.currentTime * 0))
 
+        if (audio?.error) {
+            dispatch(trackIsPlaying(false))
+        }
+
         //Play next track
         if (trackIndex !== nowPlayingPlaylist.length - 1) {
             let nextTrackIndex = trackIndex + 1

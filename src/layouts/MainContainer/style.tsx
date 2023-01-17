@@ -23,6 +23,7 @@ export const MainViewContainer = styled(Box)({
     position: 'relative',
     minWidth: '519px',
     minHeight: '450px',
+
     width: '100%',
     overflowY: 'auto',
     paddingBottom: '32px',
@@ -31,6 +32,7 @@ export const MainViewContainer = styled(Box)({
 
 export const MainViewBox = styled(Box)({
     padding: '0 32px',
+    maxWidth: '1955px',
     [theme.breakpoints.down('md')]: {
         padding: '0 16px',
     },

@@ -23,7 +23,6 @@ export const AllGenresBox = styled(Box)({
     gridGap: '25px',
     width: '100%',
     overflow: 'hidden',
-    maxWidth: '1955px',
 })
 
 export const GenreLink = styled(Link)({
@@ -57,7 +56,7 @@ export const GenreIconBox = styled(Box)({
 })
 
 export const GenrePageTitleBox = styled(Box)({
-    height: '25vh',
+    height: '20vh',
     display: 'flex',
     alignItems: 'flex-end',
     [theme.breakpoints.down('lg')]: {

@@ -10,7 +10,7 @@ interface AlbumImageProps {
 export const AlbumImage = ({ image, albumName }: AlbumImageProps) => {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {image ? (
+            {image && image !== '' ? (
                 <img
                     style={{ width: '56px', height: '56px' }}
                     src={image}

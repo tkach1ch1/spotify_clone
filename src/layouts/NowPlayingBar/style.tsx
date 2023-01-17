@@ -13,7 +13,7 @@ export const NowPlayingBarBox = styled(Box)({
 })
 
 export const Footer = styled('footer')({
-    borderTop: '1px solid #282828',
+    outline: '1px solid #282828',
 })
 
 export const NonAuthorizedFooterBox = styled(Box)({
@@ -34,7 +34,7 @@ export const AuthorizedFooterBox = styled(Box)({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    height: '90px',
+    height: '91px',
     padding: '0 16px',
     backgroundColor: '#181818',
     position: 'relative',

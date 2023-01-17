@@ -15,7 +15,7 @@ interface PlayBarProps {
 
 export const PlayBar = ({ audio, isPlaying, current_duration }: PlayBarProps) => {
     //Due to spotify API rules it is unallowed to get full track duration, only 30 sec
-    let previewDuration = 30000
+    const previewDuration = 30000
 
     return (
         <PlayBarBox>
@@ -41,6 +41,7 @@ export const PlayBar = ({ audio, isPlaying, current_duration }: PlayBarProps) =>
                 <PlaySlider
                     ms_duration={previewDuration}
                     current_duration={current_duration}
+                    audio={audio}
                 />
             </Box>
         </PlayBarBox>
